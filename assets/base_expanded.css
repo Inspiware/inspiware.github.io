@@ -283,7 +283,7 @@ p {
 @viewport {
   width: device-width;
 }
-.logo h1, .icon-twitter, .icon-facebook, .icon-linkedin {
+.logo h1, .icon-twitter, .icon-facebook {
   display: inline-block;
   vertical-align: middle;
 }
@@ -306,9 +306,11 @@ p {
   width: 40px;
 }
 .icon-linkedin {
-  background-position: 0 -42px;
+  background: url('/images/gplus.png') no-repeat;
   height: 40px;
   width: 40px;
+  display: inline-block;
+  vertical-align: middle;
 }
 .icon-gplus {
   background: url('/images/gplus.png') no-repeat;
@@ -2401,13 +2403,6 @@ p {
   .icon-facebook {
     background: url(/assets/sprites/profile-icons-hidpi-sprite.png) no-repeat;
     background-position: 0 -82px;
-    background-size: 42px auto;
-    height: 40px;
-    width: 40px;
-  }
-  .icon-linkedin {
-    background: url(/assets/sprites/profile-icons-hidpi-sprite.png) no-repeat;
-    background-position: 0 -42px;
     background-size: 42px auto;
     height: 40px;
     width: 40px;

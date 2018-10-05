@@ -283,7 +283,7 @@ p {
 @viewport {
   width: device-width;
 }
-.logo h1, .icon-twitter, .icon-facebook {
+.logo h1, .icon-twitter, .icon-facebook, .icon-linkedin {
   display: inline-block;
   vertical-align: middle;
 }
@@ -302,6 +302,11 @@ p {
 }
 .icon-facebook {
   background-position: 0 -82px;
+  height: 40px;
+  width: 40px;
+}
+.icon-linkedin {
+  background-position: 0 -42px;
   height: 40px;
   width: 40px;
 }
@@ -2396,6 +2401,13 @@ p {
   .icon-facebook {
     background: url(/assets/sprites/profile-icons-hidpi-sprite.png) no-repeat;
     background-position: 0 -82px;
+    background-size: 42px auto;
+    height: 40px;
+    width: 40px;
+  }
+  .icon-linkedin {
+    background: url(/assets/sprites/profile-icons-hidpi-sprite.png) no-repeat;
+    background-position: 0 -42px;
     background-size: 42px auto;
     height: 40px;
     width: 40px;

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Inspiware - Enterprise Solutions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --inspiware-primary: #1a365d;
+            --inspiware-secondary: #2c5282;
+            --inspiware-accent: #3182ce;
+            --tex-blue: #0078d4;
+            --tex-cyan: #00bcf2;
+            --text-dark: #1a202c;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text-dark); background: var(--bg-light); }
+        .company-header { background: linear-gradient(135deg, var(--inspiware-primary) 0%, var(--inspiware-secondary) 100%); color: white; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .company-logo { display: flex; align-items: center; gap: 0.8rem; }
+        .company-logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #4299e1, #63b3ed); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
+        .company-name { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
+        .company-tagline { font-size: 0.75rem; opacity: 0.8; letter-spacing: 2px; text-transform: uppercase; }
+        .company-nav { display: flex; gap: 2rem; align-items: center; }
+        .company-nav a { color: white; text-decoration: none; font-weight: 500; opacity: 0.9; transition: all 0.3s ease; padding: 0.5rem 1rem; border-radius: 6px; }
+        .company-nav a:hover { opacity: 1; background: rgba(255,255,255,0.15); }
+        .company-nav a.active { background: rgba(255,255,255,0.2); opacity: 1; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .page-hero { background: linear-gradient(135deg, var(--inspiware-primary) 0%, var(--inspiware-secondary) 100%); color: white; padding: 4rem 2rem; text-align: center; margin-bottom: 3rem; border-radius: 20px; }
+        .page-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.3rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        section { background: white; padding: 3rem; margin-bottom: 2rem; border-radius: 20px; box-shadow: var(--card-shadow); }
+        section h2 { color: var(--inspiware-primary); font-size: 2rem; margin-bottom: 1.5rem; border-bottom: 3px solid var(--tex-blue); padding-bottom: 0.5rem; }
+        .grid { display: grid; gap: 2rem; margin: 2rem 0; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } .company-header { flex-direction: column; gap: 1rem; } }
+        .card { background: var(--bg-light); border-radius: 15px; padding: 2rem; border-left: 4px solid var(--tex-blue); }
+        .stat-item { text-align: center; padding: 1.5rem; }
+        .stat-number { font-size: 3rem; font-weight: 700; color: var(--tex-blue); }
+        .stat-label { color: var(--text-light); font-size: 1rem; }
+        .team-card { text-align: center; padding: 2rem; background: white; border-radius: 15px; box-shadow: var(--card-shadow); }
+        .team-avatar { width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--tex-blue), var(--tex-cyan)); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; }
+        .team-card h4 { color: var(--inspiware-primary); margin-bottom: 0.3rem; }
+        .team-card .role { color: var(--tex-blue); font-weight: 500; margin-bottom: 0.5rem; }
+        .team-card p { color: var(--text-light); font-size: 0.9rem; }
+        .value-card { text-align: center; padding: 2rem; }
+        .value-card .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .value-card h4 { color: var(--inspiware-primary); margin-bottom: 0.5rem; }
+        .timeline { position: relative; padding-left: 1.5rem; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--tex-blue); }
+        .timeline-item { position: relative; padding-bottom: 2rem; }
+        .timeline-item::before { content: ''; position: absolute; left: -2rem; top: 0.5rem; width: 12px; height: 12px; border-radius: 50%; background: var(--tex-blue); border: 3px solid white; box-shadow: 0 0 0 3px var(--tex-blue); }
+        .timeline-item h4 { color: var(--tex-blue); margin-bottom: 0.3rem; }
+        .footer { background: var(--inspiware-primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
+        .footer a { color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 1rem; }
+        .footer a:hover { color: white; }
+    </style>
+</head>
+<body>
+    <header class="company-header">
+        <div class="company-logo">
+            <img src="images/logo-gsw.svg" alt="Inspiware Logo" style="width: 40px; height: 40px;">
+            <div>
+                <div class="company-name">Inspiware</div>
+                <div class="company-tagline">Enterprise Solutions</div>
+            </div>
+        </div>
+        <nav class="company-nav">
+            <a href="index.html">Home</a>
+            <a href="index.html">TeX</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-hero">
+            <h1>About Inspiware</h1>
+            <p>Pioneering enterprise integration solutions since 2018. We help organizations connect, automate, and transform their digital operations.</p>
+        </div>
+
+        <section>
+            <h2>Our Story</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Founded in 2018, Inspiware emerged from a vision to simplify enterprise integration. Our founders, veterans of the financial services technology sector, recognized that businesses were struggling with increasingly complex system landscapes and data silos.</p>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Today, Inspiware is a established provider of enterprise integration solutions, with our flagship TeX platform powering mission-critical operations for financial institutions, healthcare providers.</p>
+            <div class="grid grid-4" style="margin-top: 2rem;">
+                <div class="stat-item"><div class="stat-number">8+</div><div class="stat-label">Years of Excellence</div></div>
+                <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Enterprise Deployments</div></div>
+                <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">Countries Served</div></div>
+                <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">Platform Uptime</div></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our Values</h2>
+            <div class="grid grid-4">
+                <div class="value-card"><div class="icon">🎯</div><h4>Innovation</h4><p>Pushing boundaries with AI-powered solutions</p></div>
+                <div class="value-card"><div class="icon">🤝</div><h4>Partnership</h4><p>Your success is our success</p></div>
+                <div class="value-card"><div class="icon">🔒</div><h4>Reliability</h4><p>Enterprise-grade security & uptime</p></div>
+                <div class="value-card"><div class="icon">💡</div><h4>Simplicity</h4><p>Making complex integrations simple</p></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item"><h4>2018</h4><p>Inspiware founded in London with a mission to simplify enterprise integration</p></div>
+                <div class="timeline-item"><h4>2018</h4><p>First major deployment at an investment bank</p></div>
+                <div class="timeline-item"><h4>2020</h4><p>TeX platform launched, combining enterprise scheduler capabilities</p></div>
+                <div class="timeline-item"><h4>2025</h4><p>Introduced AI-powered compliance and regulatory automation features</p></div>
+                <div class="timeline-item"><h4>2026</h4><p>Launched revolutionary Vibe Coding and Agentic AI capabilities</p></div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>© 2018-2026 Inspiware Ltd. All rights reserved.</p>
+        <p style="margin-top: 1rem;"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></p>
+    </footer>
+</body>
+</html>
+

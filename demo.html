@@ -1,0 +1,2459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeX Platform - Trade Flow Demo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Microsoft Blue Color Palette */
+        :root {
+            --ms-blue-dark: #0078d4;
+            --ms-blue-primary: #0091ff;
+            --ms-blue-light: #50e6ff;
+            --ms-blue-accent: #00bcf2;
+            --ms-navy: #002050;
+            --ms-navy-light: #003366;
+            --tex-gradient: linear-gradient(135deg, #0078d4, #00bcf2);
+            --external-color: #d83b01;
+            --downstream-color: #107c10;
+            --reporting-color: #ffb900;
+            --internal-color: #5c2d91;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(180deg, #f3f2f1 0%, #e1dfdd 100%); min-height: 100vh; color: #323130; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+
+        header { text-align: center; margin-bottom: 2rem; padding: 1.5rem; background: var(--tex-gradient); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,120,212,0.3); }
+        header h1 { font-size: 3rem; color: white; font-weight: 600; letter-spacing: 2px; }
+        header p { font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-top: 0.5rem; letter-spacing: 1px; }
+
+        .demo-title { text-align: center; margin-bottom: 2rem; }
+        .demo-title h2 { font-size: 1.6rem; color: var(--ms-blue-dark); margin-bottom: 0.5rem; font-weight: 600; }
+        .demo-title p { color: #605e5c; }
+
+        /* Ikasan-style Flow Container */
+        .flow-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e1dfdd;
+        }
+
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        /* Ikasan-style Component Boxes */
+        .component {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .component-box {
+            background: white;
+            border: 2px solid var(--ms-blue-dark);
+            border-radius: 6px;
+            padding: 0.8rem 1.2rem;
+            min-width: 160px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,120,212,0.15);
+        }
+
+        .component-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,120,212,0.25);
+        }
+
+        .component-box .component-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            background: var(--tex-gradient);
+            color: white;
+        }
+
+        .component-box h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #323130;
+            margin-bottom: 0.2rem;
+        }
+
+        .component-box p {
+            font-size: 0.7rem;
+            color: #605e5c;
+        }
+
+        .component-box .type-badge {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--ms-blue-dark);
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Component Types */
+        .component-box.external { border-color: var(--external-color); }
+        .component-box.external .component-icon { background: linear-gradient(135deg, var(--external-color), #ff6f47); }
+        .component-box.external .type-badge { background: var(--external-color); }
+
+        .component-box.consumer { border-color: var(--ms-blue-dark); }
+        .component-box.consumer .component-icon { background: var(--tex-gradient); }
+        .component-box.consumer .type-badge { background: var(--ms-blue-dark); }
+
+        .component-box.converter { border-color: #0078d4; border-style: dashed; }
+        .component-box.converter .component-icon { background: linear-gradient(135deg, #0078d4, #50e6ff); }
+        .component-box.converter .type-badge { background: #0078d4; }
+
+        .component-box.router { border-color: var(--ms-blue-accent); border-width: 3px; }
+        .component-box.router .component-icon { background: linear-gradient(135deg, #00bcf2, #50e6ff); }
+        .component-box.router .type-badge { background: var(--ms-blue-accent); }
+
+        .component-box.producer { border-color: var(--downstream-color); }
+        .component-box.producer .component-icon { background: linear-gradient(135deg, var(--downstream-color), #5cb85c); }
+        .component-box.producer .type-badge { background: var(--downstream-color); }
+
+        .component-box.reporting { border-color: var(--reporting-color); }
+        .component-box.reporting .component-icon { background: linear-gradient(135deg, var(--reporting-color), #ffd700); }
+        .component-box.reporting .type-badge { background: #d39400; color: white; }
+
+        .component-box.internal { border-color: var(--internal-color); }
+        .component-box.internal .component-icon { background: linear-gradient(135deg, var(--internal-color), #8661c5); }
+        .component-box.internal .type-badge { background: var(--internal-color); }
+
+        /* Ikasan-style Connectors/Arrows */
+        .connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            position: relative;
+        }
+
+        .connector-line {
+            height: 3px;
+            width: 40px;
+            background: var(--ms-blue-dark);
+            position: relative;
+        }
+
+        .connector-line::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: -4px;
+            border: 6px solid transparent;
+            border-left: 8px solid var(--ms-blue-dark);
+        }
+
+        .connector-down {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.3rem 0;
+        }
+
+        .connector-down .line {
+            width: 3px;
+            height: 30px;
+            background: var(--ms-blue-dark);
+        }
+
+        .connector-down .arrow {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 10px solid var(--ms-blue-dark);
+        }
+
+        /* TeX Hub Special Styling */
+        .tex-hub {
+            background: linear-gradient(135deg, var(--ms-navy), var(--ms-navy-light));
+            border: 3px solid var(--ms-blue-primary);
+            min-width: 300px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,120,212,0.3);
+        }
+
+        .tex-hub h3 { color: white; font-size: 1rem; }
+        .tex-hub p { color: rgba(255,255,255,0.8); }
+        .tex-hub .component-icon {
+            background: white;
+            color: var(--ms-blue-dark);
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+        }
+        .tex-hub .type-badge { background: var(--ms-blue-light); color: var(--ms-navy); }
+
+        /* Distribution Row */
+        .distribution-row {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .distribution-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* TeX Platform Container */
+        .tex-platform-container {
+            background: linear-gradient(135deg, rgba(0,120,212,0.08) 0%, rgba(0,188,242,0.08) 100%);
+            border: 2px solid var(--ms-blue-dark);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 0.5rem 0;
+            position: relative;
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(0,120,212,0.3);
+        }
+
+        .platform-logo {
+            font-size: 1.5rem;
+            background: var(--tex-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .platform-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--ms-blue-dark);
+            letter-spacing: 1px;
+        }
+
+        .platform-subtitle {
+            font-size: 0.75rem;
+            color: #605e5c;
+            margin-left: auto;
+        }
+
+        /* TeX Internal Flow */
+        .tex-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .inbound-flow {
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(0,120,212,0.3);
+        }
+
+        /* Topic Container */
+        .topic-container {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+            padding: 15px 0;
+        }
+
+        .topic-box {
+            position: relative;
+            width: 220px;
+            height: 70px;
+            background: linear-gradient(to bottom, #8661c5 0%, #5c2d91 50%, #4a2275 100%);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(92,45,145,0.3);
+            margin: 0 20px;
+        }
+
+        /* Cylinder left ellipse (front cap) */
+        .topic-box::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 0;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(to bottom, #a78bda 0%, #7b4bab 50%, #5c2d91 100%);
+            border-radius: 50%;
+            border: 2px solid #5c2d91;
+            box-sizing: border-box;
+        }
+
+        /* Cylinder right ellipse (back cap) */
+        .topic-box::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 0;
+            width: 30px;
+            height: 100%;
+            background: linear-gradient(to bottom, #6b3d9a 0%, #4a2275 50%, #3a1a5c 100%);
+            border-radius: 50%;
+            border: 2px solid #5c2d91;
+            box-sizing: border-box;
+            z-index: -1;
+        }
+
+        .topic-icon {
+            font-size: 1.3rem;
+            margin-bottom: 0.1rem;
+            z-index: 1;
+        }
+
+        .topic-label {
+            font-family: 'Consolas', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            z-index: 1;
+        }
+
+        .topic-subtitle {
+            font-size: 0.6rem;
+            opacity: 0.9;
+            margin-top: 0.1rem;
+            z-index: 1;
+        }
+
+        /* Subscription Lines */
+        .subscription-lines {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 1rem;
+            height: 40px;
+            position: relative;
+        }
+
+        .subscription-lines::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15%;
+            right: 15%;
+            height: 3px;
+            background: #5c2d91;
+        }
+
+        .sub-line {
+            width: 3px;
+            height: 40px;
+            background: #5c2d91;
+            position: relative;
+        }
+
+        .sub-line::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: -5px;
+            border: 6px solid transparent;
+            border-top: 8px solid #5c2d91;
+        }
+
+        /* Subscriber Flows */
+        .subscriber-flows {
+            display: flex;
+            justify-content: space-around;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .subscriber-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid #e1dfdd;
+            border-radius: 8px;
+            padding: 0.5rem;
+            min-width: 120px;
+            flex: 1;
+            max-width: 160px;
+        }
+
+        .flow-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--ms-blue-dark);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .subscriber-flow .component-box {
+            min-width: 100px;
+            padding: 0.5rem 0.6rem;
+        }
+
+        .subscriber-flow .component-box h3 {
+            font-size: 0.7rem;
+        }
+
+        .subscriber-flow .component-box p {
+            display: none;
+        }
+
+        .subscriber-flow .component-box .component-icon {
+            width: 28px;
+            height: 28px;
+            font-size: 0.9rem;
+        }
+
+        .subscriber-flow .component-box .type-badge {
+            font-size: 0.5rem;
+            padding: 0.1rem 0.3rem;
+        }
+
+        .mini-connector {
+            width: 3px;
+            height: 15px;
+            background: var(--ms-blue-dark);
+            position: relative;
+        }
+
+        .mini-connector::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: -3px;
+            border: 4px solid transparent;
+            border-top: 5px solid var(--ms-blue-dark);
+        }
+
+        /* Subscriber component colors */
+        .component-box.subscriber {
+            border-color: #5c2d91;
+        }
+        .component-box.subscriber .component-icon {
+            background: linear-gradient(135deg, #5c2d91, #8661c5);
+        }
+        .component-box.subscriber .type-badge {
+            background: #5c2d91;
+        }
+
+        .component-box.downstream-prod {
+            border-color: var(--downstream-color);
+        }
+        .component-box.downstream-prod .component-icon {
+            background: linear-gradient(135deg, var(--downstream-color), #5cb85c);
+        }
+        .component-box.downstream-prod .type-badge {
+            background: var(--downstream-color);
+        }
+
+        .component-box.reporting-conv {
+            border-color: var(--reporting-color);
+        }
+        .component-box.reporting-conv .component-icon {
+            background: linear-gradient(135deg, var(--reporting-color), #ffd700);
+        }
+        .component-box.reporting-conv .type-badge {
+            background: #d39400;
+        }
+
+        .component-box.internal-conv {
+            border-color: var(--internal-color);
+        }
+        .component-box.internal-conv .component-icon {
+            background: linear-gradient(135deg, var(--internal-color), #8661c5);
+        }
+        .component-box.internal-conv .type-badge {
+            background: var(--internal-color);
+        }
+
+        /* Downstream Labels */
+        .downstream-labels {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: #f3f2f1;
+            border-radius: 6px;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .downstream-label {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            flex: 1;
+            min-width: 100px;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .downstream-label small {
+            display: block;
+            font-weight: 400;
+            opacity: 0.9;
+            font-size: 0.65rem;
+        }
+
+        .murex-label { background: var(--downstream-color); }
+        .gloss-label { background: var(--downstream-color); }
+        .trax-label { background: var(--reporting-color); color: #323130; }
+        .inv-label { background: var(--internal-color); }
+
+        /* Data Panel */
+        .data-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 1px solid #e1dfdd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .data-panel h3 {
+            color: var(--ms-blue-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+        .data-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .data-tab {
+            padding: 0.5rem 1rem;
+            background: #f3f2f1;
+            border: 1px solid #e1dfdd;
+            color: #323130;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        .data-tab:hover { background: #e1dfdd; }
+        .data-tab.active { background: var(--ms-blue-dark); color: white; border-color: var(--ms-blue-dark); }
+        .data-content {
+            display: none;
+            background: var(--ms-navy);
+            border-radius: 6px;
+            padding: 1rem;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .data-content.active { display: block; }
+        .data-content pre { white-space: pre-wrap; color: #50e6ff; }
+
+        /* Legend */
+        .legend { display: flex; gap: 2rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #605e5c; }
+        .legend-color { width: 24px; height: 24px; border-radius: 4px; border: 2px solid; }
+        .legend-color.external { border-color: var(--external-color); background: rgba(216,59,1,0.1); }
+        .legend-color.tex { border-color: var(--ms-blue-dark); background: rgba(0,120,212,0.1); }
+        .legend-color.downstream { border-color: var(--downstream-color); background: rgba(16,124,16,0.1); }
+        .legend-color.reporting { border-color: var(--reporting-color); background: rgba(255,185,0,0.1); }
+        .legend-color.internal { border-color: var(--internal-color); background: rgba(92,45,145,0.1); }
+
+        /* Animation Controls */
+        .controls { text-align: center; margin: 1.5rem 0; }
+        .btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 0.5rem;
+            font-weight: 600;
+        }
+        .btn-primary { background: var(--ms-blue-dark); color: white; }
+        .btn-primary:hover { background: #106ebe; box-shadow: 0 4px 12px rgba(0,120,212,0.3); }
+        .btn-secondary { background: #f3f2f1; color: #323130; border: 1px solid #e1dfdd; }
+        .btn-secondary:hover { background: #e1dfdd; }
+
+        /* Status Bar */
+        .status-bar { background: white; border-radius: 8px; padding: 1rem; margin-top: 1rem; border: 1px solid #e1dfdd; }
+        .status-bar h4 { color: var(--ms-blue-dark); margin-bottom: 0.5rem; font-weight: 600; }
+        .status-text { font-family: 'Consolas', monospace; color: var(--downstream-color); min-height: 24px; font-weight: 500; }
+
+        /* Flow Steps */
+        .flow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .step { background: white; border-radius: 6px; padding: 1rem; border-left: 4px solid #e1dfdd; transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .step.active { border-left-color: var(--ms-blue-dark); background: rgba(0,120,212,0.05); }
+        .step.complete { border-left-color: var(--downstream-color); }
+        .step-number { display: inline-block; width: 24px; height: 24px; background: #e1dfdd; border-radius: 50%; text-align: center; line-height: 24px; font-size: 0.8rem; margin-right: 0.5rem; font-weight: 600; }
+        .step.active .step-number { background: var(--ms-blue-dark); color: white; }
+        .step.complete .step-number { background: var(--downstream-color); color: white; }
+        .step h4 { display: inline; font-size: 0.9rem; color: #323130; }
+        .step p { font-size: 0.75rem; color: #605e5c; margin-top: 0.5rem; }
+
+        /* Animation highlight */
+        .component-box.highlight {
+            animation: pulse-highlight 0.8s ease-in-out;
+            box-shadow: 0 0 20px rgba(0,120,212,0.5);
+        }
+
+        @keyframes pulse-highlight {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .connector.animate .connector-line {
+            animation: flow-animate 0.5s ease-in-out;
+            background: var(--ms-blue-light);
+        }
+
+        @keyframes flow-animate {
+            0% { width: 0; }
+            100% { width: 40px; }
+        }
+
+        /* Demo Tabs */
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid #e1dfdd;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #605e5c;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-tab:hover {
+            background: #f3f2f1;
+            border-color: var(--ms-blue-dark);
+        }
+
+        .demo-tab.active {
+            background: var(--ms-blue-dark);
+            color: white;
+            border-color: var(--ms-blue-dark);
+        }
+
+        .demo-tab .tab-icon {
+            font-size: 1.2rem;
+        }
+
+        .demo-content {
+            display: none;
+        }
+
+        .demo-content.active {
+            display: block;
+        }
+
+        /* Surveillance specific styles */
+        .alert-badge {
+            background: #d13438;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.3rem;
+        }
+
+        .surveillance-color {
+            --surv-red: #d13438;
+            --surv-orange: #ff8c00;
+            --surv-green: #107c10;
+        }
+
+        .component-box.alert {
+            border-color: #d13438;
+            background: rgba(209,52,56,0.05);
+        }
+
+        .component-box.alert .component-icon {
+            background: linear-gradient(135deg, #d13438, #ff6b6b);
+        }
+
+        .component-box.alert .type-badge {
+            background: #d13438;
+        }
+
+        .component-box.analytics {
+            border-color: #ff8c00;
+        }
+
+        .component-box.analytics .component-icon {
+            background: linear-gradient(135deg, #ff8c00, #ffc107);
+        }
+
+        .component-box.analytics .type-badge {
+            background: #ff8c00;
+        }
+
+        .component-box.compliance {
+            border-color: #107c10;
+        }
+
+        .component-box.compliance .component-icon {
+            background: linear-gradient(135deg, #107c10, #5cb85c);
+        }
+
+        .component-box.compliance .type-badge {
+            background: #107c10;
+        }
+
+        /* Database cylinder for surveillance */
+        .db-cylinder {
+            position: relative;
+            width: 100px;
+            height: 70px;
+            background: linear-gradient(to bottom, #50e6ff 0%, #0078d4 50%, #002050 100%);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin: 0 10px;
+        }
+
+        .db-cylinder::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(to bottom, #7dd3fc 0%, #0091ff 50%, #003366 100%);
+            border-radius: 50%;
+            border: 2px solid #0078d4;
+            box-sizing: border-box;
+        }
+
+        .db-cylinder::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(to bottom, #0078d4 0%, #002050 50%, #001030 100%);
+            border-radius: 50%;
+            border: 2px solid #0078d4;
+            box-sizing: border-box;
+            z-index: -1;
+        }
+
+        /* Alert Panel */
+        .alert-panel {
+            background: white;
+            border: 2px solid #d13438;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .alert-panel h4 {
+            color: #d13438;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid #f3f2f1;
+            font-size: 0.85rem;
+        }
+
+        .alert-item:last-child {
+            border-bottom: none;
+        }
+
+        .alert-severity {
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .alert-severity.high { background: #d13438; color: white; }
+        .alert-severity.medium { background: #ff8c00; color: white; }
+        .alert-severity.low { background: #ffb900; color: #323130; }
+
+        .alert-time {
+            color: #605e5c;
+            font-size: 0.75rem;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TeX</h1>
+            <p>TECHNICAL EXCHANGE | Platform Capabilities Demo</p>
+        </header>
+
+        <!-- Demo Tabs -->
+        <div class="demo-tabs">
+            <div class="demo-tab active" onclick="switchDemo('trade-flow')">
+                <span class="tab-icon">🔄</span>
+                Trade Flow Processing
+            </div>
+            <div class="demo-tab" onclick="switchDemo('surveillance')">
+                <span class="tab-icon">🔍</span>
+                Trade Surveillance
+                <span class="alert-badge">AI</span>
+            </div>
+        </div>
+
+        <!-- Trade Flow Demo Content -->
+        <div class="demo-content active" id="demo-trade-flow">
+            <div class="demo-title">
+                <h2>🔄 Real-Time Trade Processing Pipeline</h2>
+                <p>Bloomberg TOMS → TeX Integration Hub → Multi-System Distribution</p>
+            </div>
+
+            <!-- Flow Visualization - Ikasan Style -->
+            <div class="flow-container" id="flowContainer">
+            <!-- Row 1: External Source -->
+            <div class="flow-row">
+                <div class="component" id="comp-bloomberg">
+                    <div class="component-box external">
+                        <span class="type-badge">External</span>
+                        <div class="component-icon">📊</div>
+                        <h3>Bloomberg TOMS</h3>
+                        <p>Trade Order Management</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-row">
+                <div class="connector-down" id="arrow1">
+                    <div class="line"></div>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+
+            <!-- TeX Platform Container -->
+            <div class="tex-platform-container">
+                <div class="platform-header">
+                    <span class="platform-logo">⚡</span>
+                    <span class="platform-title">TeX Platform</span>
+                    <span class="platform-subtitle">Technical Exchange Integration Flow</span>
+                </div>
+
+                <!-- Inbound Flow: Consumer → Converter → Topic -->
+                <div class="tex-flow inbound-flow">
+                    <div class="component" id="comp-fix">
+                        <div class="component-box consumer">
+                            <span class="type-badge">Consumer</span>
+                            <div class="component-icon">🔌</div>
+                            <h3>FIX Consumer</h3>
+                            <p>Bloomberg FIX 4.4</p>
+                        </div>
+                    </div>
+
+                    <div class="connector" id="arrow2">
+                        <div class="connector-line"></div>
+                    </div>
+
+                    <div class="component" id="comp-transformer">
+                        <div class="component-box converter">
+                            <span class="type-badge">Converter</span>
+                            <div class="component-icon">🔄</div>
+                            <h3>FIX→FpML Transformer</h3>
+                            <p>Validation • Enrichment</p>
+                        </div>
+                    </div>
+
+                    <div class="connector" id="arrow3">
+                        <div class="connector-line"></div>
+                    </div>
+
+                    <div class="component" id="comp-producer-topic">
+                        <div class="component-box producer">
+                            <span class="type-badge">Producer</span>
+                            <div class="component-icon">📤</div>
+                            <h3>Topic Publisher</h3>
+                            <p>Publish FpML</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic (Pub/Sub) -->
+                <div class="topic-container">
+                    <div class="topic-box" id="comp-topic">
+                        <div class="topic-icon">📢</div>
+                        <div class="topic-label">trade.fpml.topic</div>
+                        <div class="topic-subtitle">Publish-Subscribe</div>
+                    </div>
+                </div>
+
+                <!-- Subscription Lines -->
+                <div class="subscription-lines">
+                    <div class="sub-line" id="sub-line-1"></div>
+                    <div class="sub-line" id="sub-line-2"></div>
+                    <div class="sub-line" id="sub-line-3"></div>
+                    <div class="sub-line" id="sub-line-4"></div>
+                </div>
+
+                <!-- Subscriber Flows (4 parallel pipelines) -->
+                <div class="subscriber-flows">
+                    <!-- Murex Flow -->
+                    <div class="subscriber-flow" id="flow-murex">
+                        <div class="flow-label">Murex Flow</div>
+                        <div class="component" id="comp-murex-consumer">
+                            <div class="component-box consumer subscriber">
+                                <span class="type-badge">Consumer</span>
+                                <div class="component-icon">📥</div>
+                                <h3>Topic Subscriber</h3>
+                            </div>
+                        </div>
+                        <div class="mini-connector"></div>
+                        <div class="component" id="comp-murex-converter">
+                            <div class="component-box converter">
+                                <span class="type-badge">Converter</span>
+                                <div class="component-icon">🔄</div>
+                                <h3>FpML→MxML</h3>
+                            </div>
+                        </div>
+                        <div class="mini-connector"></div>
+                        <div class="component" id="comp-murex-producer">
+                            <div class="component-box producer downstream-prod">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">💹</div>
+                                <h3>Murex Producer</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gloss Flow -->
+                    <div class="subscriber-flow" id="flow-gloss">
+                        <div class="flow-label">Gloss Flow</div>
+                        <div class="component" id="comp-gloss-consumer">
+                            <div class="component-box consumer subscriber">
+                                <span class="type-badge">Consumer</span>
+                                <div class="component-icon">📥</div>
+                                <h3>Topic Subscriber</h3>
+                            </div>
+                        </div>
+                        <div class="mini-connector"></div>
+                        <div class="component" id="comp-gloss-converter">
+                            <div class="component-box converter">
+                                <span class="type-badge">Converter</span>
+                                <div class="component-icon">🔄</div>
+                                <h3>FpML→GlossXML</h3>
+                            </div>
+                        </div>
+                        <div class="mini-connector"></div>
+                        <div class="component" id="comp-gloss-producer">
+                            <div class="component-box producer downstream-prod">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">📋</div>
+                                <h3>Gloss Producer</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TRAX Flow -->
+                    <div class="subscriber-flow" id="flow-trax">
+                        <div class="flow-label">TRAX Flow</div>
+                        <div class="component" id="comp-trax-consumer">
+                            <div class="component-box consumer subscriber">
+                                <span class="type-badge">Consumer</span>
+                                <div class="component-icon">📥</div>
+                                <h3>Topic Subscriber</h3>
+                            </div>
+                        </div>
+                        <div class="mini-connector"></div>
+                        <div class="component" id="comp-trax-converter">
+                            <div class="component-box converter reporting-conv">
+                                <span class="type-badge">Converter</span>
+                                <div class="component-icon">🔄</div>
+                                <h3>FpML→ARM/APA</h3>
+                            </div>
+                        </div>
+                        <div class="mini-connector"></div>
+                        <div class="component" id="comp-trax-producer">
+                            <div class="component-box reporting downstream-prod">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">📑</div>
+                                <h3>TRAX Producer</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inventory Flow -->
+                    <div class="subscriber-flow" id="flow-inventory">
+                        <div class="flow-label">Inventory Flow</div>
+                        <div class="component" id="comp-inv-consumer">
+                            <div class="component-box consumer subscriber">
+                                <span class="type-badge">Consumer</span>
+                                <div class="component-icon">📥</div>
+                                <h3>Topic Subscriber</h3>
+                            </div>
+                        </div>
+                        <div class="mini-connector"></div>
+                        <div class="component" id="comp-inv-converter">
+                            <div class="component-box converter internal-conv">
+                                <span class="type-badge">Converter</span>
+                                <div class="component-icon">🔄</div>
+                                <h3>FpML→JSON</h3>
+                            </div>
+                        </div>
+                        <div class="mini-connector"></div>
+                        <div class="component" id="comp-inv-producer">
+                            <div class="component-box internal downstream-prod">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">🗄️</div>
+                                <h3>Inventory Producer</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Downstream Systems Labels -->
+            <div class="downstream-labels">
+                <div class="downstream-label murex-label">Murex MX.3<br><small>Risk Management</small></div>
+                <div class="downstream-label gloss-label">Gloss<br><small>Trade Confirm</small></div>
+                <div class="downstream-label trax-label">TRAX<br><small>MiFID II Regulatory</small></div>
+                <div class="downstream-label inv-label">Trade Inventory<br><small>Position Keeping</small></div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item"><div class="legend-color external"></div> External Systems</div>
+            <div class="legend-item"><div class="legend-color tex"></div> TeX Platform</div>
+            <div class="legend-item"><div class="legend-color downstream"></div> Downstream Systems</div>
+            <div class="legend-item"><div class="legend-color reporting"></div> Regulatory Reporting</div>
+            <div class="legend-item"><div class="legend-color internal"></div> Internal Systems</div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn btn-primary" onclick="startDemo()">▶️ Run Trade Flow Demo</button>
+            <button class="btn btn-secondary" onclick="resetDemo()">🔄 Reset</button>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <h4>📡 Live Status</h4>
+            <div class="status-text" id="statusText">Ready to process trade...</div>
+        </div>
+
+        <!-- Flow Steps -->
+        <div class="flow-steps" id="flowSteps">
+            <div class="step" id="step1">
+                <span class="step-number">1</span>
+                <h4>Trade Booked</h4>
+                <p>IRS trade booked in Bloomberg TOMS (external network)</p>
+            </div>
+            <div class="step" id="step2">
+                <span class="step-number">2</span>
+                <h4>FIX Consumer</h4>
+                <p>TeX FIX Consumer receives trade via FIX 4.4 protocol</p>
+            </div>
+            <div class="step" id="step3">
+                <span class="step-number">3</span>
+                <h4>Transform to FpML</h4>
+                <p>TeX Converter: FIX → FpML transformation & validation</p>
+            </div>
+            <div class="step" id="step4">
+                <span class="step-number">4</span>
+                <h4>Route & Distribute</h4>
+                <p>Multi-Recipient Router sends to Murex (MxML)</p>
+            </div>
+            <div class="step" id="step5">
+                <span class="step-number">5</span>
+                <h4>Parallel: Gloss + TRAX</h4>
+                <p>Confirmation + ARM/APA regulatory reporting</p>
+            </div>
+            <div class="step" id="step6">
+                <span class="step-number">6</span>
+                <h4>Parallel: Inventory</h4>
+                <p>Add trade to in-house position inventory</p>
+            </div>
+        </div>
+
+        <!-- Data Panel -->
+        <div class="data-panel">
+            <h3>📄 Message Payloads</h3>
+            <div class="data-tabs">
+                <button class="data-tab active" onclick="showData('fix')">FIX Message</button>
+                <button class="data-tab" onclick="showData('fpml')">FpML Output</button>
+                <button class="data-tab" onclick="showData('murex')">Murex Format</button>
+                <button class="data-tab" onclick="showData('trax')">TRAX Report</button>
+                <button class="data-tab" onclick="showData('inventory')">Inventory Record</button>
+            </div>
+
+            <div class="data-content active" id="data-fix">
+                <pre>
+8=FIX.4.4|9=512|35=8|49=BLOOMBERG|56=TEXGATEWAY|
+34=1234|52=20240215-14:30:00.000|
+11=TRD-2024-001234|17=EXEC-789456|
+150=F|39=2|55=IRS|
+48=US912828ZT09|22=1|
+54=1|38=10000000|44=99.875|
+32=10000000|31=99.875|
+6=99.875|14=10000000|
+151=0|60=20240215-14:30:00.000|
+75=20240215|
+167=IRS|
+541=20290215|
+225=20240217|
+10=089|
+
+Trade Details:
+═══════════════════════════════════════
+Trade ID:      TRD-2024-001234
+Instrument:    Interest Rate Swap (IRS)
+Direction:     BUY (Pay Fixed)
+Notional:      USD 10,000,000
+Fixed Rate:    3.75%
+Float Index:   USD-SOFR-OIS
+Maturity:      5 Years
+Trade Date:    2024-02-15
+Settle Date:   2024-02-17
+Counterparty:  BANK OF AMERICA N.A.
+                </pre>
+            </div>
+
+            <div class="data-content" id="data-fpml">
+                <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;FpML xmlns="http://www.fpml.org/FpML-5/confirmation"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      version="5-12"&gt;
+  &lt;trade&gt;
+    &lt;tradeHeader&gt;
+      &lt;partyTradeIdentifier&gt;
+        &lt;partyReference href="party1"/&gt;
+        &lt;tradeId tradeIdScheme="http://tex.com/trade-id"&gt;
+          TRD-2024-001234
+        &lt;/tradeId&gt;
+      &lt;/partyTradeIdentifier&gt;
+      &lt;tradeDate&gt;2024-02-15&lt;/tradeDate&gt;
+    &lt;/tradeHeader&gt;
+
+    &lt;swap&gt;
+      &lt;productType&gt;InterestRateSwap&lt;/productType&gt;
+
+      &lt;!-- Fixed Leg (Pay) --&gt;
+      &lt;swapStream id="fixedLeg"&gt;
+        &lt;payerPartyReference href="party1"/&gt;
+        &lt;receiverPartyReference href="party2"/&gt;
+        &lt;calculationPeriodDates&gt;
+          &lt;effectiveDate&gt;2024-02-17&lt;/effectiveDate&gt;
+          &lt;terminationDate&gt;2029-02-15&lt;/terminationDate&gt;
+          &lt;calculationPeriodFrequency&gt;
+            &lt;periodMultiplier&gt;6&lt;/periodMultiplier&gt;
+            &lt;period&gt;M&lt;/period&gt;
+          &lt;/calculationPeriodFrequency&gt;
+        &lt;/calculationPeriodDates&gt;
+        &lt;calculationPeriodAmount&gt;
+          &lt;notionalSchedule&gt;
+            &lt;notionalStepSchedule&gt;
+              &lt;initialValue&gt;10000000&lt;/initialValue&gt;
+              &lt;currency&gt;USD&lt;/currency&gt;
+            &lt;/notionalStepSchedule&gt;
+          &lt;/notionalSchedule&gt;
+          &lt;fixedRateSchedule&gt;
+            &lt;initialValue&gt;0.0375&lt;/initialValue&gt;
+          &lt;/fixedRateSchedule&gt;
+        &lt;/calculationPeriodAmount&gt;
+      &lt;/swapStream&gt;
+
+      &lt;!-- Floating Leg (Receive) --&gt;
+      &lt;swapStream id="floatLeg"&gt;
+        &lt;payerPartyReference href="party2"/&gt;
+        &lt;receiverPartyReference href="party1"/&gt;
+        &lt;calculationPeriodAmount&gt;
+          &lt;floatingRateCalculation&gt;
+            &lt;floatingRateIndex&gt;USD-SOFR-OIS&lt;/floatingRateIndex&gt;
+          &lt;/floatingRateCalculation&gt;
+        &lt;/calculationPeriodAmount&gt;
+      &lt;/swapStream&gt;
+    &lt;/swap&gt;
+  &lt;/trade&gt;
+
+  &lt;party id="party1"&gt;
+    &lt;partyId&gt;TEXCLIENT&lt;/partyId&gt;
+    &lt;partyName&gt;TeX Client Institution&lt;/partyName&gt;
+  &lt;/party&gt;
+  &lt;party id="party2"&gt;
+    &lt;partyId&gt;BOFA&lt;/partyId&gt;
+    &lt;partyName&gt;Bank of America N.A.&lt;/partyName&gt;
+  &lt;/party&gt;
+&lt;/FpML&gt;
+                </pre>
+            </div>
+
+            <div class="data-content" id="data-murex">
+                <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;MxML xmlns="http://www.murex.com/mxml/3-1-40"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      version="3.1.40"&gt;
+  &lt;mxmlHeader&gt;
+    &lt;messageId&gt;TEX-MSG-2024-001234&lt;/messageId&gt;
+    &lt;messageType&gt;TRADE_INSERT&lt;/messageType&gt;
+    &lt;sourceSystem&gt;TEX_INTEGRATION&lt;/sourceSystem&gt;
+    &lt;targetSystem&gt;MUREX_MX3&lt;/targetSystem&gt;
+    &lt;timestamp&gt;2024-02-15T14:30:05.234Z&lt;/timestamp&gt;
+  &lt;/mxmlHeader&gt;
+
+  &lt;mxmlTrade&gt;
+    &lt;tradeHeader&gt;
+      &lt;tradeId&gt;MX-TRD-2024-001234&lt;/tradeId&gt;
+      &lt;externalReference&gt;TRD-2024-001234&lt;/externalReference&gt;
+      &lt;tradeDate&gt;2024-02-15&lt;/tradeDate&gt;
+      &lt;tradeTime&gt;14:30:00&lt;/tradeTime&gt;
+      &lt;tradeStatus&gt;VALIDATED&lt;/tradeStatus&gt;
+      &lt;inputUser&gt;TEX_STP&lt;/inputUser&gt;
+      &lt;portfolio&gt;IRD_TRADING&lt;/portfolio&gt;
+      &lt;book&gt;IRS_USD_BOOK&lt;/book&gt;
+    &lt;/tradeHeader&gt;
+
+    &lt;instrument&gt;
+      &lt;family&gt;IRD&lt;/family&gt;
+      &lt;group&gt;IRS&lt;/group&gt;
+      &lt;type&gt;IRS_VANILLA&lt;/type&gt;
+      &lt;subType&gt;FIXED_FLOAT&lt;/subType&gt;
+    &lt;/instrument&gt;
+
+    &lt;swap&gt;
+      &lt;generalInfo&gt;
+        &lt;effectiveDate&gt;2024-02-17&lt;/effectiveDate&gt;
+        &lt;terminationDate&gt;2029-02-15&lt;/terminationDate&gt;
+        &lt;notionalCurrency&gt;USD&lt;/notionalCurrency&gt;
+        &lt;notionalAmount&gt;10000000&lt;/notionalAmount&gt;
+      &lt;/generalInfo&gt;
+
+      &lt;!-- Pay Leg (Fixed) --&gt;
+      &lt;leg legId="1"&gt;
+        &lt;legType&gt;FIXED&lt;/legType&gt;
+        &lt;payReceive&gt;PAY&lt;/payReceive&gt;
+        &lt;notional&gt;
+          &lt;amount&gt;10000000&lt;/amount&gt;
+          &lt;currency&gt;USD&lt;/currency&gt;
+        &lt;/notional&gt;
+        &lt;fixedRate&gt;
+          &lt;rate&gt;0.0375&lt;/rate&gt;
+          &lt;dayCountConvention&gt;30/360&lt;/dayCountConvention&gt;
+        &lt;/fixedRate&gt;
+        &lt;paymentFrequency&gt;
+          &lt;period&gt;6&lt;/period&gt;
+          &lt;periodUnit&gt;M&lt;/periodUnit&gt;
+        &lt;/paymentFrequency&gt;
+        &lt;businessDayConvention&gt;MODFOLLOWING&lt;/businessDayConvention&gt;
+        &lt;paymentCalendar&gt;NYC&lt;/paymentCalendar&gt;
+      &lt;/leg&gt;
+
+      &lt;!-- Receive Leg (Floating) --&gt;
+      &lt;leg legId="2"&gt;
+        &lt;legType&gt;FLOATING&lt;/legType&gt;
+        &lt;payReceive&gt;RECEIVE&lt;/payReceive&gt;
+        &lt;notional&gt;
+          &lt;amount&gt;10000000&lt;/amount&gt;
+          &lt;currency&gt;USD&lt;/currency&gt;
+        &lt;/notional&gt;
+        &lt;floatingRate&gt;
+          &lt;index&gt;USD-SOFR-OIS&lt;/index&gt;
+          &lt;spread&gt;0&lt;/spread&gt;
+          &lt;dayCountConvention&gt;ACT/360&lt;/dayCountConvention&gt;
+          &lt;compoundingMethod&gt;COMPOUNDING&lt;/compoundingMethod&gt;
+        &lt;/floatingRate&gt;
+        &lt;resetFrequency&gt;
+          &lt;period&gt;1&lt;/period&gt;
+          &lt;periodUnit&gt;D&lt;/periodUnit&gt;
+        &lt;/resetFrequency&gt;
+        &lt;paymentFrequency&gt;
+          &lt;period&gt;6&lt;/period&gt;
+          &lt;periodUnit&gt;M&lt;/periodUnit&gt;
+        &lt;/paymentFrequency&gt;
+      &lt;/leg&gt;
+    &lt;/swap&gt;
+
+    &lt;counterparty&gt;
+      &lt;partyId&gt;CPTY-BOFA-001&lt;/partyId&gt;
+      &lt;partyName&gt;Bank of America N.A.&lt;/partyName&gt;
+      &lt;legalEntityIdentifier&gt;9DJT3UXIJIZJI4JHUJ78&lt;/legalEntityIdentifier&gt;
+      &lt;partyRole&gt;COUNTERPARTY&lt;/partyRole&gt;
+    &lt;/counterparty&gt;
+
+    &lt;settlement&gt;
+      &lt;settlementMethod&gt;STANDARD&lt;/settlementMethod&gt;
+      &lt;settlementCurrency&gt;USD&lt;/settlementCurrency&gt;
+    &lt;/settlement&gt;
+  &lt;/mxmlTrade&gt;
+
+  &lt;mxmlProcessingInfo&gt;
+    &lt;validationStatus&gt;PASSED&lt;/validationStatus&gt;
+    &lt;enrichmentStatus&gt;COMPLETE&lt;/enrichmentStatus&gt;
+    &lt;bookingStatus&gt;SUCCESS&lt;/bookingStatus&gt;
+    &lt;mxTradeNumber&gt;78456123&lt;/mxTradeNumber&gt;
+  &lt;/mxmlProcessingInfo&gt;
+&lt;/MxML&gt;
+
+&lt;!-- ✅ MxML Import Status: SUCCESS --&gt;
+&lt;!-- ✅ Murex Trade Number: 78456123 --&gt;
+&lt;!-- ✅ Risk Calculation: Triggered --&gt;
+                </pre>
+            </div>
+
+            <div class="data-content" id="data-trax">
+                <pre>
+┌─────────────────────────────────────────────────────────────────┐
+│           TRAX ARM/APA REGULATORY REPORT                        │
+│           MiFID II Transaction Reporting                        │
+├─────────────────────────────────────────────────────────────────┤
+│ Report Type:        ARM (Approved Reporting Mechanism)          │
+│ Regulation:         MiFID II / MiFIR Article 26                 │
+│ Submission Time:    2024-02-15T14:30:08.567Z                    │
+│ Report Status:      ACCEPTED                                    │
+└─────────────────────────────────────────────────────────────────┘
+
+TRANSACTION DETAILS:
+════════════════════════════════════════════════════════════════
+Transaction Ref:        TRX-2024-001234-ARM
+Trading Venue:          XOFF (Off-Exchange)
+Execution Time:         2024-02-15T14:30:00.000Z
+Trading Capacity:       DEAL (Dealing on own account)
+
+INSTRUMENT IDENTIFICATION:
+════════════════════════════════════════════════════════════════
+ISIN:                   EZ9876543210
+CFI Code:               SRCCXC
+Instrument Type:        Interest Rate Swap
+Underlying Index:       USD-SOFR-OIS
+
+PRICE & QUANTITY:
+════════════════════════════════════════════════════════════════
+Notional Amount:        10,000,000.00
+Notional Currency:      USD
+Price:                  3.750% (Fixed Rate)
+Price Currency:         USD
+
+COUNTERPARTY INFORMATION:
+════════════════════════════════════════════════════════════════
+Reporting Entity LEI:   5493001KJTIIGC8Y1R12
+Counterparty LEI:       9DJT3UXIJIZJI4JHUJ78
+Counterparty Name:      Bank of America N.A.
+Counterparty Country:   US
+
+BUYER/SELLER:
+════════════════════════════════════════════════════════════════
+Buyer (Fixed Payer):    Reporting Entity
+Seller (Float Payer):   Counterparty
+
+APA PUBLICATION (Post-Trade Transparency):
+════════════════════════════════════════════════════════════════
+Publication Time:       2024-02-15T14:30:10.000Z
+Deferral Applied:       NO
+Price Published:        3.750%
+Volume Published:       10,000,000 USD
+
+┌─────────────────────────────────────────────────────────────────┐
+│ ✅ ARM Report: ACCEPTED by National Competent Authority         │
+│ ✅ APA Report: PUBLISHED to market                              │
+│ Reference: TRAX-ARM-2024-001234-CONFIRMED                       │
+└─────────────────────────────────────────────────────────────────┘
+                </pre>
+            </div>
+
+            <div class="data-content" id="data-inventory">
+                <pre>
+╔═══════════════════════════════════════════════════════════════════╗
+║              IN-HOUSE TRADE INVENTORY SYSTEM                      ║
+║              Position & Trade Repository                          ║
+╠═══════════════════════════════════════════════════════════════════╣
+
+📋 TRADE RECORD CREATED
+═══════════════════════════════════════════════════════════════════
+
+{
+  "inventoryId": "INV-2024-001234",
+  "externalRefs": {
+    "bloombergId": "TRD-2024-001234",
+    "murexId": "MX-TRD-2024-001234",
+    "traxRef": "TRAX-ARM-2024-001234"
+  },
+  "tradeDetails": {
+    "productType": "IRS",
+    "subType": "VANILLA_FIXED_FLOAT",
+    "direction": "PAY_FIXED",
+    "notional": 10000000,
+    "currency": "USD",
+    "fixedRate": 0.0375,
+    "floatIndex": "USD-SOFR-OIS",
+    "effectiveDate": "2024-02-17",
+    "maturityDate": "2029-02-15",
+    "dayCountFixed": "30/360",
+    "dayCountFloat": "ACT/360"
+  },
+  "counterparty": {
+    "name": "Bank of America N.A.",
+    "lei": "9DJT3UXIJIZJI4JHUJ78",
+    "internalId": "CPTY-BOFA-001"
+  },
+  "lifecycle": {
+    "status": "ACTIVE",
+    "createdAt": "2024-02-15T14:30:12.345Z",
+    "createdBy": "TEX_INTEGRATION",
+    "version": 1
+  },
+  "riskMetrics": {
+    "dv01": 4250.00,
+    "presentValue": 0.00,
+    "currency": "USD",
+    "calculatedAt": "2024-02-15T14:30:15.000Z"
+  },
+  "auditTrail": [
+    {
+      "timestamp": "2024-02-15T14:30:00.000Z",
+      "event": "TRADE_RECEIVED",
+      "source": "BLOOMBERG_FIX"
+    },
+    {
+      "timestamp": "2024-02-15T14:30:02.000Z",
+      "event": "TRANSFORMED_TO_FPML",
+      "source": "TEX_TRANSFORMER"
+    },
+    {
+      "timestamp": "2024-02-15T14:30:05.000Z",
+      "event": "DISTRIBUTED_TO_MUREX",
+      "status": "SUCCESS"
+    },
+    {
+      "timestamp": "2024-02-15T14:30:06.000Z",
+      "event": "DISTRIBUTED_TO_GLOSS",
+      "status": "SUCCESS"
+    },
+    {
+      "timestamp": "2024-02-15T14:30:08.000Z",
+      "event": "REPORTED_TO_TRAX",
+      "status": "ACCEPTED"
+    },
+    {
+      "timestamp": "2024-02-15T14:30:12.000Z",
+      "event": "INVENTORY_CREATED",
+      "status": "SUCCESS"
+    }
+  ]
+}
+
+═══════════════════════════════════════════════════════════════════
+✅ Trade successfully added to inventory
+✅ Position updated: USD IRS +10,000,000 notional
+✅ Risk aggregation triggered
+✅ Compliance checks: PASSED
+═══════════════════════════════════════════════════════════════════
+                </pre>
+            </div>
+        </div>
+        </div>
+        <!-- End Trade Flow Demo Content -->
+
+        <!-- Trade Surveillance Demo Content -->
+        <div class="demo-content" id="demo-surveillance">
+            <div class="demo-title">
+                <h2>🔍 AI-Powered Trade Surveillance</h2>
+                <p>Real-time Market Abuse Detection • Pattern Analysis • Regulatory Compliance</p>
+            </div>
+
+            <!-- Surveillance Flow Visualization -->
+            <div class="flow-container" id="survFlowContainer">
+                <!-- Row 1: Data Sources -->
+                <div class="flow-row" style="justify-content: space-around; margin-bottom: 1rem;">
+                    <div class="component" id="surv-trades">
+                        <div class="component-box external">
+                            <span class="type-badge">Source</span>
+                            <div class="component-icon">📊</div>
+                            <h3>Trade Feed</h3>
+                            <p>Real-time Executions</p>
+                        </div>
+                    </div>
+                    <div class="component" id="surv-orders">
+                        <div class="component-box external">
+                            <span class="type-badge">Source</span>
+                            <div class="component-icon">📝</div>
+                            <h3>Order Feed</h3>
+                            <p>Order Book Events</p>
+                        </div>
+                    </div>
+                    <div class="component" id="surv-market">
+                        <div class="component-box external">
+                            <span class="type-badge">Source</span>
+                            <div class="component-icon">📈</div>
+                            <h3>Market Data</h3>
+                            <p>Prices • Volumes</p>
+                        </div>
+                    </div>
+                    <div class="component" id="surv-comms">
+                        <div class="component-box external">
+                            <span class="type-badge">Source</span>
+                            <div class="component-icon">💬</div>
+                            <h3>Communications</h3>
+                            <p>Voice • Chat • Email</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connector arrows down -->
+                <div class="flow-row" style="justify-content: space-around;">
+                    <div class="connector-down" id="surv-arrow1"><div class="line"></div><div class="arrow"></div></div>
+                    <div class="connector-down" id="surv-arrow2"><div class="line"></div><div class="arrow"></div></div>
+                    <div class="connector-down" id="surv-arrow3"><div class="line"></div><div class="arrow"></div></div>
+                    <div class="connector-down" id="surv-arrow4"><div class="line"></div><div class="arrow"></div></div>
+                </div>
+
+                <!-- TeX Surveillance Platform -->
+                <div class="tex-platform-container">
+                    <div class="platform-header">
+                        <span class="platform-logo">🔍</span>
+                        <span class="platform-title">TeX Surveillance Platform</span>
+                        <span class="platform-subtitle">AI-Powered Market Abuse Detection</span>
+                    </div>
+
+                    <!-- Ingestion Layer -->
+                    <div class="tex-flow inbound-flow">
+                        <div class="component" id="surv-consumer">
+                            <div class="component-box consumer">
+                                <span class="type-badge">Consumer</span>
+                                <div class="component-icon">📥</div>
+                                <h3>Multi-Source Consumer</h3>
+                                <p>Unified Data Ingestion</p>
+                            </div>
+                        </div>
+
+                        <div class="connector" id="surv-arrow5">
+                            <div class="connector-line"></div>
+                        </div>
+
+                        <div class="component" id="surv-normalizer">
+                            <div class="component-box converter">
+                                <span class="type-badge">Converter</span>
+                                <div class="component-icon">🔄</div>
+                                <h3>Data Normalizer</h3>
+                                <p>Standardize • Enrich</p>
+                            </div>
+                        </div>
+
+                        <div class="connector" id="surv-arrow6">
+                            <div class="connector-line"></div>
+                        </div>
+
+                        <div class="component" id="surv-correlator">
+                            <div class="component-box analytics">
+                                <span class="type-badge">Processor</span>
+                                <div class="component-icon">🔗</div>
+                                <h3>Event Correlator</h3>
+                                <p>Link Related Events</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Topic for surveillance events -->
+                    <div class="topic-container">
+                        <div class="topic-box" id="surv-topic">
+                            <div class="topic-icon">📢</div>
+                            <div class="topic-label">surveillance.events.topic</div>
+                            <div class="topic-subtitle">Correlated Events Stream</div>
+                        </div>
+                    </div>
+
+                    <!-- Subscription Lines -->
+                    <div class="subscription-lines">
+                        <div class="sub-line"></div>
+                        <div class="sub-line"></div>
+                        <div class="sub-line"></div>
+                        <div class="sub-line"></div>
+                    </div>
+
+                    <!-- AI Detection Engines -->
+                    <div class="subscriber-flows">
+                        <!-- Spoofing Detection -->
+                        <div class="subscriber-flow" id="flow-spoofing">
+                            <div class="flow-label">Spoofing Detection</div>
+                            <div class="component" id="surv-spoof-consumer">
+                                <div class="component-box consumer subscriber">
+                                    <span class="type-badge">Consumer</span>
+                                    <div class="component-icon">📥</div>
+                                    <h3>Subscriber</h3>
+                                </div>
+                            </div>
+                            <div class="mini-connector"></div>
+                            <div class="component" id="surv-spoof-ai">
+                                <div class="component-box alert">
+                                    <span class="type-badge">AI Engine</span>
+                                    <div class="component-icon">🤖</div>
+                                    <h3>Spoofing AI</h3>
+                                </div>
+                            </div>
+                            <div class="mini-connector"></div>
+                            <div class="component" id="surv-spoof-alert">
+                                <div class="component-box alert downstream-prod">
+                                    <span class="type-badge">Alert</span>
+                                    <div class="component-icon">🚨</div>
+                                    <h3>Alert Generator</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Layering Detection -->
+                        <div class="subscriber-flow" id="flow-layering">
+                            <div class="flow-label">Layering Detection</div>
+                            <div class="component" id="surv-layer-consumer">
+                                <div class="component-box consumer subscriber">
+                                    <span class="type-badge">Consumer</span>
+                                    <div class="component-icon">📥</div>
+                                    <h3>Subscriber</h3>
+                                </div>
+                            </div>
+                            <div class="mini-connector"></div>
+                            <div class="component" id="surv-layer-ai">
+                                <div class="component-box alert">
+                                    <span class="type-badge">AI Engine</span>
+                                    <div class="component-icon">🤖</div>
+                                    <h3>Layering AI</h3>
+                                </div>
+                            </div>
+                            <div class="mini-connector"></div>
+                            <div class="component" id="surv-layer-alert">
+                                <div class="component-box alert downstream-prod">
+                                    <span class="type-badge">Alert</span>
+                                    <div class="component-icon">🚨</div>
+                                    <h3>Alert Generator</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Insider Trading Detection -->
+                        <div class="subscriber-flow" id="flow-insider">
+                            <div class="flow-label">Insider Trading</div>
+                            <div class="component" id="surv-insider-consumer">
+                                <div class="component-box consumer subscriber">
+                                    <span class="type-badge">Consumer</span>
+                                    <div class="component-icon">📥</div>
+                                    <h3>Subscriber</h3>
+                                </div>
+                            </div>
+                            <div class="mini-connector"></div>
+                            <div class="component" id="surv-insider-ai">
+                                <div class="component-box alert">
+                                    <span class="type-badge">AI Engine</span>
+                                    <div class="component-icon">🤖</div>
+                                    <h3>Insider AI</h3>
+                                </div>
+                            </div>
+                            <div class="mini-connector"></div>
+                            <div class="component" id="surv-insider-alert">
+                                <div class="component-box alert downstream-prod">
+                                    <span class="type-badge">Alert</span>
+                                    <div class="component-icon">🚨</div>
+                                    <h3>Alert Generator</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wash Trading Detection -->
+                        <div class="subscriber-flow" id="flow-wash">
+                            <div class="flow-label">Wash Trading</div>
+                            <div class="component" id="surv-wash-consumer">
+                                <div class="component-box consumer subscriber">
+                                    <span class="type-badge">Consumer</span>
+                                    <div class="component-icon">📥</div>
+                                    <h3>Subscriber</h3>
+                                </div>
+                            </div>
+                            <div class="mini-connector"></div>
+                            <div class="component" id="surv-wash-ai">
+                                <div class="component-box alert">
+                                    <span class="type-badge">AI Engine</span>
+                                    <div class="component-icon">🤖</div>
+                                    <h3>Wash Trade AI</h3>
+                                </div>
+                            </div>
+                            <div class="mini-connector"></div>
+                            <div class="component" id="surv-wash-alert">
+                                <div class="component-box alert downstream-prod">
+                                    <span class="type-badge">Alert</span>
+                                    <div class="component-icon">🚨</div>
+                                    <h3>Alert Generator</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Systems -->
+                <div class="flow-row" style="margin-top: 1rem;">
+                    <div class="connector-down"><div class="line"></div><div class="arrow"></div></div>
+                </div>
+
+                <div class="downstream-labels" style="margin-top: 0.5rem;">
+                    <div class="downstream-label" style="background: #d13438;">Alert Dashboard<br><small>Real-time Monitoring</small></div>
+                    <div class="downstream-label" style="background: #ff8c00;">Case Management<br><small>Investigation Workflow</small></div>
+                    <div class="downstream-label" style="background: #107c10;">Regulatory Reports<br><small>STR/SAR Filing</small></div>
+                    <div class="downstream-label" style="background: #5c2d91;">Audit Trail<br><small>Complete History</small></div>
+                </div>
+            </div>
+
+            <!-- Surveillance Legend -->
+            <div class="legend">
+                <div class="legend-item"><div class="legend-color external"></div> Data Sources</div>
+                <div class="legend-item"><div class="legend-color tex"></div> TeX Platform</div>
+                <div class="legend-item"><div class="legend-color" style="border-color: #d13438; background: rgba(209,52,56,0.1);"></div> AI Detection</div>
+                <div class="legend-item"><div class="legend-color" style="border-color: #ff8c00; background: rgba(255,140,0,0.1);"></div> Analytics</div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button class="btn btn-primary" onclick="startSurvDemo()">▶️ Run Surveillance Demo</button>
+                <button class="btn btn-secondary" onclick="resetSurvDemo()">🔄 Reset</button>
+            </div>
+
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <h4>📡 Surveillance Status</h4>
+                <div class="status-text" id="survStatusText">Ready to analyze trading activity...</div>
+            </div>
+
+            <!-- Alert Panel -->
+            <div class="alert-panel">
+                <h4>🚨 Live Alerts</h4>
+                <div id="alertList">
+                    <div class="alert-item" style="color: #605e5c; font-style: italic;">
+                        No alerts detected. Run demo to see AI-powered detection in action.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flow Steps -->
+            <div class="flow-steps">
+                <div class="step" id="surv-step1">
+                    <span class="step-number">1</span>
+                    <h4>Data Ingestion</h4>
+                    <p>Consume trades, orders, market data, and communications</p>
+                </div>
+                <div class="step" id="surv-step2">
+                    <span class="step-number">2</span>
+                    <h4>Normalize & Enrich</h4>
+                    <p>Standardize formats, add reference data</p>
+                </div>
+                <div class="step" id="surv-step3">
+                    <span class="step-number">3</span>
+                    <h4>Event Correlation</h4>
+                    <p>Link related events across data sources</p>
+                </div>
+                <div class="step" id="surv-step4">
+                    <span class="step-number">4</span>
+                    <h4>AI Detection</h4>
+                    <p>Run ML models for market abuse patterns</p>
+                </div>
+                <div class="step" id="surv-step5">
+                    <span class="step-number">5</span>
+                    <h4>Alert Generation</h4>
+                    <p>Create prioritized alerts with evidence</p>
+                </div>
+                <div class="step" id="surv-step6">
+                    <span class="step-number">6</span>
+                    <h4>Case & Report</h4>
+                    <p>Workflow management & regulatory filing</p>
+                </div>
+            </div>
+
+            <!-- Data Panel -->
+            <div class="data-panel">
+                <h3>📄 Surveillance Data</h3>
+                <div class="data-tabs">
+                    <button class="data-tab active" onclick="showSurvData('event')">Correlated Event</button>
+                    <button class="data-tab" onclick="showSurvData('alert')">Alert Payload</button>
+                    <button class="data-tab" onclick="showSurvData('case')">Case Record</button>
+                    <button class="data-tab" onclick="showSurvData('str')">STR Report</button>
+                </div>
+
+                <div class="data-content active" id="surv-data-event">
+                    <pre>
+{
+  "eventId": "EVT-2024-789456",
+  "timestamp": "2024-02-15T14:30:00.000Z",
+  "eventType": "CORRELATED_TRADING_ACTIVITY",
+  "trader": {
+    "id": "TRD-001",
+    "name": "John Smith",
+    "desk": "Equity Trading",
+    "location": "London"
+  },
+  "instrument": {
+    "symbol": "AAPL",
+    "isin": "US0378331005",
+    "exchange": "NASDAQ"
+  },
+  "correlatedEvents": [
+    {
+      "type": "ORDER_PLACED",
+      "side": "BUY",
+      "quantity": 50000,
+      "price": 185.50,
+      "timestamp": "2024-02-15T14:28:15.000Z"
+    },
+    {
+      "type": "ORDER_CANCELLED",
+      "orderId": "ORD-123456",
+      "timestamp": "2024-02-15T14:28:45.000Z"
+    },
+    {
+      "type": "ORDER_PLACED",
+      "side": "SELL",
+      "quantity": 10000,
+      "price": 185.75,
+      "timestamp": "2024-02-15T14:29:00.000Z"
+    },
+    {
+      "type": "TRADE_EXECUTED",
+      "side": "SELL",
+      "quantity": 10000,
+      "price": 185.80,
+      "timestamp": "2024-02-15T14:29:30.000Z"
+    }
+  ],
+  "marketContext": {
+    "priceAtStart": 185.25,
+    "priceAtEnd": 185.80,
+    "volumeSpike": true,
+    "bidAskSpread": 0.05
+  }
+}
+                    </pre>
+                </div>
+
+                <div class="data-content" id="surv-data-alert">
+                    <pre>
+{
+  "alertId": "ALT-2024-001234",
+  "timestamp": "2024-02-15T14:30:05.000Z",
+  "alertType": "POTENTIAL_SPOOFING",
+  "severity": "HIGH",
+  "confidence": 0.87,
+  "status": "NEW",
+  "trader": {
+    "id": "TRD-001",
+    "name": "John Smith",
+    "desk": "Equity Trading"
+  },
+  "instrument": {
+    "symbol": "AAPL",
+    "name": "Apple Inc."
+  },
+  "detection": {
+    "model": "SPOOFING_DETECTOR_V3",
+    "modelVersion": "3.2.1",
+    "features": {
+      "orderCancelRatio": 0.83,
+      "priceImpact": 0.55,
+      "timeToCancel": "30s",
+      "oppositeTradeWithin": "45s"
+    },
+    "explanation": "Large buy order placed and cancelled within 30 seconds, followed by sell execution at higher price. Pattern consistent with spoofing behavior."
+  },
+  "evidence": [
+    "Order ORD-123456: BUY 50,000 @ $185.50 - CANCELLED",
+    "Order ORD-123457: SELL 10,000 @ $185.75 - EXECUTED @ $185.80",
+    "Price moved $0.55 (0.3%) during activity window"
+  ],
+  "regulatoryFlags": ["MAR", "MiFID II"],
+  "assignedTo": null,
+  "escalationLevel": 1
+}
+                    </pre>
+                </div>
+
+                <div class="data-content" id="surv-data-case">
+                    <pre>
+{
+  "caseId": "CASE-2024-000456",
+  "createdAt": "2024-02-15T14:35:00.000Z",
+  "status": "UNDER_INVESTIGATION",
+  "priority": "HIGH",
+  "assignedTo": {
+    "id": "COMP-002",
+    "name": "Sarah Johnson",
+    "role": "Senior Compliance Officer"
+  },
+  "subject": {
+    "traderId": "TRD-001",
+    "traderName": "John Smith",
+    "department": "Equity Trading"
+  },
+  "relatedAlerts": [
+    "ALT-2024-001234",
+    "ALT-2024-001198",
+    "ALT-2024-001156"
+  ],
+  "timeline": [
+    {
+      "timestamp": "2024-02-15T14:35:00.000Z",
+      "action": "CASE_CREATED",
+      "user": "SYSTEM",
+      "notes": "Auto-generated from high-severity alert"
+    },
+    {
+      "timestamp": "2024-02-15T14:40:00.000Z",
+      "action": "ASSIGNED",
+      "user": "SYSTEM",
+      "notes": "Assigned to Sarah Johnson based on workload"
+    },
+    {
+      "timestamp": "2024-02-15T15:00:00.000Z",
+      "action": "INVESTIGATION_STARTED",
+      "user": "Sarah Johnson",
+      "notes": "Reviewing trading patterns for past 30 days"
+    }
+  ],
+  "findings": [],
+  "recommendation": null,
+  "regulatoryDeadline": "2024-02-22T23:59:59.000Z"
+}
+                    </pre>
+                </div>
+
+                <div class="data-content" id="surv-data-str">
+                    <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;SuspiciousTransactionReport xmlns="urn:fca:str:1.0"&gt;
+  &lt;Header&gt;
+    &lt;ReportId&gt;STR-2024-000123&lt;/ReportId&gt;
+    &lt;ReportingEntity&gt;
+      &lt;Name&gt;Example Investment Bank&lt;/Name&gt;
+      &lt;LEI&gt;549300EXAMPLE00LEI00&lt;/LEI&gt;
+      &lt;Jurisdiction&gt;GB&lt;/Jurisdiction&gt;
+    &lt;/ReportingEntity&gt;
+    &lt;SubmissionDate&gt;2024-02-20&lt;/SubmissionDate&gt;
+    &lt;ReportType&gt;STOR&lt;/ReportType&gt;
+  &lt;/Header&gt;
+
+  &lt;SuspiciousActivity&gt;
+    &lt;ActivityType&gt;MARKET_MANIPULATION&lt;/ActivityType&gt;
+    &lt;SubType&gt;SPOOFING&lt;/SubType&gt;
+    &lt;DateRange&gt;
+      &lt;StartDate&gt;2024-02-15&lt;/StartDate&gt;
+      &lt;EndDate&gt;2024-02-15&lt;/EndDate&gt;
+    &lt;/DateRange&gt;
+    &lt;Description&gt;
+      Pattern of large orders placed and rapidly cancelled,
+      followed by execution on opposite side at improved prices.
+      Behavior consistent with spoofing under MAR Article 12.
+    &lt;/Description&gt;
+  &lt;/SuspiciousActivity&gt;
+
+  &lt;SubjectPerson&gt;
+    &lt;InternalId&gt;TRD-001&lt;/InternalId&gt;
+    &lt;Name&gt;John Smith&lt;/Name&gt;
+    &lt;Role&gt;Trader&lt;/Role&gt;
+    &lt;Department&gt;Equity Trading&lt;/Department&gt;
+  &lt;/SubjectPerson&gt;
+
+  &lt;FinancialInstruments&gt;
+    &lt;Instrument&gt;
+      &lt;ISIN&gt;US0378331005&lt;/ISIN&gt;
+      &lt;Name&gt;Apple Inc.&lt;/Name&gt;
+      &lt;Exchange&gt;NASDAQ&lt;/Exchange&gt;
+    &lt;/Instrument&gt;
+  &lt;/FinancialInstruments&gt;
+
+  &lt;TransactionDetails&gt;
+    &lt;TotalValue currency="USD"&gt;1857500.00&lt;/TotalValue&gt;
+    &lt;NumberOfTransactions&gt;4&lt;/NumberOfTransactions&gt;
+    &lt;PriceImpact&gt;0.30%&lt;/PriceImpact&gt;
+  &lt;/TransactionDetails&gt;
+
+  &lt;InternalInvestigation&gt;
+    &lt;CaseId&gt;CASE-2024-000456&lt;/CaseId&gt;
+    &lt;Investigator&gt;Sarah Johnson&lt;/Investigator&gt;
+    &lt;Conclusion&gt;SUSPICIOUS_ACTIVITY_CONFIRMED&lt;/Conclusion&gt;
+  &lt;/InternalInvestigation&gt;
+&lt;/SuspiciousTransactionReport&gt;
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <!-- End Trade Surveillance Demo Content -->
+    </div>
+
+    <script>
+        let currentStep = 0;
+        let demoInterval = null;
+
+        const steps = [
+            { comp: 'comp-bloomberg', arrow: null, stepNum: 1, status: '📊 Trade TRD-2024-001234 booked in Bloomberg TOMS - IRS USD 10MM Pay Fixed 3.75%' },
+            { comp: 'comp-fix', arrow: 'arrow1', stepNum: 2, status: '🔌 TeX FIX Consumer receives trade via FIX 4.4 protocol...' },
+            { comp: 'comp-transformer', arrow: 'arrow2', stepNum: 3, status: '🔄 FIX→FpML Transformer: Converting to industry standard format...' },
+            { comp: 'comp-producer-topic', arrow: 'arrow3', stepNum: 3, status: '📤 Topic Publisher: Publishing FpML to trade.fpml.topic...' },
+            { comp: 'comp-topic', topic: true, stepNum: 4, status: '📢 Topic: trade.fpml.topic - Message published, notifying all subscribers...' },
+            {
+                parallel: true,
+                flows: ['flow-murex', 'flow-gloss', 'flow-trax', 'flow-inventory'],
+                consumers: ['comp-murex-consumer', 'comp-gloss-consumer', 'comp-trax-consumer', 'comp-inv-consumer'],
+                stepNum: 4,
+                status: '📥 All 4 Topic Subscribers receive FpML message simultaneously...'
+            },
+            {
+                parallel: true,
+                converters: ['comp-murex-converter', 'comp-gloss-converter', 'comp-trax-converter', 'comp-inv-converter'],
+                stepNum: 5,
+                status: '🔄 Parallel Conversion: FpML → MxML | GlossXML | ARM/APA | JSON...'
+            },
+            {
+                parallel: true,
+                producers: ['comp-murex-producer', 'comp-gloss-producer', 'comp-trax-producer', 'comp-inv-producer'],
+                stepNum: 6,
+                status: '📤 All Producers publishing to downstream systems simultaneously...'
+            }
+        ];
+
+        function startDemo() {
+            resetDemo();
+            currentStep = 0;
+            demoInterval = setInterval(processStep, 1300);
+        }
+
+        function highlightComponents(compIds, color = 'rgba(0,120,212,0.6)') {
+            compIds.forEach(id => {
+                const comp = document.getElementById(id);
+                if (comp) {
+                    const box = comp.querySelector('.component-box') || comp;
+                    box.classList.add('highlight');
+                    box.style.boxShadow = `0 0 20px ${color}`;
+                }
+            });
+        }
+
+        function processStep() {
+            if (currentStep >= steps.length) {
+                clearInterval(demoInterval);
+                document.getElementById('statusText').innerHTML = '✅ <span style="color: var(--downstream-color);">Trade flow complete! All 4 downstream systems updated via pub-sub.</span>';
+                return;
+            }
+
+            const step = steps[currentStep];
+
+            // Clear previous highlights
+            document.querySelectorAll('.component-box, .topic-box').forEach(box => {
+                box.classList.remove('highlight');
+                box.style.boxShadow = '';
+            });
+            document.querySelectorAll('.subscriber-flow').forEach(flow => {
+                flow.style.background = 'rgba(255,255,255,0.5)';
+            });
+
+            // Handle topic highlight
+            if (step.topic) {
+                const topic = document.getElementById(step.comp);
+                if (topic) {
+                    topic.classList.add('highlight');
+                    topic.style.boxShadow = '0 0 25px rgba(92,45,145,0.8)';
+                }
+                // Animate subscription lines
+                document.querySelectorAll('.sub-line').forEach((line, i) => {
+                    setTimeout(() => {
+                        line.style.background = '#8661c5';
+                        line.style.boxShadow = '0 0 10px #8661c5';
+                    }, i * 100);
+                });
+            }
+            // Handle parallel steps
+            else if (step.parallel) {
+                if (step.flows) {
+                    step.flows.forEach(flowId => {
+                        const flow = document.getElementById(flowId);
+                        if (flow) flow.style.background = 'rgba(0,120,212,0.1)';
+                    });
+                    highlightComponents(step.consumers, 'rgba(92,45,145,0.6)');
+                }
+                if (step.converters) {
+                    highlightComponents(step.converters, 'rgba(0,120,212,0.6)');
+                }
+                if (step.producers) {
+                    highlightComponents(step.producers, 'rgba(16,124,16,0.6)');
+                }
+            }
+            // Handle single component
+            else {
+                const comp = document.getElementById(step.comp);
+                if (comp) {
+                    const box = comp.querySelector('.component-box') || comp;
+                    box.classList.add('highlight');
+                    box.style.boxShadow = '0 0 25px rgba(0,120,212,0.6)';
+                }
+
+                if (step.arrow) {
+                    const arrow = document.getElementById(step.arrow);
+                    if (arrow) {
+                        arrow.classList.add('animate');
+                        setTimeout(() => arrow.classList.remove('animate'), 500);
+                    }
+                }
+            }
+
+            // Update step indicators
+            const stepEl = document.getElementById('step' + step.stepNum);
+            if (stepEl && !stepEl.classList.contains('complete')) {
+                document.querySelectorAll('.step.active').forEach(s => {
+                    if (s.id !== 'step' + step.stepNum) {
+                        s.classList.remove('active');
+                        s.classList.add('complete');
+                    }
+                });
+                stepEl.classList.add('active');
+            }
+
+            // Update status
+            document.getElementById('statusText').textContent = step.status;
+
+            currentStep++;
+        }
+
+        function resetDemo() {
+            clearInterval(demoInterval);
+            currentStep = 0;
+            document.querySelectorAll('.component-box, .topic-box').forEach(box => {
+                box.classList.remove('highlight');
+                box.style.boxShadow = '';
+            });
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active', 'complete');
+            });
+            document.querySelectorAll('.sub-line').forEach(line => {
+                line.style.background = '#5c2d91';
+                line.style.boxShadow = 'none';
+            });
+            document.querySelectorAll('.subscriber-flow').forEach(flow => {
+                flow.style.background = 'rgba(255,255,255,0.5)';
+            });
+            document.getElementById('statusText').textContent = 'Ready to process trade...';
+        }
+
+        function showData(type) {
+            const panel = document.getElementById('demo-trade-flow');
+            panel.querySelectorAll('.data-tab').forEach(tab => tab.classList.remove('active'));
+            panel.querySelectorAll('.data-content').forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById('data-' + type).classList.add('active');
+        }
+
+        // Tab switching
+        function switchDemo(demoId) {
+            // Reset both demos
+            resetDemo();
+            resetSurvDemo();
+
+            // Update tabs
+            document.querySelectorAll('.demo-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.closest('.demo-tab').classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.demo-content').forEach(content => content.classList.remove('active'));
+            document.getElementById('demo-' + demoId).classList.add('active');
+        }
+
+        // Surveillance Demo
+        let survCurrentStep = 0;
+        let survDemoInterval = null;
+
+        const survSteps = [
+            {
+                comps: ['surv-trades', 'surv-orders', 'surv-market', 'surv-comms'],
+                stepNum: 1,
+                status: '📊 Ingesting real-time data: Trades, Orders, Market Data, Communications...'
+            },
+            {
+                comp: 'surv-consumer',
+                stepNum: 1,
+                status: '📥 Multi-Source Consumer: Unified data ingestion from all sources...'
+            },
+            {
+                comp: 'surv-normalizer',
+                stepNum: 2,
+                status: '🔄 Data Normalizer: Standardizing formats, enriching with reference data...'
+            },
+            {
+                comp: 'surv-correlator',
+                stepNum: 3,
+                status: '🔗 Event Correlator: Linking related events across data sources...'
+            },
+            {
+                comp: 'surv-topic',
+                topic: true,
+                stepNum: 3,
+                status: '📢 Publishing correlated events to surveillance.events.topic...'
+            },
+            {
+                parallel: true,
+                consumers: ['surv-spoof-consumer', 'surv-layer-consumer', 'surv-insider-consumer', 'surv-wash-consumer'],
+                flows: ['flow-spoofing', 'flow-layering', 'flow-insider', 'flow-wash'],
+                stepNum: 4,
+                status: '📥 All AI Detection Engines subscribing to event stream...'
+            },
+            {
+                parallel: true,
+                ais: ['surv-spoof-ai', 'surv-layer-ai', 'surv-insider-ai', 'surv-wash-ai'],
+                stepNum: 4,
+                status: '🤖 AI Models analyzing: Spoofing | Layering | Insider Trading | Wash Trading...',
+                addAlert: { severity: 'high', text: 'SPOOFING DETECTED: Trader TRD-001, AAPL - Large order cancelled, opposite trade executed', time: '14:30:05' }
+            },
+            {
+                parallel: true,
+                alerts: ['surv-spoof-alert', 'surv-layer-alert', 'surv-insider-alert', 'surv-wash-alert'],
+                stepNum: 5,
+                status: '🚨 Alert Generation: Creating prioritized alerts with evidence...',
+                addAlert: { severity: 'medium', text: 'LAYERING PATTERN: Trader TRD-003, MSFT - Multiple orders at different price levels', time: '14:30:08' }
+            },
+            {
+                stepNum: 6,
+                status: '✅ Alerts sent to Dashboard, Case Management, and Regulatory Reporting systems',
+                addAlert: { severity: 'low', text: 'WASH TRADE REVIEW: Accounts ACC-101/ACC-102 - Cross-trade flagged for review', time: '14:30:12' }
+            }
+        ];
+
+        function startSurvDemo() {
+            resetSurvDemo();
+            survCurrentStep = 0;
+            survDemoInterval = setInterval(processSurvStep, 1500);
+        }
+
+        function processSurvStep() {
+            if (survCurrentStep >= survSteps.length) {
+                clearInterval(survDemoInterval);
+                document.getElementById('survStatusText').innerHTML = '✅ <span style="color: #107c10;">Surveillance cycle complete! 3 alerts generated, 1 case created.</span>';
+                return;
+            }
+
+            const step = survSteps[survCurrentStep];
+
+            // Clear previous highlights in surveillance demo only
+            const survContainer = document.getElementById('demo-surveillance');
+            survContainer.querySelectorAll('.component-box, .topic-box').forEach(box => {
+                box.classList.remove('highlight');
+                box.style.boxShadow = '';
+            });
+            survContainer.querySelectorAll('.subscriber-flow').forEach(flow => {
+                flow.style.background = 'rgba(255,255,255,0.5)';
+            });
+
+            // Handle multiple components (data sources)
+            if (step.comps) {
+                step.comps.forEach(id => {
+                    const comp = document.getElementById(id);
+                    if (comp) {
+                        const box = comp.querySelector('.component-box');
+                        if (box) {
+                            box.classList.add('highlight');
+                            box.style.boxShadow = '0 0 20px rgba(216,59,1,0.6)';
+                        }
+                    }
+                });
+            }
+            // Handle topic
+            else if (step.topic) {
+                const topic = document.getElementById(step.comp);
+                if (topic) {
+                    topic.classList.add('highlight');
+                    topic.style.boxShadow = '0 0 25px rgba(92,45,145,0.8)';
+                }
+            }
+            // Handle parallel steps
+            else if (step.parallel) {
+                if (step.flows) {
+                    step.flows.forEach(flowId => {
+                        const flow = document.getElementById(flowId);
+                        if (flow) flow.style.background = 'rgba(209,52,56,0.1)';
+                    });
+                }
+                if (step.consumers) {
+                    step.consumers.forEach(id => {
+                        const comp = document.getElementById(id);
+                        if (comp) {
+                            const box = comp.querySelector('.component-box');
+                            if (box) {
+                                box.classList.add('highlight');
+                                box.style.boxShadow = '0 0 20px rgba(92,45,145,0.6)';
+                            }
+                        }
+                    });
+                }
+                if (step.ais) {
+                    step.ais.forEach(id => {
+                        const comp = document.getElementById(id);
+                        if (comp) {
+                            const box = comp.querySelector('.component-box');
+                            if (box) {
+                                box.classList.add('highlight');
+                                box.style.boxShadow = '0 0 20px rgba(209,52,56,0.8)';
+                            }
+                        }
+                    });
+                }
+                if (step.alerts) {
+                    step.alerts.forEach(id => {
+                        const comp = document.getElementById(id);
+                        if (comp) {
+                            const box = comp.querySelector('.component-box');
+                            if (box) {
+                                box.classList.add('highlight');
+                                box.style.boxShadow = '0 0 20px rgba(209,52,56,0.8)';
+                            }
+                        }
+                    });
+                }
+            }
+            // Handle single component
+            else if (step.comp) {
+                const comp = document.getElementById(step.comp);
+                if (comp) {
+                    const box = comp.querySelector('.component-box') || comp;
+                    box.classList.add('highlight');
+                    box.style.boxShadow = '0 0 25px rgba(0,120,212,0.6)';
+                }
+            }
+
+            // Add alert if specified
+            if (step.addAlert) {
+                addAlertToPanel(step.addAlert);
+            }
+
+            // Update step indicators
+            const stepEl = document.getElementById('surv-step' + step.stepNum);
+            if (stepEl && !stepEl.classList.contains('complete')) {
+                survContainer.querySelectorAll('.step.active').forEach(s => {
+                    if (s.id !== 'surv-step' + step.stepNum) {
+                        s.classList.remove('active');
+                        s.classList.add('complete');
+                    }
+                });
+                stepEl.classList.add('active');
+            }
+
+            // Update status
+            document.getElementById('survStatusText').textContent = step.status;
+
+            survCurrentStep++;
+        }
+
+        function addAlertToPanel(alert) {
+            const alertList = document.getElementById('alertList');
+            // Clear placeholder if first alert
+            if (alertList.querySelector('.alert-item[style*="italic"]')) {
+                alertList.innerHTML = '';
+            }
+
+            const alertItem = document.createElement('div');
+            alertItem.className = 'alert-item';
+            alertItem.innerHTML = `
+                <span class="alert-severity ${alert.severity}">${alert.severity.toUpperCase()}</span>
+                <span>${alert.text}</span>
+                <span class="alert-time">${alert.time}</span>
+            `;
+            alertList.appendChild(alertItem);
+        }
+
+        function resetSurvDemo() {
+            clearInterval(survDemoInterval);
+            survCurrentStep = 0;
+
+            const survContainer = document.getElementById('demo-surveillance');
+            if (survContainer) {
+                survContainer.querySelectorAll('.component-box, .topic-box').forEach(box => {
+                    box.classList.remove('highlight');
+                    box.style.boxShadow = '';
+                });
+                survContainer.querySelectorAll('.step').forEach(step => {
+                    step.classList.remove('active', 'complete');
+                });
+                survContainer.querySelectorAll('.subscriber-flow').forEach(flow => {
+                    flow.style.background = 'rgba(255,255,255,0.5)';
+                });
+            }
+
+            const statusText = document.getElementById('survStatusText');
+            if (statusText) {
+                statusText.textContent = 'Ready to analyze trading activity...';
+            }
+
+            const alertList = document.getElementById('alertList');
+            if (alertList) {
+                alertList.innerHTML = `
+                    <div class="alert-item" style="color: #605e5c; font-style: italic;">
+                        No alerts detected. Run demo to see AI-powered detection in action.
+                    </div>
+                `;
+            }
+        }
+
+        function showSurvData(type) {
+            const panel = document.getElementById('demo-surveillance');
+            panel.querySelectorAll('.data-tab').forEach(tab => tab.classList.remove('active'));
+            panel.querySelectorAll('.data-content').forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById('surv-data-' + type).classList.add('active');
+        }
+    </script>
+</body>
+</html>
+

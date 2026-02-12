@@ -20,6 +20,26 @@
             --downstream-color: #107c10;
             --reporting-color: #ffb900;
             --internal-color: #5c2d91;
+            /* Retail specific colors */
+            --retail-orange: #ff6b35;
+            --retail-green: #2ecc71;
+            --retail-purple: #9b59b6;
+            --retail-teal: #1abc9c;
+            --retail-red: #e74c3c;
+            /* AI specific colors */
+            --ai-purple: #7c3aed;
+            --ai-pink: #ec4899;
+            --ai-blue: #3b82f6;
+            --ai-teal: #14b8a6;
+            --ai-orange: #f97316;
+            --ai-green: #22c55e;
+            --ai-gradient: linear-gradient(135deg, #7c3aed, #ec4899);
+            /* Vibe Coding colors */
+            --vibe-orange: #f97316;
+            --vibe-yellow: #fbbf24;
+            --vibe-gradient: linear-gradient(135deg, #f97316, #fbbf24);
+            --code-bg: #1e293b;
+            --code-text: #e2e8f0;
         }
 
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(180deg, #f3f2f1 0%, #e1dfdd 100%); min-height: 100vh; color: #323130; }
@@ -836,6 +856,391 @@
             font-size: 0.75rem;
             margin-left: auto;
         }
+
+        /* ===== RETAIL DEMO STYLES ===== */
+        /* Channel Types */
+        .component-box.channel-web { border-color: var(--retail-orange); }
+        .component-box.channel-web .component-icon { background: linear-gradient(135deg, var(--retail-orange), #ff9f7a); }
+        .component-box.channel-web .type-badge { background: var(--retail-orange); }
+        .component-box.channel-mobile { border-color: var(--retail-purple); }
+        .component-box.channel-mobile .component-icon { background: linear-gradient(135deg, var(--retail-purple), #c39bd3); }
+        .component-box.channel-mobile .type-badge { background: var(--retail-purple); }
+        .component-box.channel-store { border-color: var(--retail-teal); }
+        .component-box.channel-store .component-icon { background: linear-gradient(135deg, var(--retail-teal), #48c9b0); }
+        .component-box.channel-store .type-badge { background: var(--retail-teal); }
+        .component-box.channel-call { border-color: #3498db; }
+        .component-box.channel-call .component-icon { background: linear-gradient(135deg, #3498db, #5dade2); }
+        .component-box.channel-call .type-badge { background: #3498db; }
+        .component-box.channel-marketplace { border-color: #f39c12; }
+        .component-box.channel-marketplace .component-icon { background: linear-gradient(135deg, #f39c12, #f7dc6f); }
+        .component-box.channel-marketplace .type-badge { background: #f39c12; }
+
+        /* Retail Processing Types */
+        .component-box.fulfillment { border-color: var(--retail-green); }
+        .component-box.fulfillment .component-icon { background: linear-gradient(135deg, var(--retail-green), #58d68d); }
+        .component-box.fulfillment .type-badge { background: var(--retail-green); }
+        .component-box.inventory { border-color: #e67e22; }
+        .component-box.inventory .component-icon { background: linear-gradient(135deg, #e67e22, #f5b041); }
+        .component-box.inventory .type-badge { background: #e67e22; }
+        .component-box.notification { border-color: #9b59b6; }
+        .component-box.notification .component-icon { background: linear-gradient(135deg, #9b59b6, #bb8fce); }
+        .component-box.notification .type-badge { background: #9b59b6; }
+        .component-box.analytics { border-color: #34495e; }
+        .component-box.analytics .component-icon { background: linear-gradient(135deg, #34495e, #5d6d7e); }
+        .component-box.analytics .type-badge { background: #34495e; }
+
+        /* Retail Platform Container */
+        .retail-tex-platform {
+            background: linear-gradient(135deg, rgba(0,120,212,0.08) 0%, rgba(0,188,242,0.08) 100%);
+            border: 2px solid var(--ms-blue-dark);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        .retail-platform-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(0,120,212,0.3);
+        }
+        .retail-platform-logo { font-size: 1.5rem; }
+        .retail-platform-title { font-size: 1.1rem; font-weight: 700; color: var(--ms-blue-dark); }
+        .retail-platform-subtitle { font-size: 0.75rem; color: #605e5c; margin-left: auto; }
+
+        /* Retail Topic */
+        .retail-topic-container { display: flex; justify-content: center; margin: 1.5rem 0; padding: 15px 0; }
+        .retail-topic-box {
+            position: relative;
+            width: 200px;
+            height: 60px;
+            background: linear-gradient(to bottom, #58d68d 0%, #2ecc71 50%, #27ae60 100%);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(46,204,113,0.3);
+            margin: 0 20px;
+        }
+        .retail-topic-box::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 0;
+            width: 24px;
+            height: 100%;
+            background: linear-gradient(to bottom, #7dcea0 0%, #52be80 50%, #2ecc71 100%);
+            border-radius: 50%;
+            border: 2px solid #27ae60;
+            box-sizing: border-box;
+        }
+        .retail-topic-box::after {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 0;
+            width: 24px;
+            height: 100%;
+            background: linear-gradient(to bottom, #27ae60 0%, #1e8449 50%, #196f3d 100%);
+            border-radius: 50%;
+            border: 2px solid #27ae60;
+            box-sizing: border-box;
+            z-index: -1;
+        }
+        .retail-topic-icon { font-size: 1.2rem; margin-bottom: 0.1rem; z-index: 1; }
+        .retail-topic-label { font-family: 'Consolas', monospace; font-size: 0.75rem; font-weight: 600; z-index: 1; }
+        .retail-topic-subtitle { font-size: 0.55rem; opacity: 0.9; z-index: 1; }
+
+        /* Retail Subscription Lines */
+        .retail-sub-lines { display: flex; justify-content: space-around; padding: 0 1rem; height: 35px; position: relative; }
+        .retail-sub-lines::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 3px; background: #27ae60; }
+        .retail-sub-line { width: 3px; height: 35px; background: #27ae60; position: relative; }
+        .retail-sub-line::after { content: ''; position: absolute; bottom: -6px; left: -5px; border: 6px solid transparent; border-top: 8px solid #27ae60; }
+
+        /* Retail Subscriber Flows */
+        .retail-subscriber-flows { display: flex; justify-content: space-around; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+        .retail-subscriber-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid #e1dfdd;
+            border-radius: 8px;
+            padding: 0.5rem;
+            min-width: 110px;
+            flex: 1;
+            max-width: 140px;
+        }
+        .retail-flow-label { font-size: 0.65rem; font-weight: 600; color: var(--ms-blue-dark); margin-bottom: 0.5rem; text-transform: uppercase; }
+        .retail-subscriber-flow .component-box { min-width: 90px; padding: 0.5rem; }
+        .retail-subscriber-flow .component-box h3 { font-size: 0.65rem; }
+        .retail-subscriber-flow .component-box p { display: none; }
+        .retail-subscriber-flow .component-box .component-icon { width: 26px; height: 26px; font-size: 0.85rem; }
+        .retail-subscriber-flow .component-box .type-badge { font-size: 0.5rem; padding: 0.1rem 0.3rem; }
+        .retail-mini-connector { width: 3px; height: 12px; background: var(--ms-blue-dark); position: relative; }
+        .retail-mini-connector::after { content: ''; position: absolute; bottom: -4px; left: -3px; border: 4px solid transparent; border-top: 5px solid var(--ms-blue-dark); }
+
+        /* Retail Channels Row */
+        .retail-channels-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+        /* Retail Downstream Labels */
+        .retail-downstream-labels { display: flex; justify-content: space-around; margin-top: 1rem; padding: 0.75rem; background: #f3f2f1; border-radius: 6px; gap: 0.5rem; flex-wrap: wrap; }
+        .retail-downstream-label { text-align: center; font-size: 0.7rem; font-weight: 600; color: white; flex: 1; min-width: 90px; padding: 0.4rem; border-radius: 4px; }
+        .retail-downstream-label small { display: block; font-weight: 400; opacity: 0.9; font-size: 0.6rem; }
+
+        /* Retail Controls & Status */
+        .retail-controls { text-align: center; margin: 1.5rem 0; }
+        .retail-status-bar { background: white; border-radius: 8px; padding: 1rem; margin-top: 1rem; border: 1px solid #e1dfdd; }
+        .retail-status-bar h4 { color: var(--ms-blue-dark); margin-bottom: 0.5rem; font-weight: 600; }
+        .retail-status-text { font-family: 'Consolas', monospace; color: var(--downstream-color); min-height: 24px; font-weight: 500; }
+
+        /* Retail Flow Steps */
+        .retail-flow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .retail-step { background: white; border-radius: 6px; padding: 1rem; border-left: 4px solid #e1dfdd; transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .retail-step.active { border-left-color: var(--ms-blue-dark); background: rgba(0,120,212,0.05); }
+        .retail-step.complete { border-left-color: var(--downstream-color); }
+        .retail-step-number { display: inline-block; width: 22px; height: 22px; background: #e1dfdd; border-radius: 50%; text-align: center; line-height: 22px; font-size: 0.75rem; margin-right: 0.5rem; font-weight: 600; }
+        .retail-step.active .retail-step-number { background: var(--ms-blue-dark); color: white; }
+        .retail-step.complete .retail-step-number { background: var(--downstream-color); color: white; }
+        .retail-step h4 { display: inline; font-size: 0.85rem; color: #323130; }
+        .retail-step p { font-size: 0.7rem; color: #605e5c; margin-top: 0.5rem; }
+
+        /* Retail Data Panel */
+        .retail-data-panel { background: white; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; border: 1px solid #e1dfdd; }
+        .retail-data-panel h3 { color: var(--ms-blue-dark); margin-bottom: 1rem; font-weight: 600; }
+        .retail-data-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .retail-data-tab { padding: 0.5rem 1rem; background: #f3f2f1; border: 1px solid #e1dfdd; color: #323130; border-radius: 4px; cursor: pointer; transition: all 0.3s; font-weight: 500; font-size: 0.85rem; }
+        .retail-data-tab:hover { background: #e1dfdd; }
+        .retail-data-tab.active { background: var(--ms-blue-dark); color: white; border-color: var(--ms-blue-dark); }
+        .retail-data-content { display: none; background: var(--ms-navy); border-radius: 6px; padding: 1rem; font-family: 'Consolas', monospace; font-size: 0.75rem; max-height: 280px; overflow: auto; }
+        .retail-data-content.active { display: block; }
+        .retail-data-content pre { white-space: pre-wrap; color: #50e6ff; }
+
+        /* ===== GENAI DEMO STYLES ===== */
+        /* AI Input Types */
+        .genai-component-box.input-text { border-color: var(--ai-blue); }
+        .genai-component-box.input-text .component-icon { background: linear-gradient(135deg, var(--ai-blue), #60a5fa); }
+        .genai-component-box.input-text .type-badge { background: var(--ai-blue); }
+        .genai-component-box.input-image { border-color: var(--ai-pink); }
+        .genai-component-box.input-image .component-icon { background: linear-gradient(135deg, var(--ai-pink), #f472b6); }
+        .genai-component-box.input-image .type-badge { background: var(--ai-pink); }
+        .genai-component-box.input-audio { border-color: var(--ai-orange); }
+        .genai-component-box.input-audio .component-icon { background: linear-gradient(135deg, var(--ai-orange), #fb923c); }
+        .genai-component-box.input-audio .type-badge { background: var(--ai-orange); }
+        .genai-component-box.input-doc { border-color: var(--ai-teal); }
+        .genai-component-box.input-doc .component-icon { background: linear-gradient(135deg, var(--ai-teal), #2dd4bf); }
+        .genai-component-box.input-doc .type-badge { background: var(--ai-teal); }
+
+        /* AI Processing Types */
+        .genai-component-box { background: white; border: 2px solid var(--ai-purple); border-radius: 6px; padding: 0.8rem 1.2rem; min-width: 140px; text-align: center; position: relative; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(124,58,237,0.15); }
+        .genai-component-box:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(124,58,237,0.25); }
+        .genai-component-box .component-icon { width: 40px; height: 40px; margin: 0 auto 0.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: var(--ai-gradient); color: white; }
+        .genai-component-box h3 { font-size: 0.85rem; font-weight: 600; color: #323130; margin-bottom: 0.2rem; }
+        .genai-component-box p { font-size: 0.7rem; color: #605e5c; }
+        .genai-component-box .type-badge { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); background: var(--ai-purple); color: white; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 10px; font-weight: 600; text-transform: uppercase; }
+        .genai-component-box.consumer { border-color: var(--ms-blue-dark); }
+        .genai-component-box.consumer .component-icon { background: var(--tex-gradient); }
+        .genai-component-box.consumer .type-badge { background: var(--ms-blue-dark); }
+        .genai-component-box.converter { border-color: #0078d4; border-style: dashed; }
+        .genai-component-box.converter .component-icon { background: linear-gradient(135deg, #0078d4, #50e6ff); }
+        .genai-component-box.converter .type-badge { background: #0078d4; }
+        .genai-component-box.router { border-color: var(--ms-blue-accent); border-width: 3px; }
+        .genai-component-box.router .component-icon { background: linear-gradient(135deg, #00bcf2, #50e6ff); }
+        .genai-component-box.router .type-badge { background: var(--ms-blue-accent); }
+        .genai-component-box.output { border-color: var(--ai-green); }
+        .genai-component-box.output .component-icon { background: linear-gradient(135deg, var(--ai-green), #4ade80); }
+        .genai-component-box.output .type-badge { background: var(--ai-green); }
+
+        /* AI Platform Container */
+        .genai-platform-container { background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(236,72,153,0.08) 100%); border: 2px solid var(--ai-purple); border-radius: 12px; padding: 1.5rem; margin: 0.5rem 0; }
+        .genai-platform-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(124,58,237,0.3); }
+        .genai-platform-logo { font-size: 1.5rem; }
+        .genai-platform-title { font-size: 1.1rem; font-weight: 700; color: var(--ai-purple); letter-spacing: 1px; }
+        .genai-platform-subtitle { font-size: 0.75rem; color: #605e5c; margin-left: auto; }
+
+        /* AI Hub */
+        .genai-ai-hub { background: linear-gradient(135deg, #1e1b4b, #312e81); border: 3px solid var(--ai-purple); min-width: 180px; padding: 1rem 1.5rem; box-shadow: 0 4px 20px rgba(124,58,237,0.4); position: relative; overflow: hidden; }
+        .genai-ai-hub::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(124,58,237,0.1), transparent); animation: genai-shimmer 3s infinite; }
+        @keyframes genai-shimmer { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+        .genai-ai-hub h3 { color: white; font-size: 1rem; position: relative; z-index: 1; }
+        .genai-ai-hub p { color: rgba(255,255,255,0.8); position: relative; z-index: 1; }
+        .genai-ai-hub .component-icon { background: white; color: var(--ai-purple); width: 50px; height: 50px; font-size: 1.5rem; position: relative; z-index: 1; }
+
+        /* AI Model Cards */
+        .genai-models-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+        .genai-model-card { background: linear-gradient(135deg, #1e1b4b, #312e81); border: 2px solid var(--ai-purple); border-radius: 10px; padding: 1rem; min-width: 130px; text-align: center; color: white; position: relative; overflow: hidden; }
+        .genai-model-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--ai-gradient); }
+        .genai-model-card .model-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .genai-model-card h4 { font-size: 0.8rem; margin-bottom: 0.2rem; }
+        .genai-model-card p { font-size: 0.65rem; opacity: 0.8; }
+        .genai-model-card .model-badge { position: absolute; top: 8px; right: 8px; background: var(--ai-pink); color: white; font-size: 0.5rem; padding: 0.1rem 0.4rem; border-radius: 8px; font-weight: 600; }
+        .genai-model-card.highlight { animation: pulse-highlight 0.8s ease-in-out; box-shadow: 0 0 25px rgba(124,58,237,0.6); }
+
+        /* AI Topic */
+        .genai-topic-container { display: flex; justify-content: center; margin: 1.5rem 0; padding: 15px 0; }
+        .genai-topic-box { position: relative; width: 200px; height: 60px; background: linear-gradient(to bottom, #a78bfa 0%, #7c3aed 50%, #5b21b6 100%); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(124,58,237,0.3); margin: 0 20px; }
+        .genai-topic-box::before { content: ''; position: absolute; left: -12px; top: 0; width: 24px; height: 100%; background: linear-gradient(to bottom, #c4b5fd 0%, #a78bfa 50%, #7c3aed 100%); border-radius: 50%; border: 2px solid #7c3aed; box-sizing: border-box; }
+        .genai-topic-box::after { content: ''; position: absolute; right: -12px; top: 0; width: 24px; height: 100%; background: linear-gradient(to bottom, #6d28d9 0%, #5b21b6 50%, #4c1d95 100%); border-radius: 50%; border: 2px solid #7c3aed; box-sizing: border-box; z-index: -1; }
+        .genai-topic-icon { font-size: 1.2rem; margin-bottom: 0.1rem; z-index: 1; }
+        .genai-topic-label { font-family: 'Consolas', monospace; font-size: 0.75rem; font-weight: 600; z-index: 1; }
+        .genai-topic-subtitle { font-size: 0.55rem; opacity: 0.9; z-index: 1; }
+
+        /* AI Subscription Lines */
+        .genai-subscription-lines { display: flex; justify-content: space-around; padding: 0 1rem; height: 35px; position: relative; }
+        .genai-subscription-lines::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 3px; background: var(--ai-purple); }
+        .genai-sub-line { width: 3px; height: 35px; background: var(--ai-purple); position: relative; }
+        .genai-sub-line::after { content: ''; position: absolute; bottom: -6px; left: -5px; border: 6px solid transparent; border-top: 8px solid var(--ai-purple); }
+
+        /* AI Subscriber Flows */
+        .genai-subscriber-flows { display: flex; justify-content: space-around; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+        .genai-subscriber-flow { display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.5); border: 1px solid #e1dfdd; border-radius: 8px; padding: 0.5rem; min-width: 110px; flex: 1; max-width: 140px; }
+        .genai-flow-label { font-size: 0.65rem; font-weight: 600; color: var(--ai-purple); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .genai-subscriber-flow .genai-component-box { min-width: 90px; padding: 0.5rem 0.5rem; }
+        .genai-subscriber-flow .genai-component-box h3 { font-size: 0.65rem; }
+        .genai-subscriber-flow .genai-component-box p { display: none; }
+        .genai-subscriber-flow .genai-component-box .component-icon { width: 26px; height: 26px; font-size: 0.85rem; }
+        .genai-subscriber-flow .genai-component-box .type-badge { font-size: 0.5rem; padding: 0.1rem 0.3rem; }
+        .genai-mini-connector { width: 3px; height: 12px; background: var(--ai-purple); position: relative; }
+        .genai-mini-connector::after { content: ''; position: absolute; bottom: -4px; left: -3px; border: 4px solid transparent; border-top: 5px solid var(--ai-purple); }
+
+        /* AI Inputs Row */
+        .genai-inputs-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+        /* AI Downstream Labels */
+        .genai-downstream-labels { display: flex; justify-content: space-around; margin-top: 1rem; padding: 0.75rem; background: #f3f2f1; border-radius: 6px; gap: 0.5rem; flex-wrap: wrap; }
+        .genai-downstream-label { text-align: center; font-size: 0.7rem; font-weight: 600; color: white; flex: 1; min-width: 90px; padding: 0.4rem; border-radius: 4px; }
+        .genai-downstream-label small { display: block; font-weight: 400; opacity: 0.9; font-size: 0.6rem; }
+
+        /* AI Connectors */
+        .genai-connector { display: flex; align-items: center; justify-content: center; min-width: 40px; position: relative; }
+        .genai-connector-line { height: 3px; width: 30px; background: var(--ai-purple); position: relative; }
+        .genai-connector-line::after { content: ''; position: absolute; right: -6px; top: -4px; border: 6px solid transparent; border-left: 8px solid var(--ai-purple); }
+        .genai-connector-down { display: flex; flex-direction: column; align-items: center; padding: 0.3rem 0; }
+        .genai-connector-down .line { width: 3px; height: 25px; background: var(--ai-purple); }
+        .genai-connector-down .arrow { width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 10px solid var(--ai-purple); }
+
+        /* AI Controls, Status, Steps */
+        .genai-controls { text-align: center; margin: 1.5rem 0; }
+        .genai-btn { padding: 0.8rem 1.5rem; font-size: 1rem; border: none; border-radius: 4px; cursor: pointer; transition: all 0.2s; margin: 0.5rem; font-weight: 600; }
+        .genai-btn-primary { background: var(--ai-gradient); color: white; }
+        .genai-btn-primary:hover { box-shadow: 0 4px 12px rgba(124,58,237,0.4); transform: translateY(-2px); }
+        .genai-btn-secondary { background: #f3f2f1; color: #323130; border: 1px solid #e1dfdd; }
+        .genai-btn-secondary:hover { background: #e1dfdd; }
+        .genai-status-bar { background: white; border-radius: 8px; padding: 1rem; margin-top: 1rem; border: 1px solid #e1dfdd; }
+        .genai-status-bar h4 { color: var(--ai-purple); margin-bottom: 0.5rem; font-weight: 600; }
+        .genai-status-text { font-family: 'Consolas', monospace; color: var(--ai-purple); min-height: 24px; font-weight: 500; }
+        .genai-flow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .genai-step { background: white; border-radius: 6px; padding: 1rem; border-left: 4px solid #e1dfdd; transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .genai-step.active { border-left-color: var(--ai-purple); background: rgba(124,58,237,0.05); }
+        .genai-step.complete { border-left-color: var(--ai-green); }
+        .genai-step-number { display: inline-block; width: 22px; height: 22px; background: #e1dfdd; border-radius: 50%; text-align: center; line-height: 22px; font-size: 0.75rem; margin-right: 0.5rem; font-weight: 600; }
+        .genai-step.active .genai-step-number { background: var(--ai-purple); color: white; }
+        .genai-step.complete .genai-step-number { background: var(--ai-green); color: white; }
+        .genai-step h4 { display: inline; font-size: 0.85rem; color: #323130; }
+        .genai-step p { font-size: 0.7rem; color: #605e5c; margin-top: 0.5rem; }
+        .genai-component-box.highlight { animation: pulse-highlight 0.8s ease-in-out; box-shadow: 0 0 20px rgba(124,58,237,0.5); }
+
+        /* AI Data Panel */
+        .genai-data-panel { background: white; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; border: 1px solid #e1dfdd; }
+        .genai-data-panel h3 { color: var(--ai-purple); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+        .genai-data-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .genai-data-tab { padding: 0.5rem 1rem; background: #f3f2f1; border: 1px solid #e1dfdd; color: #323130; border-radius: 4px; cursor: pointer; transition: all 0.3s; font-weight: 500; font-size: 0.85rem; }
+        .genai-data-tab:hover { background: #e1dfdd; }
+        .genai-data-tab.active { background: var(--ai-purple); color: white; border-color: var(--ai-purple); }
+        .genai-data-content { display: none; background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 6px; padding: 1rem; font-family: 'Consolas', monospace; font-size: 0.75rem; overflow-x: auto; max-height: 280px; overflow-y: auto; }
+        .genai-data-content.active { display: block; }
+        .genai-data-content pre { white-space: pre-wrap; color: #c4b5fd; }
+
+        /* ==================== VIBE CODING DEMO STYLES ==================== */
+        .vibe-builder-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        @media (max-width: 1000px) { .vibe-builder-layout { grid-template-columns: 1fr; } }
+
+        /* Chat Panel */
+        .vibe-chat-panel { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid var(--vibe-orange); overflow: hidden; display: flex; flex-direction: column; min-height: 500px; }
+        .vibe-chat-header { background: var(--vibe-gradient); color: white; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+        .vibe-chat-header-icon { font-size: 1.5rem; }
+        .vibe-chat-header h3 { font-size: 1.1rem; font-weight: 600; }
+        .vibe-chat-header span { font-size: 0.8rem; opacity: 0.9; margin-left: auto; }
+        .vibe-chat-messages { flex: 1; padding: 1rem; overflow-y: auto; background: #fafafa; display: flex; flex-direction: column; gap: 1rem; }
+        .vibe-message { max-width: 85%; padding: 0.75rem 1rem; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; animation: vibeFadeIn 0.3s ease; }
+        @keyframes vibeFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .vibe-message.user { background: var(--vibe-gradient); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .vibe-message.assistant { background: white; border: 1px solid #e5e7eb; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .vibe-message.assistant .icon { color: var(--vibe-orange); margin-right: 0.5rem; }
+        .vibe-chat-input-area { padding: 1rem; background: white; border-top: 1px solid #e5e7eb; display: flex; gap: 0.75rem; }
+        .vibe-chat-input { flex: 1; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 0.9rem; transition: border-color 0.2s; }
+        .vibe-chat-input:focus { outline: none; border-color: var(--vibe-orange); }
+        .vibe-chat-input::placeholder { color: #9ca3af; }
+        .vibe-send-btn { background: var(--vibe-gradient); color: white; border: none; padding: 0.75rem 1.25rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        .vibe-send-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(249,115,22,0.4); }
+
+        /* Code Panel */
+        .vibe-code-panel { background: var(--code-bg); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); overflow: hidden; display: flex; flex-direction: column; min-height: 500px; }
+        .vibe-code-header { background: #0f172a; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #334155; }
+        .vibe-code-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .vibe-code-dot.red { background: #ef4444; }
+        .vibe-code-dot.yellow { background: #fbbf24; }
+        .vibe-code-dot.green { background: #22c55e; }
+        .vibe-code-tabs { display: flex; gap: 0.25rem; margin-left: 1rem; }
+        .vibe-code-tab { padding: 0.4rem 1rem; background: transparent; color: #94a3b8; border: none; border-radius: 6px 6px 0 0; cursor: pointer; font-size: 0.8rem; transition: all 0.2s; }
+        .vibe-code-tab:hover { color: white; }
+        .vibe-code-tab.active { background: var(--code-bg); color: var(--vibe-yellow); }
+        .vibe-code-content { flex: 1; padding: 1rem; overflow: auto; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.8rem; line-height: 1.6; }
+        .vibe-code-content pre { color: var(--code-text); white-space: pre-wrap; }
+        .vibe-code-content .keyword { color: #c084fc; }
+        .vibe-code-content .string { color: #86efac; }
+        .vibe-code-content .comment { color: #64748b; font-style: italic; }
+        .vibe-code-content .function { color: #60a5fa; }
+        .vibe-code-content .number { color: #fbbf24; }
+        .vibe-code-content .annotation { color: #f472b6; }
+        .vibe-code-content .type { color: #22d3ee; }
+        .vibe-code-status { background: #0f172a; padding: 0.5rem 1rem; border-top: 1px solid #334155; display: flex; align-items: center; gap: 1rem; font-size: 0.75rem; color: #94a3b8; }
+        .vibe-status-indicator { display: flex; align-items: center; gap: 0.4rem; }
+        .vibe-status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--vibe-green); animation: vibePulse 2s infinite; }
+        @keyframes vibePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* Flow Preview */
+        .vibe-flow-preview { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+        .vibe-flow-preview h3 { color: var(--vibe-orange); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .vibe-flow-diagram { display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap; padding: 1rem; background: #fef3c7; border-radius: 8px; min-height: 80px; }
+        .vibe-flow-node { background: white; border: 2px solid var(--vibe-orange); border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.8rem; font-weight: 600; color: #1e293b; display: flex; align-items: center; gap: 0.4rem; transition: all 0.3s; }
+        .vibe-flow-node.source { border-color: var(--vibe-blue); background: #eff6ff; }
+        .vibe-flow-node.process { border-color: var(--vibe-purple); background: #f5f3ff; }
+        .vibe-flow-node.target { border-color: var(--vibe-green); background: #f0fdf4; }
+        .vibe-flow-node.highlight { transform: scale(1.05); box-shadow: 0 4px 12px rgba(249,115,22,0.3); }
+        .vibe-flow-arrow { color: var(--vibe-orange); font-size: 1.2rem; font-weight: bold; }
+
+        /* Typing Indicator */
+        .vibe-typing-indicator { display: flex; gap: 4px; padding: 0.75rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 12px; border-bottom-left-radius: 4px; align-self: flex-start; max-width: 80px; }
+        .vibe-typing-indicator span { width: 8px; height: 8px; background: var(--vibe-orange); border-radius: 50%; animation: vibeTyping 1.4s infinite; }
+        .vibe-typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .vibe-typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes vibeTyping { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-6px); opacity: 1; } }
+
+        /* Vibe Controls */
+        .vibe-controls { text-align: center; margin: 1.5rem 0; }
+        .vibe-btn { padding: 0.8rem 1.5rem; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; margin: 0.5rem; font-weight: 600; }
+        .vibe-btn-primary { background: var(--vibe-gradient); color: white; }
+        .vibe-btn-primary:hover { box-shadow: 0 4px 12px rgba(249,115,22,0.4); transform: translateY(-2px); }
+        .vibe-btn-secondary { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+        .vibe-btn-secondary:hover { background: #e5e7eb; }
+
+        /* Example Prompts */
+        .vibe-example-prompts { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .vibe-example-prompts h3 { color: var(--vibe-orange); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .vibe-prompt-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+        .vibe-prompt-card { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1px solid #fcd34d; border-radius: 8px; padding: 1rem; cursor: pointer; transition: all 0.2s; }
+        .vibe-prompt-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(249,115,22,0.2); border-color: var(--vibe-orange); }
+        .vibe-prompt-card h4 { font-size: 0.9rem; color: #92400e; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+        .vibe-prompt-card p { font-size: 0.8rem; color: #78350f; line-height: 1.4; }
+
+        /* Vibe Legend */
+        .vibe-legend { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; padding: 1rem; background: white; border-radius: 8px; }
+        .vibe-legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: #605e5c; }
+        .vibe-legend-color { width: 20px; height: 20px; border-radius: 4px; border: 2px solid; }
     </style>
 </head>
 <body>
@@ -847,19 +1252,32 @@
 
         <!-- Demo Tabs -->
         <div class="demo-tabs">
-            <div class="demo-tab active" onclick="switchDemo('trade-flow')">
-                <span class="tab-icon">🔄</span>
-                Trade Flow Processing
+            <div class="demo-tab active" onclick="switchDemo('genai')">
+                <span class="tab-icon">🤖</span>
+                Gen AI
+                <span class="alert-badge">AI</span>
+            </div>
+            <div class="demo-tab" onclick="switchDemo('vibe')">
+                <span class="tab-icon">✨</span>
+                Vibe Coding
             </div>
             <div class="demo-tab" onclick="switchDemo('surveillance')">
                 <span class="tab-icon">🔍</span>
-                Trade Surveillance
+                Surveillance
                 <span class="alert-badge">AI</span>
+            </div>
+            <div class="demo-tab" onclick="switchDemo('trade-flow')">
+                <span class="tab-icon">🔄</span>
+                Trade Flow
+            </div>
+            <div class="demo-tab" onclick="switchDemo('retail')">
+                <span class="tab-icon">🛒</span>
+                Retail
             </div>
         </div>
 
         <!-- Trade Flow Demo Content -->
-        <div class="demo-content active" id="demo-trade-flow">
+        <div class="demo-content" id="demo-trade-flow">
             <div class="demo-title">
                 <h2>🔄 Real-Time Trade Processing Pipeline</h2>
                 <p>Bloomberg TOMS → TeX Integration Hub → Multi-System Distribution</p>
@@ -2033,6 +2451,827 @@ Volume Published:       10,000,000 USD
             </div>
         </div>
         <!-- End Trade Surveillance Demo Content -->
+
+        <!-- Retail Omnichannel Demo Content -->
+        <div class="demo-content" id="demo-retail">
+            <div class="demo-title">
+                <h2>🛒 Retail Omnichannel Order Management</h2>
+                <p>Multi-Channel Orders → TeX Integration Hub → Unified Fulfillment</p>
+            </div>
+
+            <!-- Flow Visualization -->
+            <div class="flow-container" id="retailFlowContainer">
+                <!-- Row 1: Sales Channels -->
+                <div class="retail-channels-row">
+                    <div class="component" id="retail-comp-web">
+                        <div class="component-box channel-web">
+                            <span class="type-badge">Web</span>
+                            <div class="component-icon">🌐</div>
+                            <h3>E-Commerce</h3>
+                            <p>Online Store</p>
+                        </div>
+                    </div>
+                    <div class="component" id="retail-comp-mobile">
+                        <div class="component-box channel-mobile">
+                            <span class="type-badge">Mobile</span>
+                            <div class="component-icon">📱</div>
+                            <h3>Mobile App</h3>
+                            <p>iOS / Android</p>
+                        </div>
+                    </div>
+                    <div class="component" id="retail-comp-store">
+                        <div class="component-box channel-store">
+                            <span class="type-badge">In-Store</span>
+                            <div class="component-icon">🏪</div>
+                            <h3>POS System</h3>
+                            <p>Retail Stores</p>
+                        </div>
+                    </div>
+                    <div class="component" id="retail-comp-call">
+                        <div class="component-box channel-call">
+                            <span class="type-badge">Call Center</span>
+                            <div class="component-icon">📞</div>
+                            <h3>Phone Orders</h3>
+                            <p>Customer Service</p>
+                        </div>
+                    </div>
+                    <div class="component" id="retail-comp-marketplace">
+                        <div class="component-box channel-marketplace">
+                            <span class="type-badge">Marketplace</span>
+                            <div class="component-icon">🛍️</div>
+                            <h3>Amazon/eBay</h3>
+                            <p>3rd Party</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-row">
+                    <div class="connector-down">
+                        <div class="line"></div>
+                        <div class="arrow"></div>
+                    </div>
+                </div>
+
+                <!-- TeX Platform Container -->
+                <div class="retail-tex-platform">
+                    <div class="retail-platform-header">
+                        <span class="retail-platform-logo">⚡</span>
+                        <span class="retail-platform-title">TeX Platform</span>
+                        <span class="retail-platform-subtitle">Omnichannel Order Orchestration</span>
+                    </div>
+
+                    <!-- Inbound Flow -->
+                    <div class="flow-row" style="margin-bottom: 1rem;">
+                        <div class="component" id="retail-comp-consumer">
+                            <div class="component-box consumer">
+                                <span class="type-badge">Consumer</span>
+                                <div class="component-icon">📥</div>
+                                <h3>Order Ingestion</h3>
+                                <p>Multi-Channel API</p>
+                            </div>
+                        </div>
+                        <div class="connector"><div class="connector-line"></div></div>
+                        <div class="component" id="retail-comp-normalizer">
+                            <div class="component-box converter">
+                                <span class="type-badge">Converter</span>
+                                <div class="component-icon">🔄</div>
+                                <h3>Order Normalizer</h3>
+                                <p>Unified Format</p>
+                            </div>
+                        </div>
+                        <div class="connector"><div class="connector-line"></div></div>
+                        <div class="component" id="retail-comp-validator">
+                            <div class="component-box converter">
+                                <span class="type-badge">Validator</span>
+                                <div class="component-icon">✅</div>
+                                <h3>Order Validator</h3>
+                                <p>Rules Engine</p>
+                            </div>
+                        </div>
+                        <div class="connector"><div class="connector-line"></div></div>
+                        <div class="component" id="retail-comp-enricher">
+                            <div class="component-box converter">
+                                <span class="type-badge">Enricher</span>
+                                <div class="component-icon">📊</div>
+                                <h3>Data Enrichment</h3>
+                                <p>Customer/Product</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Topic -->
+                    <div class="retail-topic-container">
+                        <div class="retail-topic-box" id="retail-order-topic">
+                            <span class="retail-topic-icon">📦</span>
+                            <span class="retail-topic-label">orders.validated</span>
+                            <span class="retail-topic-subtitle">Pub/Sub Topic</span>
+                        </div>
+                    </div>
+
+                    <!-- Subscription Lines -->
+                    <div class="retail-sub-lines">
+                        <div class="retail-sub-line"></div>
+                        <div class="retail-sub-line"></div>
+                        <div class="retail-sub-line"></div>
+                        <div class="retail-sub-line"></div>
+                        <div class="retail-sub-line"></div>
+                        <div class="retail-sub-line"></div>
+                    </div>
+
+                    <!-- Subscriber Flows -->
+                    <div class="retail-subscriber-flows">
+                        <div class="retail-subscriber-flow">
+                            <span class="retail-flow-label">Inventory</span>
+                            <div class="component-box inventory">
+                                <span class="type-badge">Reserve</span>
+                                <div class="component-icon">📦</div>
+                                <h3>Stock Reserve</h3>
+                            </div>
+                            <div class="retail-mini-connector"></div>
+                            <div class="component-box producer">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">📤</div>
+                                <h3>WMS</h3>
+                            </div>
+                        </div>
+                        <div class="retail-subscriber-flow">
+                            <span class="retail-flow-label">Fulfillment</span>
+                            <div class="component-box fulfillment">
+                                <span class="type-badge">Router</span>
+                                <div class="component-icon">🚚</div>
+                                <h3>Ship Router</h3>
+                            </div>
+                            <div class="retail-mini-connector"></div>
+                            <div class="component-box producer">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">📤</div>
+                                <h3>Carriers</h3>
+                            </div>
+                        </div>
+                        <div class="retail-subscriber-flow">
+                            <span class="retail-flow-label">Payment</span>
+                            <div class="component-box converter">
+                                <span class="type-badge">Process</span>
+                                <div class="component-icon">💳</div>
+                                <h3>Payment</h3>
+                            </div>
+                            <div class="retail-mini-connector"></div>
+                            <div class="component-box producer">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">📤</div>
+                                <h3>Gateway</h3>
+                            </div>
+                        </div>
+                        <div class="retail-subscriber-flow">
+                            <span class="retail-flow-label">Notification</span>
+                            <div class="component-box notification">
+                                <span class="type-badge">Format</span>
+                                <div class="component-icon">📧</div>
+                                <h3>Notify</h3>
+                            </div>
+                            <div class="retail-mini-connector"></div>
+                            <div class="component-box producer">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">📤</div>
+                                <h3>Email/SMS</h3>
+                            </div>
+                        </div>
+                        <div class="retail-subscriber-flow">
+                            <span class="retail-flow-label">ERP</span>
+                            <div class="component-box converter">
+                                <span class="type-badge">Transform</span>
+                                <div class="component-icon">🔄</div>
+                                <h3>ERP Format</h3>
+                            </div>
+                            <div class="retail-mini-connector"></div>
+                            <div class="component-box producer">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">📤</div>
+                                <h3>SAP/Oracle</h3>
+                            </div>
+                        </div>
+                        <div class="retail-subscriber-flow">
+                            <span class="retail-flow-label">Analytics</span>
+                            <div class="component-box analytics">
+                                <span class="type-badge">Stream</span>
+                                <div class="component-icon">📈</div>
+                                <h3>Events</h3>
+                            </div>
+                            <div class="retail-mini-connector"></div>
+                            <div class="component-box producer">
+                                <span class="type-badge">Producer</span>
+                                <div class="component-icon">📤</div>
+                                <h3>Data Lake</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Downstream Labels -->
+                    <div class="retail-downstream-labels">
+                        <div class="retail-downstream-label" style="background: #e67e22;">WMS<small>Warehouse Mgmt</small></div>
+                        <div class="retail-downstream-label" style="background: var(--retail-green);">Carriers<small>FedEx/UPS/DHL</small></div>
+                        <div class="retail-downstream-label" style="background: var(--ms-blue-dark);">Payment<small>Stripe/PayPal</small></div>
+                        <div class="retail-downstream-label" style="background: #9b59b6;">Comms<small>SendGrid/Twilio</small></div>
+                        <div class="retail-downstream-label" style="background: #34495e;">ERP<small>SAP/Oracle</small></div>
+                        <div class="retail-downstream-label" style="background: #2c3e50;">Analytics<small>Snowflake/BigQuery</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="retail-controls">
+                <button class="btn btn-primary" onclick="startRetailAnimation()">▶️ Start Order Flow</button>
+                <button class="btn btn-secondary" onclick="resetRetailAnimation()">🔄 Reset</button>
+            </div>
+
+            <!-- Status Bar -->
+            <div class="retail-status-bar">
+                <h4>📊 Order Processing Status</h4>
+                <div class="retail-status-text" id="retailStatusText">Ready to process order...</div>
+            </div>
+
+            <!-- Flow Steps -->
+            <div class="retail-flow-steps">
+                <div class="retail-step" id="retail-step1">
+                    <span class="retail-step-number">1</span>
+                    <h4>Order Received</h4>
+                    <p>Customer places order via any channel</p>
+                </div>
+                <div class="retail-step" id="retail-step2">
+                    <span class="retail-step-number">2</span>
+                    <h4>Normalize & Validate</h4>
+                    <p>Convert to unified format, apply business rules</p>
+                </div>
+                <div class="retail-step" id="retail-step3">
+                    <span class="retail-step-number">3</span>
+                    <h4>Enrich Data</h4>
+                    <p>Add customer profile, product details, pricing</p>
+                </div>
+                <div class="retail-step" id="retail-step4">
+                    <span class="retail-step-number">4</span>
+                    <h4>Publish to Topic</h4>
+                    <p>Validated order published for subscribers</p>
+                </div>
+                <div class="retail-step" id="retail-step5">
+                    <span class="retail-step-number">5</span>
+                    <h4>Parallel Processing</h4>
+                    <p>Inventory, fulfillment, payment, notifications</p>
+                </div>
+                <div class="retail-step" id="retail-step6">
+                    <span class="retail-step-number">6</span>
+                    <h4>Complete</h4>
+                    <p>Order distributed to all downstream systems</p>
+                </div>
+            </div>
+
+            <!-- Data Panel -->
+            <div class="retail-data-panel">
+                <h3>📋 Sample Order Data</h3>
+                <div class="retail-data-tabs">
+                    <div class="retail-data-tab active" onclick="showRetailData('incoming')">Incoming Order</div>
+                    <div class="retail-data-tab" onclick="showRetailData('normalized')">Normalized</div>
+                    <div class="retail-data-tab" onclick="showRetailData('enriched')">Enriched</div>
+                    <div class="retail-data-tab" onclick="showRetailData('fulfillment')">Fulfillment</div>
+                </div>
+                <div class="retail-data-content active" id="retail-data-incoming">
+<pre>{
+  "source": "mobile_app",
+  "channel": "iOS",
+  "order_id": "MOB-2024-789456",
+  "timestamp": "2024-02-12T14:32:18Z",
+  "customer": {
+    "id": "CUST-12345",
+    "email": "john.doe@email.com"
+  },
+  "items": [
+    { "sku": "PROD-001", "qty": 2, "price": 49.99 },
+    { "sku": "PROD-042", "qty": 1, "price": 129.99 }
+  ]
+}</pre>
+                </div>
+                <div class="retail-data-content" id="retail-data-normalized">
+<pre>{
+  "order": {
+    "id": "ORD-2024-789456",
+    "source_channel": "MOBILE",
+    "created_at": "2024-02-12T14:32:18Z",
+    "status": "VALIDATED"
+  },
+  "line_items": [
+    { "product_id": "PROD-001", "quantity": 2, "unit_price": 49.99 },
+    { "product_id": "PROD-042", "quantity": 1, "unit_price": 129.99 }
+  ],
+  "totals": { "subtotal": 229.97, "tax": 46.00, "grand_total": 288.96 }
+}</pre>
+                </div>
+                <div class="retail-data-content" id="retail-data-enriched">
+<pre>{
+  "order": { "id": "ORD-2024-789456", "priority": "HIGH" },
+  "customer": {
+    "name": "John Doe",
+    "loyalty_tier": "GOLD",
+    "lifetime_value": 4250.00
+  },
+  "line_items": [
+    { "product_id": "PROD-001", "name": "Premium Headphones", "warehouse": "UK-LONDON-01" },
+    { "product_id": "PROD-042", "name": "Smart Watch Pro", "warehouse": "UK-LONDON-01" }
+  ]
+}</pre>
+                </div>
+                <div class="retail-data-content" id="retail-data-fulfillment">
+<pre>{
+  "fulfillment_request": {
+    "order_id": "ORD-2024-789456",
+    "warehouse_id": "UK-LONDON-01",
+    "pick_list": [
+      { "sku": "PROD-001", "location": "A-12-3", "qty": 2 },
+      { "sku": "PROD-042", "location": "B-05-1", "qty": 1 }
+    ]
+  },
+  "shipping_label": {
+    "carrier": "DHL_EXPRESS",
+    "tracking_number": "DHL-1234567890"
+  }
+}</pre>
+                </div>
+            </div>
+        </div>
+        <!-- End Retail Demo Content -->
+
+        <!-- Generative AI Demo Content -->
+        <div class="demo-content active" id="demo-genai">
+            <div class="demo-title">
+                <h2>🤖 Enterprise Generative AI Workflow Orchestration</h2>
+                <p>Multi-Modal Input → TeX AI Hub → Intelligent Processing → Multi-Channel Output</p>
+            </div>
+
+            <!-- Flow Visualization -->
+            <div class="flow-container" id="genaiFlowContainer">
+                <!-- Row 1: Input Sources -->
+                <div class="genai-inputs-row">
+                    <div class="component" id="genai-comp-text">
+                        <div class="genai-component-box input-text">
+                            <span class="type-badge">Text</span>
+                            <div class="component-icon">📝</div>
+                            <h3>Text Input</h3>
+                            <p>Prompts & Queries</p>
+                        </div>
+                    </div>
+                    <div class="component" id="genai-comp-image">
+                        <div class="genai-component-box input-image">
+                            <span class="type-badge">Image</span>
+                            <div class="component-icon">🖼️</div>
+                            <h3>Image Input</h3>
+                            <p>Photos & Graphics</p>
+                        </div>
+                    </div>
+                    <div class="component" id="genai-comp-audio">
+                        <div class="genai-component-box input-audio">
+                            <span class="type-badge">Audio</span>
+                            <div class="component-icon">🎤</div>
+                            <h3>Voice Input</h3>
+                            <p>Speech & Audio</p>
+                        </div>
+                    </div>
+                    <div class="component" id="genai-comp-doc">
+                        <div class="genai-component-box input-doc">
+                            <span class="type-badge">Document</span>
+                            <div class="component-icon">📄</div>
+                            <h3>Documents</h3>
+                            <p>PDF, Word, Excel</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-row">
+                    <div class="genai-connector-down" id="genai-arrow1">
+                        <div class="line"></div>
+                        <div class="arrow"></div>
+                    </div>
+                </div>
+
+                <!-- TeX Platform Container -->
+                <div class="genai-platform-container">
+                    <div class="genai-platform-header">
+                        <span class="genai-platform-logo">🧠</span>
+                        <span class="genai-platform-title">TeX AI Orchestration Hub</span>
+                        <span class="genai-platform-subtitle">Intelligent Workflow Management</span>
+                    </div>
+
+                    <!-- Inbound Flow -->
+                    <div class="flow-row" style="margin-bottom: 1rem;">
+                        <div class="component" id="genai-comp-ingest">
+                            <div class="genai-component-box consumer">
+                                <span class="type-badge">Ingest</span>
+                                <div class="component-icon">📥</div>
+                                <h3>Multi-Modal</h3>
+                                <p>Input Handler</p>
+                            </div>
+                        </div>
+                        <div class="genai-connector"><div class="genai-connector-line"></div></div>
+                        <div class="component" id="genai-comp-preprocess">
+                            <div class="genai-component-box converter">
+                                <span class="type-badge">Process</span>
+                                <div class="component-icon">⚙️</div>
+                                <h3>Pre-Process</h3>
+                                <p>Normalize & Clean</p>
+                            </div>
+                        </div>
+                        <div class="genai-connector"><div class="genai-connector-line"></div></div>
+                        <div class="component" id="genai-comp-router">
+                            <div class="genai-component-box router">
+                                <span class="type-badge">Router</span>
+                                <div class="component-icon">🔀</div>
+                                <h3>AI Router</h3>
+                                <p>Model Selection</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Models Row -->
+                    <div class="genai-models-row">
+                        <div class="genai-model-card" id="genai-model-gpt">
+                            <span class="model-badge">LLM</span>
+                            <div class="model-icon">🧠</div>
+                            <h4>GPT-4 / Claude</h4>
+                            <p>Text Generation</p>
+                        </div>
+                        <div class="genai-model-card" id="genai-model-dalle">
+                            <span class="model-badge">Vision</span>
+                            <div class="model-icon">🎨</div>
+                            <h4>DALL-E / Midjourney</h4>
+                            <p>Image Generation</p>
+                        </div>
+                        <div class="genai-model-card" id="genai-model-whisper">
+                            <span class="model-badge">Speech</span>
+                            <div class="model-icon">🗣️</div>
+                            <h4>Whisper / TTS</h4>
+                            <p>Speech Processing</p>
+                        </div>
+                        <div class="genai-model-card" id="genai-model-embed">
+                            <span class="model-badge">RAG</span>
+                            <div class="model-icon">🔍</div>
+                            <h4>Embeddings</h4>
+                            <p>Vector Search</p>
+                        </div>
+                    </div>
+
+                    <!-- Topic -->
+                    <div class="genai-topic-container">
+                        <div class="genai-topic-box" id="genai-ai-topic">
+                            <span class="genai-topic-icon">✨</span>
+                            <span class="genai-topic-label">ai.responses</span>
+                            <span class="genai-topic-subtitle">Generated Content</span>
+                        </div>
+                    </div>
+
+                    <!-- Subscription Lines -->
+                    <div class="genai-subscription-lines">
+                        <div class="genai-sub-line"></div>
+                        <div class="genai-sub-line"></div>
+                        <div class="genai-sub-line"></div>
+                        <div class="genai-sub-line"></div>
+                        <div class="genai-sub-line"></div>
+                    </div>
+
+                    <!-- Subscriber Flows -->
+                    <div class="genai-subscriber-flows">
+                        <div class="genai-subscriber-flow">
+                            <span class="genai-flow-label">Content</span>
+                            <div class="genai-component-box converter">
+                                <span class="type-badge">Format</span>
+                                <div class="component-icon">📰</div>
+                                <h3>CMS</h3>
+                            </div>
+                            <div class="genai-mini-connector"></div>
+                            <div class="genai-component-box output">
+                                <span class="type-badge">Publish</span>
+                                <div class="component-icon">📤</div>
+                                <h3>Website</h3>
+                            </div>
+                        </div>
+                        <div class="genai-subscriber-flow">
+                            <span class="genai-flow-label">Email</span>
+                            <div class="genai-component-box converter">
+                                <span class="type-badge">Template</span>
+                                <div class="component-icon">✉️</div>
+                                <h3>Personalize</h3>
+                            </div>
+                            <div class="genai-mini-connector"></div>
+                            <div class="genai-component-box output">
+                                <span class="type-badge">Send</span>
+                                <div class="component-icon">📤</div>
+                                <h3>Campaigns</h3>
+                            </div>
+                        </div>
+                        <div class="genai-subscriber-flow">
+                            <span class="genai-flow-label">Chat</span>
+                            <div class="genai-component-box converter">
+                                <span class="type-badge">Stream</span>
+                                <div class="component-icon">💬</div>
+                                <h3>Response</h3>
+                            </div>
+                            <div class="genai-mini-connector"></div>
+                            <div class="genai-component-box output">
+                                <span class="type-badge">Reply</span>
+                                <div class="component-icon">📤</div>
+                                <h3>Chatbot</h3>
+                            </div>
+                        </div>
+                        <div class="genai-subscriber-flow">
+                            <span class="genai-flow-label">Analytics</span>
+                            <div class="genai-component-box converter">
+                                <span class="type-badge">Log</span>
+                                <div class="component-icon">📊</div>
+                                <h3>Metrics</h3>
+                            </div>
+                            <div class="genai-mini-connector"></div>
+                            <div class="genai-component-box output">
+                                <span class="type-badge">Store</span>
+                                <div class="component-icon">📤</div>
+                                <h3>Dashboard</h3>
+                            </div>
+                        </div>
+                        <div class="genai-subscriber-flow">
+                            <span class="genai-flow-label">Archive</span>
+                            <div class="genai-component-box converter">
+                                <span class="type-badge">Index</span>
+                                <div class="component-icon">🗄️</div>
+                                <h3>Vectorize</h3>
+                            </div>
+                            <div class="genai-mini-connector"></div>
+                            <div class="genai-component-box output">
+                                <span class="type-badge">Store</span>
+                                <div class="component-icon">📤</div>
+                                <h3>Vector DB</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Downstream Labels -->
+                    <div class="genai-downstream-labels">
+                        <div class="genai-downstream-label" style="background: var(--ai-blue);">CMS<small>WordPress/Contentful</small></div>
+                        <div class="genai-downstream-label" style="background: var(--ai-pink);">Email<small>Mailchimp/HubSpot</small></div>
+                        <div class="genai-downstream-label" style="background: var(--ai-purple);">Chat<small>Slack/Teams/Web</small></div>
+                        <div class="genai-downstream-label" style="background: var(--ai-teal);">Analytics<small>Datadog/Grafana</small></div>
+                        <div class="genai-downstream-label" style="background: #6366f1;">Vector DB<small>Pinecone/Weaviate</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="genai-controls">
+                <button class="genai-btn genai-btn-primary" onclick="startGenAIAnimation()">🤖 Start AI Workflow</button>
+                <button class="genai-btn genai-btn-secondary" onclick="resetGenAIAnimation()">🔄 Reset</button>
+            </div>
+
+            <!-- Status Bar -->
+            <div class="genai-status-bar">
+                <h4>🤖 AI Processing Status</h4>
+                <div class="genai-status-text" id="genaiStatusText">Ready to process AI request...</div>
+            </div>
+
+            <!-- Flow Steps -->
+            <div class="genai-flow-steps">
+                <div class="genai-step" id="genai-step1">
+                    <span class="genai-step-number">1</span>
+                    <h4>Input Received</h4>
+                    <p>Multi-modal input captured</p>
+                </div>
+                <div class="genai-step" id="genai-step2">
+                    <span class="genai-step-number">2</span>
+                    <h4>Pre-Process</h4>
+                    <p>Normalize & validate input</p>
+                </div>
+                <div class="genai-step" id="genai-step3">
+                    <span class="genai-step-number">3</span>
+                    <h4>Route to Model</h4>
+                    <p>Select optimal AI model</p>
+                </div>
+                <div class="genai-step" id="genai-step4">
+                    <span class="genai-step-number">4</span>
+                    <h4>Generate Response</h4>
+                    <p>AI model processes request</p>
+                </div>
+                <div class="genai-step" id="genai-step5">
+                    <span class="genai-step-number">5</span>
+                    <h4>Publish to Topic</h4>
+                    <p>Response published for distribution</p>
+                </div>
+                <div class="genai-step" id="genai-step6">
+                    <span class="genai-step-number">6</span>
+                    <h4>Distribute</h4>
+                    <p>Content sent to all channels</p>
+                </div>
+            </div>
+
+            <!-- Data Panel -->
+            <div class="genai-data-panel">
+                <h3>📋 Sample AI Request/Response Data</h3>
+                <div class="genai-data-tabs">
+                    <div class="genai-data-tab active" onclick="showGenAIData('prompt')">Input Prompt</div>
+                    <div class="genai-data-tab" onclick="showGenAIData('request')">AI Request</div>
+                    <div class="genai-data-tab" onclick="showGenAIData('response')">Model Response</div>
+                    <div class="genai-data-tab" onclick="showGenAIData('output')">Formatted Output</div>
+                </div>
+                <div class="genai-data-content active" id="genai-data-prompt">
+<pre>{
+  "input_type": "text",
+  "source": "web_chat",
+  "session_id": "SESS-2024-789456",
+  "timestamp": "2024-02-12T14:32:18Z",
+  "user": {
+    "id": "USER-12345",
+    "tier": "enterprise"
+  },
+  "prompt": {
+    "text": "Generate a professional email to notify customers about our new AI-powered product launch.",
+    "language": "en",
+    "tone": "professional"
+  }
+}</pre>
+                </div>
+                <div class="genai-data-content" id="genai-data-request">
+<pre>{
+  "request_id": "REQ-2024-AI-789456",
+  "model_selection": {
+    "primary": "gpt-4-turbo",
+    "fallback": "claude-3-opus"
+  },
+  "normalized_input": {
+    "type": "TEXT_GENERATION",
+    "task": "EMAIL_COMPOSITION"
+  },
+  "guardrails": {
+    "content_filter": true,
+    "pii_detection": true
+  }
+}</pre>
+                </div>
+                <div class="genai-data-content" id="genai-data-response">
+<pre>{
+  "response_id": "RESP-2024-AI-789456",
+  "model_used": "gpt-4-turbo",
+  "processing_time_ms": 2340,
+  "tokens_used": { "prompt": 245, "completion": 387 },
+  "generated_content": {
+    "subject": "🚀 Introducing TeX AI Assistant",
+    "body": "Dear Valued Customer,\n\nWe're thrilled to announce the launch of TeX AI Assistant!"
+  },
+  "quality_scores": { "relevance": 0.94, "coherence": 0.97 }
+}</pre>
+                </div>
+                <div class="genai-data-content" id="genai-data-output">
+<pre>{
+  "distribution_id": "DIST-2024-789456",
+  "topic": "ai.responses",
+  "channels_notified": 5,
+  "formatted_outputs": {
+    "cms": { "status": "published" },
+    "email": { "recipients_queued": 15420 },
+    "chat": { "streamed": true },
+    "analytics": { "logged": true },
+    "vector_db": { "indexed": true }
+  }
+}</pre>
+                </div>
+            </div>
+        </div>
+        <!-- End GenAI Demo Content -->
+
+        <!-- Vibe Coding Demo Content -->
+        <div class="demo-content" id="demo-vibe">
+            <div class="demo-title">
+                <h2>✨ Vibe Coding - Build Integrations with Natural Language</h2>
+                <p>Describe what you want in plain English → TeX generates production-ready integration code</p>
+            </div>
+
+            <!-- Main Builder Layout -->
+            <div class="vibe-builder-layout">
+                <!-- Chat Panel -->
+                <div class="vibe-chat-panel">
+                    <div class="vibe-chat-header">
+                        <span class="vibe-chat-header-icon">💬</span>
+                        <h3>Integration Assistant</h3>
+                        <span>Powered by TeX AI</span>
+                    </div>
+                    <div class="vibe-chat-messages" id="vibeChatMessages">
+                        <div class="vibe-message assistant">
+                            <span class="icon">🤖</span>
+                            Hi! I'm your TeX Integration Assistant. Describe the integration you want to build in plain English, and I'll generate the code for you.
+                        </div>
+                    </div>
+                    <div class="vibe-chat-input-area">
+                        <input type="text" class="vibe-chat-input" id="vibeChatInput" placeholder="Describe your integration... (e.g., 'Connect Salesforce to SAP')" onkeypress="vibeHandleKeyPress(event)">
+                        <button class="vibe-send-btn" onclick="vibeSendMessage()">Send →</button>
+                    </div>
+                </div>
+
+                <!-- Code Panel -->
+                <div class="vibe-code-panel">
+                    <div class="vibe-code-header">
+                        <div class="vibe-code-dot red"></div>
+                        <div class="vibe-code-dot yellow"></div>
+                        <div class="vibe-code-dot green"></div>
+                        <div class="vibe-code-tabs">
+                            <button class="vibe-code-tab active" onclick="vibeShowCodeTab('flow', event)">Flow.java</button>
+                            <button class="vibe-code-tab" onclick="vibeShowCodeTab('config', event)">module.xml</button>
+                            <button class="vibe-code-tab" onclick="vibeShowCodeTab('test', event)">FlowTest.java</button>
+                        </div>
+                    </div>
+                    <div class="vibe-code-content" id="vibeCodeContent">
+                        <pre id="vibe-code-flow" class="active"><span class="comment">// 🎯 Your generated integration code will appear here</span>
+<span class="comment">// Try one of the example prompts below or type your own!</span>
+
+<span class="keyword">package</span> com.tex.integration;
+
+<span class="annotation">@Flow</span>(<span class="string">"my-integration"</span>)
+<span class="keyword">public class</span> <span class="type">MyIntegrationFlow</span> {
+
+    <span class="comment">// Describe your integration in natural language</span>
+    <span class="comment">// and watch the magic happen! ✨</span>
+
+}</pre>
+                        <pre id="vibe-code-config" style="display:none;"><span class="comment">&lt;!-- Module configuration will be generated here --&gt;</span>
+
+<span class="keyword">&lt;module</span> <span class="function">name</span>=<span class="string">"my-integration"</span><span class="keyword">&gt;</span>
+    <span class="comment">&lt;!-- Components will be auto-configured --&gt;</span>
+<span class="keyword">&lt;/module&gt;</span></pre>
+                        <pre id="vibe-code-test" style="display:none;"><span class="comment">// Unit tests will be generated here</span>
+
+<span class="keyword">package</span> com.tex.integration;
+
+<span class="annotation">@Test</span>
+<span class="keyword">public class</span> <span class="type">MyIntegrationFlowTest</span> {
+
+    <span class="annotation">@Test</span>
+    <span class="keyword">void</span> <span class="function">testFlow</span>() {
+        <span class="comment">// Test cases auto-generated</span>
+    }
+}</pre>
+                    </div>
+                    <div class="vibe-code-status">
+                        <div class="vibe-status-indicator">
+                            <div class="vibe-status-dot"></div>
+                            <span>Ready</span>
+                        </div>
+                        <span>|</span>
+                        <span id="vibeCodeStats">Lines: 0 | Components: 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flow Preview -->
+            <div class="vibe-flow-preview">
+                <h3>🔄 Generated Integration Flow</h3>
+                <div class="vibe-flow-diagram" id="vibeFlowDiagram">
+                    <div class="vibe-flow-node source" id="vibe-node-source">📥 Source</div>
+                    <div class="vibe-flow-arrow">→</div>
+                    <div class="vibe-flow-node process" id="vibe-node-process">⚙️ Process</div>
+                    <div class="vibe-flow-arrow">→</div>
+                    <div class="vibe-flow-node target" id="vibe-node-target">📤 Target</div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="vibe-controls">
+                <button class="vibe-btn vibe-btn-primary" onclick="vibeRunDemo()">▶️ Run Demo Conversation</button>
+                <button class="vibe-btn vibe-btn-secondary" onclick="vibeResetDemo()">🔄 Reset</button>
+                <button class="vibe-btn vibe-btn-secondary" onclick="vibeDeployFlow()">🚀 Deploy to TeX</button>
+            </div>
+
+            <!-- Example Prompts -->
+            <div class="vibe-example-prompts">
+                <h3>💡 Example Integration Prompts</h3>
+                <div class="vibe-prompt-cards">
+                    <div class="vibe-prompt-card" onclick="vibeUsePrompt('salesforce-sap')">
+                        <h4>🔗 CRM to ERP</h4>
+                        <p>"Connect Salesforce to SAP - when a new opportunity is won, create a sales order in SAP with customer and product details"</p>
+                    </div>
+                    <div class="vibe-prompt-card" onclick="vibeUsePrompt('file-db')">
+                        <h4>📁 File to Database</h4>
+                        <p>"Watch an SFTP folder for CSV files, validate the data, transform to JSON, and insert into PostgreSQL database"</p>
+                    </div>
+                    <div class="vibe-prompt-card" onclick="vibeUsePrompt('api-queue')">
+                        <h4>🌐 API to Queue</h4>
+                        <p>"Create a REST API endpoint that receives orders, validates them against business rules, and publishes to a Kafka topic"</p>
+                    </div>
+                    <div class="vibe-prompt-card" onclick="vibeUsePrompt('event-notify')">
+                        <h4>📧 Event Notification</h4>
+                        <p>"Monitor a database table for changes, when inventory drops below threshold, send email alerts and update Slack channel"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="vibe-legend">
+                <div class="vibe-legend-item"><div class="vibe-legend-color" style="border-color: var(--vibe-blue); background: #eff6ff;"></div>Source System</div>
+                <div class="vibe-legend-item"><div class="vibe-legend-color" style="border-color: var(--vibe-purple); background: #f5f3ff;"></div>Processing</div>
+                <div class="vibe-legend-item"><div class="vibe-legend-color" style="border-color: var(--vibe-green); background: #f0fdf4;"></div>Target System</div>
+                <div class="vibe-legend-item"><div class="vibe-legend-color" style="border-color: var(--vibe-orange); background: #fffbeb;"></div>TeX Platform</div>
+            </div>
+        </div>
+        <!-- End Vibe Coding Demo Content -->
     </div>
 
     <script>
@@ -2199,9 +3438,12 @@ Volume Published:       10,000,000 USD
 
         // Tab switching
         function switchDemo(demoId) {
-            // Reset both demos
+            // Reset all demos
             resetDemo();
             resetSurvDemo();
+            if (typeof resetRetailAnimation === 'function') resetRetailAnimation();
+            if (typeof resetGenAIAnimation === 'function') resetGenAIAnimation();
+            if (typeof vibeResetDemo === 'function') vibeResetDemo();
 
             // Update tabs
             document.querySelectorAll('.demo-tab').forEach(tab => tab.classList.remove('active'));
@@ -2452,6 +3694,642 @@ Volume Published:       10,000,000 USD
 
             event.target.classList.add('active');
             document.getElementById('surv-data-' + type).classList.add('active');
+        }
+
+        // ===== RETAIL DEMO SCRIPTS =====
+        let retailAnimationRunning = false;
+
+        function retailUpdateStatus(message) {
+            document.getElementById('retailStatusText').textContent = message;
+        }
+
+        function retailHighlightComponent(id) {
+            const comp = document.querySelector(`#${id} .component-box`);
+            if (comp) {
+                comp.classList.add('highlight');
+                setTimeout(() => comp.classList.remove('highlight'), 800);
+            }
+        }
+
+        function retailActivateStep(stepNum) {
+            for (let i = 1; i <= 6; i++) {
+                const step = document.getElementById(`retail-step${i}`);
+                step.classList.remove('active', 'complete');
+                if (i < stepNum) step.classList.add('complete');
+                else if (i === stepNum) step.classList.add('active');
+            }
+        }
+
+        async function startRetailAnimation() {
+            if (retailAnimationRunning) return;
+            retailAnimationRunning = true;
+            resetRetailAnimation();
+
+            const channels = ['retail-comp-web', 'retail-comp-mobile', 'retail-comp-store', 'retail-comp-call', 'retail-comp-marketplace'];
+            const randomChannel = channels[Math.floor(Math.random() * channels.length)];
+
+            // Step 1: Order received
+            retailActivateStep(1);
+            retailHighlightComponent(randomChannel);
+            retailUpdateStatus('📱 Order received from ' + randomChannel.replace('retail-comp-', '').toUpperCase() + ' channel...');
+            await retailSleep(1200);
+
+            // Step 2: Normalize & Validate
+            retailActivateStep(2);
+            retailHighlightComponent('retail-comp-consumer');
+            retailUpdateStatus('📥 Ingesting order via multi-channel API...');
+            await retailSleep(800);
+            retailHighlightComponent('retail-comp-normalizer');
+            retailUpdateStatus('🔄 Normalizing order to unified format...');
+            await retailSleep(800);
+            retailHighlightComponent('retail-comp-validator');
+            retailUpdateStatus('✅ Validating order against business rules...');
+            await retailSleep(800);
+
+            // Step 3: Enrich
+            retailActivateStep(3);
+            retailHighlightComponent('retail-comp-enricher');
+            retailUpdateStatus('📊 Enriching with customer profile and product data...');
+            await retailSleep(1000);
+
+            // Step 4: Publish
+            retailActivateStep(4);
+            document.getElementById('retail-order-topic').style.boxShadow = '0 0 25px rgba(46,204,113,0.6)';
+            retailUpdateStatus('📦 Publishing validated order to orders.validated topic...');
+            await retailSleep(1000);
+
+            // Step 5: Parallel processing
+            retailActivateStep(5);
+            retailUpdateStatus('⚡ Parallel distribution to all subscribers...');
+            document.querySelectorAll('.retail-subscriber-flow .component-box').forEach((box, i) => {
+                setTimeout(() => box.classList.add('highlight'), i * 150);
+                setTimeout(() => box.classList.remove('highlight'), i * 150 + 800);
+            });
+            await retailSleep(1500);
+
+            // Step 6: Complete
+            retailActivateStep(6);
+            document.getElementById('retail-order-topic').style.boxShadow = '';
+            retailUpdateStatus('✅ Order ORD-2024-789456 successfully processed and distributed to all systems!');
+            retailAnimationRunning = false;
+        }
+
+        function resetRetailAnimation() {
+            retailAnimationRunning = false;
+            for (let i = 1; i <= 6; i++) {
+                const step = document.getElementById(`retail-step${i}`);
+                if (step) step.classList.remove('active', 'complete');
+            }
+            const retailContainer = document.getElementById('demo-retail');
+            if (retailContainer) {
+                retailContainer.querySelectorAll('.component-box').forEach(box => box.classList.remove('highlight'));
+            }
+            const topic = document.getElementById('retail-order-topic');
+            if (topic) topic.style.boxShadow = '';
+            retailUpdateStatus('Ready to process order...');
+        }
+
+        function retailSleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function showRetailData(tabName) {
+            const panel = document.getElementById('demo-retail');
+            panel.querySelectorAll('.retail-data-tab').forEach(tab => tab.classList.remove('active'));
+            panel.querySelectorAll('.retail-data-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(`retail-data-${tabName}`).classList.add('active');
+        }
+
+        // ===== GENAI DEMO SCRIPTS =====
+        let genaiAnimationRunning = false;
+
+        function genaiUpdateStatus(message) {
+            document.getElementById('genaiStatusText').textContent = message;
+        }
+
+        function genaiHighlightComponent(id) {
+            const comp = document.querySelector(`#${id} .genai-component-box`);
+            if (comp) {
+                comp.classList.add('highlight');
+                setTimeout(() => comp.classList.remove('highlight'), 800);
+            }
+        }
+
+        function genaiHighlightModel(id) {
+            const model = document.getElementById(id);
+            if (model) {
+                model.classList.add('highlight');
+                setTimeout(() => model.classList.remove('highlight'), 1200);
+            }
+        }
+
+        function genaiActivateStep(stepNum) {
+            for (let i = 1; i <= 6; i++) {
+                const step = document.getElementById(`genai-step${i}`);
+                if (step) {
+                    step.classList.remove('active', 'complete');
+                    if (i < stepNum) step.classList.add('complete');
+                    else if (i === stepNum) step.classList.add('active');
+                }
+            }
+        }
+
+        async function startGenAIAnimation() {
+            if (genaiAnimationRunning) return;
+            genaiAnimationRunning = true;
+            resetGenAIAnimation();
+
+            const inputs = ['genai-comp-text', 'genai-comp-image', 'genai-comp-audio', 'genai-comp-doc'];
+            const models = ['genai-model-gpt', 'genai-model-dalle', 'genai-model-whisper', 'genai-model-embed'];
+            const randomInput = inputs[Math.floor(Math.random() * inputs.length)];
+            const randomModel = models[Math.floor(Math.random() * models.length)];
+
+            // Step 1: Input received
+            genaiActivateStep(1);
+            genaiHighlightComponent(randomInput);
+            const inputType = randomInput.replace('genai-comp-', '').toUpperCase();
+            genaiUpdateStatus(`📥 ${inputType} input received from user...`);
+            await genaiSleep(1200);
+
+            // Step 2: Pre-process
+            genaiActivateStep(2);
+            genaiHighlightComponent('genai-comp-ingest');
+            genaiUpdateStatus('📥 Ingesting multi-modal input...');
+            await genaiSleep(800);
+            genaiHighlightComponent('genai-comp-preprocess');
+            genaiUpdateStatus('⚙️ Pre-processing and normalizing input...');
+            await genaiSleep(800);
+
+            // Step 3: Route to model
+            genaiActivateStep(3);
+            genaiHighlightComponent('genai-comp-router');
+            genaiUpdateStatus('🔀 Analyzing request and selecting optimal AI model...');
+            await genaiSleep(1000);
+
+            // Step 4: Generate response
+            genaiActivateStep(4);
+            genaiHighlightModel(randomModel);
+            const modelName = randomModel === 'genai-model-gpt' ? 'GPT-4' :
+                             randomModel === 'genai-model-dalle' ? 'DALL-E' :
+                             randomModel === 'genai-model-whisper' ? 'Whisper' : 'Embeddings';
+            genaiUpdateStatus(`🧠 ${modelName} processing request...`);
+            await genaiSleep(1500);
+            genaiUpdateStatus(`✨ ${modelName} generating response...`);
+            await genaiSleep(1000);
+
+            // Step 5: Publish to topic
+            genaiActivateStep(5);
+            document.getElementById('genai-ai-topic').style.boxShadow = '0 0 25px rgba(124,58,237,0.6)';
+            genaiUpdateStatus('📦 Publishing AI response to ai.responses topic...');
+            await genaiSleep(1000);
+
+            // Step 6: Distribute
+            genaiActivateStep(6);
+            genaiUpdateStatus('⚡ Distributing to all subscriber channels...');
+            document.querySelectorAll('.genai-subscriber-flow .genai-component-box').forEach((box, i) => {
+                setTimeout(() => box.classList.add('highlight'), i * 100);
+                setTimeout(() => box.classList.remove('highlight'), i * 100 + 800);
+            });
+            await genaiSleep(1500);
+
+            document.getElementById('genai-ai-topic').style.boxShadow = '';
+            genaiUpdateStatus('✅ AI workflow complete! Response delivered to 5 channels in 2.34 seconds');
+            genaiAnimationRunning = false;
+        }
+
+        function resetGenAIAnimation() {
+            genaiAnimationRunning = false;
+            for (let i = 1; i <= 6; i++) {
+                const step = document.getElementById(`genai-step${i}`);
+                if (step) step.classList.remove('active', 'complete');
+            }
+            const genaiContainer = document.getElementById('demo-genai');
+            if (genaiContainer) {
+                genaiContainer.querySelectorAll('.genai-component-box').forEach(box => box.classList.remove('highlight'));
+                genaiContainer.querySelectorAll('.genai-model-card').forEach(card => card.classList.remove('highlight'));
+            }
+            const topic = document.getElementById('genai-ai-topic');
+            if (topic) topic.style.boxShadow = '';
+            genaiUpdateStatus('Ready to process AI request...');
+        }
+
+        function genaiSleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function showGenAIData(tabName) {
+            const panel = document.getElementById('demo-genai');
+            panel.querySelectorAll('.genai-data-tab').forEach(tab => tab.classList.remove('active'));
+            panel.querySelectorAll('.genai-data-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(`genai-data-${tabName}`).classList.add('active');
+        }
+
+        // ==================== VIBE CODING DEMO ====================
+        const vibePrompts = {
+            'salesforce-sap': {
+                userMessage: "Connect Salesforce to SAP - when a new opportunity is won, create a sales order in SAP with customer and product details",
+                flow: [
+                    { name: "📊 Salesforce", type: "source" },
+                    { name: "🔍 Filter Won", type: "process" },
+                    { name: "🔄 Transform", type: "process" },
+                    { name: "✅ Validate", type: "process" },
+                    { name: "📦 SAP S/4HANA", type: "target" }
+                ],
+                code: `<span class="keyword">package</span> com.tex.integration.crm;
+
+<span class="annotation">@Flow</span>(<span class="string">"salesforce-to-sap-orders"</span>)
+<span class="annotation">@Description</span>(<span class="string">"Sync won opportunities from Salesforce to SAP Sales Orders"</span>)
+<span class="keyword">public class</span> <span class="type">SalesforceToSapFlow</span> {
+
+    <span class="annotation">@Consumer</span>(type = <span class="type">SalesforceConsumer</span>.<span class="keyword">class</span>)
+    <span class="annotation">@Endpoint</span>(sobject = <span class="string">"Opportunity"</span>, event = <span class="string">"UPDATED"</span>)
+    <span class="keyword">private</span> <span class="type">Consumer</span> salesforceConsumer;
+
+    <span class="annotation">@Filter</span>
+    <span class="keyword">public boolean</span> <span class="function">filterWonOpportunities</span>(<span class="type">Opportunity</span> opp) {
+        <span class="keyword">return</span> <span class="string">"Closed Won"</span>.equals(opp.getStageName());
+    }
+
+    <span class="annotation">@Converter</span>
+    <span class="keyword">public</span> <span class="type">SapSalesOrder</span> <span class="function">transformToSalesOrder</span>(<span class="type">Opportunity</span> opp) {
+        <span class="keyword">return</span> <span class="type">SapSalesOrder</span>.builder()
+            .customerId(opp.getAccountId())
+            .orderDate(<span class="type">LocalDate</span>.now())
+            .totalAmount(opp.getAmount())
+            .build();
+    }
+
+    <span class="annotation">@Producer</span>(type = <span class="type">SapProducer</span>.<span class="keyword">class</span>)
+    <span class="annotation">@Endpoint</span>(bapi = <span class="string">"BAPI_SALESORDER_CREATEFROMDAT2"</span>)
+    <span class="keyword">private</span> <span class="type">Producer</span> sapProducer;
+}`,
+                config: `<span class="keyword">&lt;module</span> <span class="function">name</span>=<span class="string">"salesforce-to-sap-orders"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;flow</span> <span class="function">name</span>=<span class="string">"opportunity-sync"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;consumer</span> <span class="function">type</span>=<span class="string">"salesforce"</span><span class="keyword">&gt;</span>
+            <span class="keyword">&lt;property</span> <span class="function">name</span>=<span class="string">"sobject"</span><span class="keyword">&gt;</span>Opportunity<span class="keyword">&lt;/property&gt;</span>
+        <span class="keyword">&lt;/consumer&gt;</span>
+        <span class="keyword">&lt;filter</span> <span class="function">ref</span>=<span class="string">"wonOpportunityFilter"</span><span class="keyword">/&gt;</span>
+        <span class="keyword">&lt;converter</span> <span class="function">ref</span>=<span class="string">"opportunityToSalesOrderConverter"</span><span class="keyword">/&gt;</span>
+        <span class="keyword">&lt;producer</span> <span class="function">type</span>=<span class="string">"sap-rfc"</span><span class="keyword">&gt;</span>
+            <span class="keyword">&lt;property</span> <span class="function">name</span>=<span class="string">"bapi"</span><span class="keyword">&gt;</span>BAPI_SALESORDER_CREATEFROMDAT2<span class="keyword">&lt;/property&gt;</span>
+        <span class="keyword">&lt;/producer&gt;</span>
+    <span class="keyword">&lt;/flow&gt;</span>
+<span class="keyword">&lt;/module&gt;</span>`,
+                test: `<span class="keyword">package</span> com.tex.integration.crm;
+
+<span class="annotation">@ExtendWith</span>(<span class="type">TexTestExtension</span>.<span class="keyword">class</span>)
+<span class="keyword">class</span> <span class="type">SalesforceToSapFlowTest</span> {
+
+    <span class="annotation">@InjectFlow</span>
+    <span class="keyword">private</span> <span class="type">SalesforceToSapFlow</span> flow;
+
+    <span class="annotation">@Test</span>
+    <span class="keyword">void</span> <span class="function">shouldCreateSalesOrderForWonOpportunity</span>() {
+        <span class="type">Opportunity</span> wonOpp = <span class="type">TestDataBuilder</span>.opportunity()
+            .stageName(<span class="string">"Closed Won"</span>).amount(<span class="number">50000.00</span>).build();
+        <span class="type">FlowResult</span> result = flow.process(wonOpp);
+        assertThat(result.isSuccess()).isTrue();
+    }
+}`,
+                stats: "Lines: 38 | Components: 5"
+            },
+            'file-db': {
+                userMessage: "Watch an SFTP folder for CSV files, validate the data, transform to JSON, and insert into PostgreSQL database",
+                flow: [
+                    { name: "📁 SFTP", type: "source" },
+                    { name: "📄 Parse CSV", type: "process" },
+                    { name: "✅ Validate", type: "process" },
+                    { name: "🔄 To JSON", type: "process" },
+                    { name: "🗄️ PostgreSQL", type: "target" }
+                ],
+                code: `<span class="keyword">package</span> com.tex.integration.etl;
+
+<span class="annotation">@Flow</span>(<span class="string">"sftp-csv-to-postgres"</span>)
+<span class="annotation">@Scheduled</span>(cron = <span class="string">"0 */5 * * * *"</span>)
+<span class="keyword">public class</span> <span class="type">SftpCsvToPostgresFlow</span> {
+
+    <span class="annotation">@Consumer</span>(type = <span class="type">SftpConsumer</span>.<span class="keyword">class</span>)
+    <span class="annotation">@Endpoint</span>(host = <span class="string">"\${sftp.host}"</span>, directory = <span class="string">"/incoming/data"</span>, filePattern = <span class="string">"*.csv"</span>)
+    <span class="keyword">private</span> <span class="type">Consumer</span> sftpConsumer;
+
+    <span class="annotation">@Converter</span>
+    <span class="keyword">public</span> <span class="type">List</span>&lt;<span class="type">DataRecord</span>&gt; <span class="function">parseCsv</span>(<span class="type">InputStream</span> file) {
+        <span class="keyword">return</span> <span class="type">CsvParser</span>.builder().withHeader(<span class="keyword">true</span>).parse(file, <span class="type">DataRecord</span>.<span class="keyword">class</span>);
+    }
+
+    <span class="annotation">@Producer</span>(type = <span class="type">JdbcProducer</span>.<span class="keyword">class</span>)
+    <span class="annotation">@Endpoint</span>(datasource = <span class="string">"postgresDS"</span>, sql = <span class="string">"INSERT INTO data_records..."</span>)
+    <span class="keyword">private</span> <span class="type">Producer</span> postgresProducer;
+}`,
+                config: `<span class="keyword">&lt;module</span> <span class="function">name</span>=<span class="string">"sftp-csv-to-postgres"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;flow</span> <span class="function">name</span>=<span class="string">"csv-import"</span> <span class="function">scheduled</span>=<span class="string">"true"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;consumer</span> <span class="function">type</span>=<span class="string">"sftp"</span><span class="keyword">/&gt;</span>
+        <span class="keyword">&lt;converter</span> <span class="function">ref</span>=<span class="string">"csvParser"</span><span class="keyword">/&gt;</span>
+        <span class="keyword">&lt;producer</span> <span class="function">type</span>=<span class="string">"jdbc"</span><span class="keyword">/&gt;</span>
+    <span class="keyword">&lt;/flow&gt;</span>
+<span class="keyword">&lt;/module&gt;</span>`,
+                test: `<span class="keyword">package</span> com.tex.integration.etl;
+
+<span class="annotation">@ExtendWith</span>(<span class="type">TexTestExtension</span>.<span class="keyword">class</span>)
+<span class="keyword">class</span> <span class="type">SftpCsvToPostgresFlowTest</span> {
+
+    <span class="annotation">@Test</span>
+    <span class="keyword">void</span> <span class="function">shouldParseCsvAndInsertToDatabase</span>() {
+        <span class="type">String</span> csvContent = <span class="string">"id,name\\n1,John"</span>;
+        <span class="type">FlowResult</span> result = flow.process(csvContent);
+        assertThat(result.isSuccess()).isTrue();
+    }
+}`,
+                stats: "Lines: 42 | Components: 5"
+            },
+            'api-queue': {
+                userMessage: "Create a REST API endpoint that receives orders, validates them against business rules, and publishes to a Kafka topic",
+                flow: [
+                    { name: "🌐 REST API", type: "source" },
+                    { name: "✅ Validate", type: "process" },
+                    { name: "🔄 Enrich", type: "process" },
+                    { name: "📦 Kafka", type: "target" }
+                ],
+                code: `<span class="keyword">package</span> com.tex.integration.api;
+
+<span class="annotation">@Flow</span>(<span class="string">"order-api-to-kafka"</span>)
+<span class="keyword">public class</span> <span class="type">OrderApiToKafkaFlow</span> {
+
+    <span class="annotation">@Consumer</span>(type = <span class="type">RestConsumer</span>.<span class="keyword">class</span>)
+    <span class="annotation">@Endpoint</span>(path = <span class="string">"/api/v1/orders"</span>, method = <span class="string">"POST"</span>)
+    <span class="keyword">private</span> <span class="type">Consumer</span> restConsumer;
+
+    <span class="annotation">@Validator</span>
+    <span class="keyword">public void</span> <span class="function">validateOrder</span>(<span class="type">Order</span> order) {
+        <span class="type">ValidationUtils</span>.requireNonNull(order.getCustomerId(), <span class="string">"Customer ID"</span>);
+        <span class="keyword">if</span> (order.getTotalAmount() < <span class="number">10.00</span>)
+            <span class="keyword">throw new</span> <span class="type">ValidationException</span>(<span class="string">"Min order value is $10"</span>);
+    }
+
+    <span class="annotation">@Producer</span>(type = <span class="type">KafkaProducer</span>.<span class="keyword">class</span>)
+    <span class="annotation">@Endpoint</span>(topic = <span class="string">"orders.received"</span>)
+    <span class="keyword">private</span> <span class="type">Producer</span> kafkaProducer;
+}`,
+                config: `<span class="keyword">&lt;module</span> <span class="function">name</span>=<span class="string">"order-api-to-kafka"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;flow</span> <span class="function">name</span>=<span class="string">"order-ingestion"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;consumer</span> <span class="function">type</span>=<span class="string">"rest"</span><span class="keyword">/&gt;</span>
+        <span class="keyword">&lt;validator</span> <span class="function">ref</span>=<span class="string">"orderValidator"</span><span class="keyword">/&gt;</span>
+        <span class="keyword">&lt;producer</span> <span class="function">type</span>=<span class="string">"kafka"</span><span class="keyword">/&gt;</span>
+    <span class="keyword">&lt;/flow&gt;</span>
+<span class="keyword">&lt;/module&gt;</span>`,
+                test: `<span class="keyword">package</span> com.tex.integration.api;
+
+<span class="annotation">@Test</span>
+<span class="keyword">void</span> <span class="function">shouldPublishValidOrderToKafka</span>() {
+    <span class="type">Order</span> order = <span class="type">Order</span>.builder()
+        .customerId(<span class="string">"CUST-123"</span>).totalAmount(<span class="number">99.99</span>).build();
+    assertThat(flow.process(order).isSuccess()).isTrue();
+}`,
+                stats: "Lines: 36 | Components: 4"
+            },
+            'event-notify': {
+                userMessage: "Monitor a database table for changes, when inventory drops below threshold, send email alerts and update Slack channel",
+                flow: [
+                    { name: "🗄️ DB Monitor", type: "source" },
+                    { name: "🔍 Check Level", type: "process" },
+                    { name: "📧 Email", type: "target" },
+                    { name: "💬 Slack", type: "target" }
+                ],
+                code: `<span class="keyword">package</span> com.tex.integration.alerts;
+
+<span class="annotation">@Flow</span>(<span class="string">"inventory-alert-flow"</span>)
+<span class="annotation">@Scheduled</span>(cron = <span class="string">"0 */15 * * * *"</span>)
+<span class="keyword">public class</span> <span class="type">InventoryAlertFlow</span> {
+
+    <span class="annotation">@Value</span>(<span class="string">"\${inventory.threshold:100}"</span>)
+    <span class="keyword">private int</span> threshold;
+
+    <span class="annotation">@Consumer</span>(type = <span class="type">JdbcConsumer</span>.<span class="keyword">class</span>)
+    <span class="annotation">@Endpoint</span>(sql = <span class="string">"SELECT * FROM inventory WHERE quantity < :threshold"</span>)
+    <span class="keyword">private</span> <span class="type">Consumer</span> dbConsumer;
+
+    <span class="annotation">@MultiRecipientRouter</span>
+    <span class="keyword">public</span> <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="function">routeAlert</span>(<span class="type">AlertMessage</span> alert) {
+        <span class="keyword">return</span> <span class="type">List</span>.of(<span class="string">"email-producer"</span>, <span class="string">"slack-producer"</span>);
+    }
+
+    <span class="annotation">@Producer</span>(name = <span class="string">"email-producer"</span>, type = <span class="type">SmtpProducer</span>.<span class="keyword">class</span>)
+    <span class="keyword">private</span> <span class="type">Producer</span> emailProducer;
+
+    <span class="annotation">@Producer</span>(name = <span class="string">"slack-producer"</span>, type = <span class="type">SlackProducer</span>.<span class="keyword">class</span>)
+    <span class="keyword">private</span> <span class="type">Producer</span> slackProducer;
+}`,
+                config: `<span class="keyword">&lt;module</span> <span class="function">name</span>=<span class="string">"inventory-alert-flow"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;flow</span> <span class="function">name</span>=<span class="string">"low-stock-alerts"</span> <span class="function">scheduled</span>=<span class="string">"true"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;consumer</span> <span class="function">type</span>=<span class="string">"jdbc"</span><span class="keyword">/&gt;</span>
+        <span class="keyword">&lt;router</span> <span class="function">type</span>=<span class="string">"multi-recipient"</span><span class="keyword">/&gt;</span>
+        <span class="keyword">&lt;producer</span> <span class="function">name</span>=<span class="string">"email-producer"</span> <span class="function">type</span>=<span class="string">"smtp"</span><span class="keyword">/&gt;</span>
+        <span class="keyword">&lt;producer</span> <span class="function">name</span>=<span class="string">"slack-producer"</span> <span class="function">type</span>=<span class="string">"slack"</span><span class="keyword">/&gt;</span>
+    <span class="keyword">&lt;/flow&gt;</span>
+<span class="keyword">&lt;/module&gt;</span>`,
+                test: `<span class="keyword">package</span> com.tex.integration.alerts;
+
+<span class="annotation">@Test</span>
+<span class="keyword">void</span> <span class="function">shouldSendAlertForLowInventory</span>() {
+    <span class="type">InventoryItem</span> lowItem = <span class="type">InventoryItem</span>.builder()
+        .sku(<span class="string">"SKU-001"</span>).quantity(<span class="number">50</span>).build();
+    assertThat(flow.process(lowItem).getProducersInvoked())
+        .contains(<span class="string">"email-producer"</span>, <span class="string">"slack-producer"</span>);
+}`,
+                stats: "Lines: 45 | Components: 5"
+            }
+        };
+
+        let vibeIsProcessing = false;
+
+        function vibeHandleKeyPress(event) {
+            if (event.key === 'Enter' && !vibeIsProcessing) {
+                vibeSendMessage();
+            }
+        }
+
+        function vibeSendMessage() {
+            const input = document.getElementById('vibeChatInput');
+            const message = input.value.trim();
+            if (!message || vibeIsProcessing) return;
+
+            vibeAddMessage(message, 'user');
+            input.value = '';
+            vibeShowTypingIndicator();
+            vibeIsProcessing = true;
+
+            setTimeout(() => {
+                vibeHideTypingIndicator();
+                vibeProcessUserMessage(message);
+                vibeIsProcessing = false;
+            }, 1500);
+        }
+
+        function vibeAddMessage(text, type) {
+            const container = document.getElementById('vibeChatMessages');
+            const msg = document.createElement('div');
+            msg.className = `vibe-message ${type}`;
+            if (type === 'assistant') {
+                msg.innerHTML = `<span class="icon">🤖</span>${text}`;
+            } else {
+                msg.textContent = text;
+            }
+            container.appendChild(msg);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function vibeShowTypingIndicator() {
+            const container = document.getElementById('vibeChatMessages');
+            const indicator = document.createElement('div');
+            indicator.className = 'vibe-typing-indicator';
+            indicator.id = 'vibeTypingIndicator';
+            indicator.innerHTML = '<span></span><span></span><span></span>';
+            container.appendChild(indicator);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function vibeHideTypingIndicator() {
+            const indicator = document.getElementById('vibeTypingIndicator');
+            if (indicator) indicator.remove();
+        }
+
+        function vibeProcessUserMessage(message) {
+            let matchedPrompt = null;
+            const lowerMessage = message.toLowerCase();
+
+            if (lowerMessage.includes('salesforce') || lowerMessage.includes('sap') || lowerMessage.includes('crm')) {
+                matchedPrompt = vibePrompts['salesforce-sap'];
+            } else if (lowerMessage.includes('sftp') || lowerMessage.includes('csv') || lowerMessage.includes('file')) {
+                matchedPrompt = vibePrompts['file-db'];
+            } else if (lowerMessage.includes('api') || lowerMessage.includes('rest') || lowerMessage.includes('kafka')) {
+                matchedPrompt = vibePrompts['api-queue'];
+            } else if (lowerMessage.includes('monitor') || lowerMessage.includes('alert') || lowerMessage.includes('email') || lowerMessage.includes('slack')) {
+                matchedPrompt = vibePrompts['event-notify'];
+            }
+
+            if (matchedPrompt) {
+                vibeGenerateIntegration(matchedPrompt);
+            } else {
+                vibeAddMessage("I understand you want to build an integration. Let me analyze your requirements and generate the code...", 'assistant');
+                setTimeout(() => {
+                    vibeAddMessage("✅ I've created a basic integration flow template. Try one of the example prompts below for a more specific implementation!", 'assistant');
+                }, 1000);
+            }
+        }
+
+        function vibeGenerateIntegration(promptData) {
+            vibeAddMessage("I understand! Let me generate that integration for you...", 'assistant');
+
+            setTimeout(() => {
+                vibeUpdateFlowDiagram(promptData.flow);
+                document.getElementById('vibe-code-flow').innerHTML = promptData.code;
+                document.getElementById('vibe-code-config').innerHTML = promptData.config;
+                document.getElementById('vibe-code-test').innerHTML = promptData.test;
+                document.getElementById('vibeCodeStats').textContent = promptData.stats;
+
+                vibeAddMessage("✅ Done! I've generated:<br>• <strong>Flow.java</strong> - Main integration logic<br>• <strong>module.xml</strong> - Configuration<br>• <strong>FlowTest.java</strong> - Unit tests<br><br>Click 'Deploy to TeX' when ready!", 'assistant');
+            }, 1000);
+        }
+
+        function vibeUpdateFlowDiagram(flowNodes) {
+            const diagram = document.getElementById('vibeFlowDiagram');
+            diagram.innerHTML = '';
+
+            flowNodes.forEach((node, index) => {
+                const nodeEl = document.createElement('div');
+                nodeEl.className = `vibe-flow-node ${node.type}`;
+                nodeEl.textContent = node.name;
+                nodeEl.id = `vibe-flow-node-${index}`;
+                diagram.appendChild(nodeEl);
+
+                if (index < flowNodes.length - 1) {
+                    const arrow = document.createElement('div');
+                    arrow.className = 'vibe-flow-arrow';
+                    arrow.textContent = '→';
+                    diagram.appendChild(arrow);
+                }
+            });
+
+            flowNodes.forEach((_, index) => {
+                setTimeout(() => {
+                    const node = document.getElementById(`vibe-flow-node-${index}`);
+                    if (node) node.classList.add('highlight');
+                    setTimeout(() => node?.classList.remove('highlight'), 500);
+                }, index * 300);
+            });
+        }
+
+        function vibeUsePrompt(promptKey) {
+            const promptData = vibePrompts[promptKey];
+            if (promptData) {
+                document.getElementById('vibeChatInput').value = promptData.userMessage;
+                vibeSendMessage();
+            }
+        }
+
+        function vibeShowCodeTab(tabName, event) {
+            document.querySelectorAll('#demo-vibe .vibe-code-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('#vibeCodeContent pre').forEach(pre => pre.style.display = 'none');
+
+            event.target.classList.add('active');
+            document.getElementById(`vibe-code-${tabName}`).style.display = 'block';
+        }
+
+        async function vibeRunDemo() {
+            vibeResetDemo();
+            await vibeSleep(500);
+
+            vibeAddMessage("Connect Salesforce to SAP - when a new opportunity is won, create a sales order in SAP with customer and product details", 'user');
+            vibeShowTypingIndicator();
+            await vibeSleep(2000);
+            vibeHideTypingIndicator();
+
+            vibeGenerateIntegration(vibePrompts['salesforce-sap']);
+        }
+
+        function vibeResetDemo() {
+            const container = document.getElementById('vibeChatMessages');
+            container.innerHTML = `
+                <div class="vibe-message assistant">
+                    <span class="icon">🤖</span>
+                    Hi! I'm your TeX Integration Assistant. Describe the integration you want to build in plain English, and I'll generate the code for you.
+                </div>
+            `;
+
+            document.getElementById('vibe-code-flow').innerHTML = `<span class="comment">// 🎯 Your generated integration code will appear here</span>
+<span class="comment">// Try one of the example prompts below or type your own!</span>
+
+<span class="keyword">package</span> com.tex.integration;
+
+<span class="annotation">@Flow</span>(<span class="string">"my-integration"</span>)
+<span class="keyword">public class</span> <span class="type">MyIntegrationFlow</span> {
+
+    <span class="comment">// Describe your integration in natural language</span>
+    <span class="comment">// and watch the magic happen! ✨</span>
+
+}`;
+            document.getElementById('vibeCodeStats').textContent = 'Lines: 0 | Components: 0';
+
+            document.getElementById('vibeFlowDiagram').innerHTML = `
+                <div class="vibe-flow-node source" id="vibe-node-source">📥 Source</div>
+                <div class="vibe-flow-arrow">→</div>
+                <div class="vibe-flow-node process" id="vibe-node-process">⚙️ Process</div>
+                <div class="vibe-flow-arrow">→</div>
+                <div class="vibe-flow-node target" id="vibe-node-target">📤 Target</div>
+            `;
+        }
+
+        function vibeDeployFlow() {
+            vibeAddMessage("🚀 Deploying integration to TeX platform...", 'assistant');
+            setTimeout(() => {
+                vibeAddMessage("✅ <strong>Deployment successful!</strong><br>• Module registered<br>• Flow status: RUNNING<br>• Dashboard: <a href='#'>View in TeX Console →</a>", 'assistant');
+            }, 2000);
+        }
+
+        function vibeSleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
     </script>
 </body>

@@ -1118,10 +1118,9 @@
             <div class="tabs">
                 <button class="tab active" onclick="showTab('vibe-coding-tab')" style="background: linear-gradient(90deg, #f97316, #ef4444); color: white;">🎨 Vibe Coding</button>
                 <button class="tab" onclick="showTab('agentic-ai-tab')">🤖 Agentic AI</button>
-                <button class="tab" onclick="showTab('esb-tab')">Enterprise Service Bus</button>
-                <button class="tab" onclick="showTab('scheduler-tab')">Enterprise Scheduler</button>
                 <button class="tab" onclick="showTab('compliance-tab')">📋 Compliance & Audit</button>
                 <button class="tab" onclick="showTab('dashboard-tab')">Management Dashboard</button>
+                <button class="tab" onclick="showTab('scheduler-tab')">Enterprise Scheduler</button>
             </div>
 
             <!-- Vibe Coding Tab -->
@@ -1212,71 +1211,6 @@
                 <div class="highlight-success" style="margin-top: 1.5rem;">
                     <h4>🎯 Self-Service Enablement</h4>
                     <p>Agentic AI democratizes integration management. Business users can interact with agents to understand data flows, troubleshoot issues, and request changes - all without IT intervention for routine tasks. IT maintains governance through approval workflows and policy enforcement.</p>
-                </div>
-            </div>
-
-            <!-- ESB Tab -->
-            <div id="esb-tab" class="tab-content">
-                <h3>Enterprise Service Bus (ESB)</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Robust event/service backbone for enterprise integration <span class="badge" style="background: #8b5cf6;">+ AI-Enhanced</span></p>
-
-                <div class="grid grid-2">
-                    <div class="card">
-                        <h4>Key Features</h4>
-                        <ul>
-                            <li><strong>Modular Architecture:</strong> Build integration modules using flows with reusable components</li>
-                            <li><strong>Spring Boot Native:</strong> Fat-jar deployments with embedded containers</li>
-                            <li><strong>Fluent Builder API:</strong> Declarative Java API for rapid development</li>
-                            <li><strong>Vibe Coding:</strong> <span style="color: #f97316;">NEW!</span> Natural language flow generation</li>
-                            <li><strong>Hot Deployment:</strong> Zero-downtime updates and configuration changes</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h4>Technical Advantages</h4>
-                        <ul>
-                            <li>Loose coupling between systems</li>
-                            <li>High cohesion within integration solutions</li>
-                            <li>Standards-based open technology stack</li>
-                            <li>Production-proven in Financial Services</li>
-                            <li><span style="color: #8b5cf6;">AI-powered</span> pattern recommendations</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scheduler Tab -->
-            <div id="scheduler-tab" class="tab-content">
-                <h3>Enterprise Scheduler</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">AI-enhanced job orchestration and management platform <span class="badge" style="background: #22c55e;">Self-Service Enabled</span></p>
-
-                <div class="grid grid-2">
-                    <div class="card">
-                        <h4>Core Capabilities</h4>
-                        <ul>
-                            <li><strong>Visual Job Design:</strong> Drag-and-drop job plan creation</li>
-                            <li><strong>Complex Dependencies:</strong> Support for AND/OR logic, conditional execution</li>
-                            <li><strong>Distributed Architecture:</strong> Scalable agent-based deployment model</li>
-                            <li><strong>Real-time Monitoring:</strong> Live job status, execution metrics, alerts</li>
-                            <li><strong>Blackout Windows:</strong> Automated job suspension during maintenance</li>
-                            <li><strong>Resource Management:</strong> Intelligent allocation and prioritization</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h4>🤖 AI-Powered Enhancements</h4>
-                        <ul>
-                            <li><strong>Natural Language Scheduling:</strong> "Run this report every Monday at 9am"</li>
-                            <li><strong>Predictive Failure Detection:</strong> AI warns before jobs fail</li>
-                            <li><strong>Auto-Optimization:</strong> Intelligent job sequencing for efficiency</li>
-                            <li><strong>Self-Healing:</strong> Automatic retry with smart backoff</li>
-                            <li><strong>Capacity Forecasting:</strong> ML-based resource planning</li>
-                            <li><strong>Anomaly Alerts:</strong> Detects unusual execution patterns</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="highlight" style="background: linear-gradient(135deg, #ecfdf5, #d1fae5); border-left-color: #22c55e;">
-                    <h4>🎯 Self-Service for Business Users</h4>
-                    <p>Business users can create, schedule, and monitor their own jobs without IT involvement. Natural language interface allows requests like "Generate the monthly compliance report on the last business day of each month and email it to the finance team." IT maintains governance through approval workflows and resource quotas.</p>
                 </div>
             </div>
 
@@ -1405,6 +1339,42 @@
                 <div class="highlight-success" style="margin-top: 1.5rem;">
                     <h4>✨ Single Pane of Glass with AI Copilot</h4>
                     <p>Manage all integrations, scheduled jobs, and business processes from one unified interface. The AI Copilot assists with natural language queries like "Show me all failed transactions from yesterday" or "Why did the customer sync job fail?" - making the platform accessible to both technical and business users.</p>
+                </div>
+            </div>
+
+            <!-- Scheduler Tab -->
+            <div id="scheduler-tab" class="tab-content">
+                <h3>Enterprise Scheduler</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">AI-enhanced job orchestration and management platform <span class="badge" style="background: #22c55e;">Self-Service Enabled</span></p>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h4>Core Capabilities</h4>
+                        <ul>
+                            <li><strong>Visual Job Design:</strong> Drag-and-drop job plan creation</li>
+                            <li><strong>Complex Dependencies:</strong> Support for AND/OR logic, conditional execution</li>
+                            <li><strong>Distributed Architecture:</strong> Scalable agent-based deployment model</li>
+                            <li><strong>Real-time Monitoring:</strong> Live job status, execution metrics, alerts</li>
+                            <li><strong>Blackout Windows:</strong> Automated job suspension during maintenance</li>
+                            <li><strong>Resource Management:</strong> Intelligent allocation and prioritization</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>🤖 AI-Powered Enhancements</h4>
+                        <ul>
+                            <li><strong>Natural Language Scheduling:</strong> "Run this report every Monday at 9am"</li>
+                            <li><strong>Predictive Failure Detection:</strong> AI warns before jobs fail</li>
+                            <li><strong>Auto-Optimization:</strong> Intelligent job sequencing for efficiency</li>
+                            <li><strong>Self-Healing:</strong> Automatic retry with smart backoff</li>
+                            <li><strong>Capacity Forecasting:</strong> ML-based resource planning</li>
+                            <li><strong>Anomaly Alerts:</strong> Detects unusual execution patterns</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight" style="background: linear-gradient(135deg, #ecfdf5, #d1fae5); border-left-color: #22c55e;">
+                    <h4>🎯 Self-Service for Business Users</h4>
+                    <p>Business users can create, schedule, and monitor their own jobs without IT involvement. Natural language interface allows requests like "Generate the monthly compliance report on the last business day of each month and email it to the finance team." IT maintains governance through approval workflows and resource quotas.</p>
                 </div>
             </div>
         </section>

@@ -1255,7 +1255,12 @@
 
         <!-- Demo Tabs -->
         <div class="demo-tabs">
-            <div class="demo-tab active" onclick="switchDemo('genai')">
+            <div class="demo-tab active" onclick="switchDemo('orchestrator')">
+                <span class="tab-icon">🧠</span>
+                AI Orchestrator
+                <span class="alert-badge">LIVE</span>
+            </div>
+            <div class="demo-tab" onclick="switchDemo('genai')">
                 <span class="tab-icon">🤖</span>
                 Gen AI
                 <span class="alert-badge">AI</span>
@@ -1278,6 +1283,252 @@
                 Retail
             </div>
         </div>
+
+        <!-- TeX AI Orchestrator Demo Content -->
+        <div class="demo-content active" id="demo-orchestrator">
+            <div class="demo-title">
+                <h2>🧠 TeX AI Orchestrator — Live Platform Capabilities</h2>
+                <p>NL2Workflow · Data Flow Pipelines · Audit & Compliance · Connector Plugins · Sensor Support</p>
+            </div>
+
+            <!-- Three capability cards -->
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(380px,1fr)); gap:1.5rem; margin-bottom:2rem;">
+
+                <!-- NL2Workflow Card -->
+                <div class="flow-container" style="border-left:4px solid var(--ms-blue-dark);">
+                    <h3 style="color:var(--ms-blue-dark); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                        🪄 NL2Workflow
+                    </h3>
+                    <p style="font-size:0.9rem; color:#605e5c; margin-bottom:1rem;">
+                        Describe a workflow in plain English — the TeX Orchestrator plugin calls an LLM,
+                        generates a validated DSL YAML, and imports it as a runnable app.
+                    </p>
+                    <div style="background:var(--code-bg); border-radius:6px; padding:1rem; font-family:Consolas,monospace; font-size:0.78rem; color:var(--code-text); overflow-x:auto; margin-bottom:1rem;">
+<span style="color:#50e6ff;">POST</span> /nl2workflow
+{
+  "<span style="color:#fbbf24;">description</span>": "Build a chatbot that retrieves
+    answers from a knowledge base and routes
+    technical questions to a code node",
+  "<span style="color:#fbbf24;">mode</span>": "workflow",
+  "<span style="color:#fbbf24;">provider</span>": "openai",
+  "<span style="color:#fbbf24;">model</span>": "gpt-4o"
+}
+                    </div>
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                        <span class="alert-badge" style="background:var(--ms-blue-dark);">Workflow Mode</span>
+                        <span class="alert-badge" style="background:#107c10;">Data-Flow Mode</span>
+                        <span class="alert-badge" style="background:#5c2d91;">Auto-Validate</span>
+                        <span class="alert-badge" style="background:#d83b01;">One-Click Import</span>
+                    </div>
+                </div>
+
+                <!-- Audit & Compliance Card -->
+                <div class="flow-container" style="border-left:4px solid #107c10;">
+                    <h3 style="color:#107c10; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                        🛡️ Audit Flow & Compliance Mapping
+                    </h3>
+                    <p style="font-size:0.9rem; color:#605e5c; margin-bottom:1rem;">
+                        Paste regulatory text (SOX, MiFID II, DORA) — the Orchestrator generates
+                        a compliant workflow with audit controls, evidence gates, and reporting nodes.
+                    </p>
+                    <div style="background:var(--code-bg); border-radius:6px; padding:1rem; font-family:Consolas,monospace; font-size:0.78rem; color:var(--code-text); overflow-x:auto; margin-bottom:1rem;">
+<span style="color:#50e6ff;">POST</span> /audit-flow
+{ "<span style="color:#fbbf24;">description</span>": "SOX 404 internal controls..." }
+
+<span style="color:#50e6ff;">POST</span> /compliance-map
+{ "<span style="color:#fbbf24;">description</span>": "MiFID II best execution..." }
+                    </div>
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                        <span class="alert-badge" style="background:#107c10;">SOX</span>
+                        <span class="alert-badge" style="background:#107c10;">MiFID II</span>
+                        <span class="alert-badge" style="background:#107c10;">DORA</span>
+                        <span class="alert-badge" style="background:#5c2d91;">Auto-Audit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Flow Pipeline Visualization -->
+            <div class="flow-container" style="margin-bottom:2rem;">
+                <h3 style="color:var(--ms-blue-dark); margin-bottom:0.5rem;">🔄 Data Flow Pipeline — 6 Node Types</h3>
+                <p style="font-size:0.85rem; color:#605e5c; margin-bottom:1.5rem;">
+                    Purpose-built EIP nodes for streaming data pipelines. Source and Sink delegate to connector plugins for extensibility.
+                </p>
+
+                <!-- Animated data-flow diagram -->
+                <div class="flow-row" style="gap:0.5rem; flex-wrap:wrap; justify-content:center;">
+                    <div class="component" id="orch-source">
+                        <div class="component-box external" id="orch-source-box">
+                            <span class="type-badge">SOURCE</span>
+                            <div class="component-icon">📥</div>
+                            <h3>Source</h3>
+                            <p>Kafka · File · HTTP · Sensor</p>
+                        </div>
+                    </div>
+                    <div class="connector"><div class="connector-line"></div></div>
+                    <div class="component" id="orch-filter">
+                        <div class="component-box consumer" id="orch-filter-box">
+                            <span class="type-badge">FILTER</span>
+                            <div class="component-icon">🔍</div>
+                            <h3>Filter</h3>
+                            <p>JMESPath · Condition</p>
+                        </div>
+                    </div>
+                    <div class="connector"><div class="connector-line"></div></div>
+                    <div class="component" id="orch-router">
+                        <div class="component-box router" id="orch-router-box">
+                            <span class="type-badge">ROUTER</span>
+                            <div class="component-icon">🔀</div>
+                            <h3>Router</h3>
+                            <p>Content-Based · Round-Robin</p>
+                        </div>
+                    </div>
+                    <div class="connector"><div class="connector-line"></div></div>
+                    <div class="component" id="orch-transformer">
+                        <div class="component-box converter" id="orch-transformer-box">
+                            <span class="type-badge">TRANSFORMER</span>
+                            <div class="component-icon">🔄</div>
+                            <h3>Transformer</h3>
+                            <p>Map · Rename · Cast</p>
+                        </div>
+                    </div>
+                    <div class="connector"><div class="connector-line"></div></div>
+                    <div class="component" id="orch-enricher">
+                        <div class="component-box analytics" id="orch-enricher-box">
+                            <span class="type-badge">ENRICHER</span>
+                            <div class="component-icon">➕</div>
+                            <h3>Enricher</h3>
+                            <p>Lookup · API · LLM</p>
+                        </div>
+                    </div>
+                    <div class="connector"><div class="connector-line"></div></div>
+                    <div class="component" id="orch-sink">
+                        <div class="component-box producer" id="orch-sink-box">
+                            <span class="type-badge">SINK</span>
+                            <div class="component-icon">📤</div>
+                            <h3>Sink</h3>
+                            <p>Kafka · File · DB · API</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connector Plugin & Sensor badges -->
+                <div style="display:flex; justify-content:center; gap:1rem; margin-top:1.5rem; flex-wrap:wrap;">
+                    <div style="background:rgba(0,120,212,0.08); border:1px solid var(--ms-blue-dark); border-radius:8px; padding:0.75rem 1.2rem; text-align:center;">
+                        <div style="font-size:1.2rem;">🔌</div>
+                        <div style="font-size:0.75rem; font-weight:600; color:var(--ms-blue-dark);">Connector Plugins</div>
+                        <div style="font-size:0.65rem; color:#605e5c;">Source & Sink delegate to tool plugins</div>
+                    </div>
+                    <div style="background:rgba(16,124,16,0.08); border:1px solid #107c10; border-radius:8px; padding:0.75rem 1.2rem; text-align:center;">
+                        <div style="font-size:1.2rem;">📡</div>
+                        <div style="font-size:0.75rem; font-weight:600; color:#107c10;">Sensor Support</div>
+                        <div style="font-size:0.65rem; color:#605e5c;">Polling sensors with pulsing UI indicator</div>
+                    </div>
+                    <div style="background:rgba(92,45,145,0.08); border:1px solid #5c2d91; border-radius:8px; padding:0.75rem 1.2rem; text-align:center;">
+                        <div style="font-size:1.2rem;">🤖</div>
+                        <div style="font-size:0.75rem; font-weight:600; color:#5c2d91;">20+ Node Types</div>
+                        <div style="font-size:0.65rem; color:#605e5c;">LLM · Code · HTTP · Knowledge · Tool + 6 EIP</div>
+                    </div>
+                    <div style="background:rgba(216,59,1,0.08); border:1px solid #d83b01; border-radius:8px; padding:0.75rem 1.2rem; text-align:center;">
+                        <div style="font-size:1.2rem;">🔧</div>
+                        <div style="font-size:0.75rem; font-weight:600; color:#d83b01;">Self-Healing</div>
+                        <div style="font-size:0.65rem; color:#605e5c;">heal_workflow tool auto-repairs failures</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animated Pipeline Demo -->
+            <div class="controls">
+                <button class="btn btn-primary" onclick="startOrchDemo()">▶️ Animate Pipeline</button>
+                <button class="btn btn-secondary" onclick="resetOrchDemo()">🔄 Reset</button>
+            </div>
+            <div class="status-bar">
+                <h4>Pipeline Status</h4>
+                <div class="status-text" id="orchStatusText">Ready — click Animate Pipeline to see data flow...</div>
+            </div>
+
+            <!-- DSL YAML Preview -->
+            <div class="data-panel" style="margin-top:1.5rem;">
+                <h3>📄 Generated DSL YAML (importable via TeX Console)</h3>
+                <div class="data-content active" style="display:block;">
+                    <pre style="color:#50e6ff; white-space:pre-wrap;">app:
+  name: "Trade Enrichment Pipeline"
+  mode: data-flow
+  description: "Ingest trades from Kafka, filter invalid, route by asset class, enrich with market data, sink to data lake"
+
+workflow:
+  graph:
+    edges:
+      - source: source_1
+        target: filter_1
+      - source: filter_1
+        target: router_1
+      - source: router_1
+        target: transformer_1
+      - source: transformer_1
+        target: enricher_1
+      - source: enricher_1
+        target: sink_1
+    nodes:
+      - data:
+          type: source
+          title: Kafka Trades
+          source_type: plugin
+          connector_plugin_id: kafka
+          connector_tool_name: kafka_consume
+          tool_parameters:
+            brokers: broker1:9092
+            topic: trades.raw
+        id: source_1
+      - data:
+          type: data-flow-filter
+          title: Valid Trades Only
+          filter_expression: "length(trade_id) > 0"
+        id: filter_1
+      - data:
+          type: data-flow-router
+          title: Route by Asset Class
+          routing_strategy: content_based
+          routes:
+            - field: asset_class
+              operator: equals
+              value: equity
+        id: router_1
+      - data:
+          type: transformer
+          title: Normalize Fields
+          transform_type: mapping
+          mappings:
+            - source_field: px_last
+              target_field: price
+        id: transformer_1
+      - data:
+          type: enricher
+          title: Add Market Data
+          enrichment_type: api_lookup
+          api_endpoint: /api/market-data
+        id: enricher_1
+      - data:
+          type: sink
+          title: Data Lake Output
+          sink_type: plugin
+          connector_plugin_id: local_file
+          connector_tool_name: file_write
+          tool_parameters:
+            file_path: /data/enriched_trades.jsonl
+        id: sink_1</pre>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend" style="margin-top:1.5rem;">
+                <div class="legend-item"><div class="legend-color external"></div>Source (Ingest)</div>
+                <div class="legend-item"><div class="legend-color tex"></div>Filter / Router (EIP)</div>
+                <div class="legend-item"><div class="legend-color" style="border-color:#ff8c00; background:rgba(255,140,0,0.1);"></div>Enricher (Augment)</div>
+                <div class="legend-item"><div class="legend-color downstream"></div>Sink (Output)</div>
+                <div class="legend-item"><div class="legend-color internal"></div>Connector Plugin</div>
+            </div>
+        </div>
+        <!-- End TeX AI Orchestrator Demo Content -->
 
         <!-- Trade Flow Demo Content -->
         <div class="demo-content" id="demo-trade-flow">
@@ -2802,7 +3053,7 @@ Volume Published:       10,000,000 USD
         <!-- End Retail Demo Content -->
 
         <!-- Generative AI Demo Content -->
-        <div class="demo-content active" id="demo-genai">
+        <div class="demo-content" id="demo-genai">
             <div class="demo-title">
                 <h2>🤖 Enterprise Generative AI Workflow Orchestration</h2>
                 <p>Multi-Modal Input → TeX AI Hub → Intelligent Processing → Multi-Channel Output</p>
@@ -3439,11 +3690,51 @@ Volume Published:       10,000,000 USD
             document.getElementById('data-' + type).classList.add('active');
         }
 
+        // ===== TEX AI ORCHESTRATOR DEMO =====
+        let orchCurrentStep = 0;
+        let orchDemoInterval = null;
+        const orchNodeIds = ['orch-source-box','orch-filter-box','orch-router-box','orch-transformer-box','orch-enricher-box','orch-sink-box'];
+        const orchSteps = [
+            { node: 0, status: '📥 Source: Consuming messages from Kafka topic trades.raw...' },
+            { node: 1, status: '🔍 Filter: Dropping records where trade_id is empty...' },
+            { node: 2, status: '🔀 Router: Routing by asset_class — equity branch selected...' },
+            { node: 3, status: '🔄 Transformer: Mapping px_last → price, normalising timestamps...' },
+            { node: 4, status: '➕ Enricher: Calling /api/market-data to attach live quotes...' },
+            { node: 5, status: '📤 Sink: Writing enriched record to /data/enriched_trades.jsonl...' },
+            { node: -1, status: '✅ Pipeline complete — 1 record processed in 247 ms' },
+        ];
+
+        function startOrchDemo() {
+            resetOrchDemo();
+            orchCurrentStep = 0;
+            orchDemoInterval = setInterval(processOrchStep, 1200);
+        }
+
+        function processOrchStep() {
+            if (orchCurrentStep >= orchSteps.length) { clearInterval(orchDemoInterval); return; }
+            orchNodeIds.forEach(id => { const el = document.getElementById(id); if (el) { el.classList.remove('highlight'); el.style.boxShadow = ''; } });
+            const step = orchSteps[orchCurrentStep];
+            if (step.node >= 0) {
+                const el = document.getElementById(orchNodeIds[step.node]);
+                if (el) { el.classList.add('highlight'); el.style.boxShadow = '0 0 25px rgba(0,120,212,0.6)'; }
+            }
+            document.getElementById('orchStatusText').textContent = step.status;
+            orchCurrentStep++;
+        }
+
+        function resetOrchDemo() {
+            clearInterval(orchDemoInterval);
+            orchCurrentStep = 0;
+            orchNodeIds.forEach(id => { const el = document.getElementById(id); if (el) { el.classList.remove('highlight'); el.style.boxShadow = ''; } });
+            document.getElementById('orchStatusText').textContent = 'Ready — click Animate Pipeline to see data flow...';
+        }
+
         // Tab switching
         function switchDemo(demoId) {
             // Reset all demos
             resetDemo();
             resetSurvDemo();
+            if (typeof resetOrchDemo === 'function') resetOrchDemo();
             if (typeof resetRetailAnimation === 'function') resetRetailAnimation();
             if (typeof resetGenAIAnimation === 'function') resetGenAIAnimation();
             if (typeof vibeResetDemo === 'function') vibeResetDemo();

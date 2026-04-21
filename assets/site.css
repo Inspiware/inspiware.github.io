@@ -486,11 +486,13 @@ main {
   padding-top: 0.15rem;
 }
 
-.feature-grid-no-marker .card-top {
+.feature-grid-no-marker .card-top,
+.detail-grid-no-marker .card-top {
   min-height: 0;
 }
 
-.feature-grid-no-marker .card-top h3 {
+.feature-grid-no-marker .card-top h3,
+.detail-grid-no-marker .card-top h3 {
   padding-top: 0;
 }
 

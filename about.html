@@ -1,129 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Inspiware - Enterprise Solutions</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="images/logo-gsw.svg">
-    <link rel="alternate icon" href="favicon.ico">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --inspiware-primary: #1a365d;
-            --inspiware-secondary: #2c5282;
-            --inspiware-accent: #3182ce;
-            --tex-blue: #0078d4;
-            --tex-cyan: #00bcf2;
-            --text-dark: #1a202c;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text-dark); background: var(--bg-light); }
-        .company-header { background: linear-gradient(135deg, var(--inspiware-primary) 0%, var(--inspiware-secondary) 100%); color: white; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .company-logo { display: flex; align-items: center; gap: 0.8rem; }
-        .company-logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #4299e1, #63b3ed); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
-        .company-name { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
-        .company-tagline { font-size: 0.75rem; opacity: 0.8; letter-spacing: 2px; text-transform: uppercase; }
-        .company-nav { display: flex; gap: 2rem; align-items: center; }
-        .company-nav a { color: white; text-decoration: none; font-weight: 500; opacity: 0.9; transition: all 0.3s ease; padding: 0.5rem 1rem; border-radius: 6px; }
-        .company-nav a:hover { opacity: 1; background: rgba(255,255,255,0.15); }
-        .company-nav a.active { background: rgba(255,255,255,0.2); opacity: 1; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .page-hero { background: linear-gradient(135deg, var(--inspiware-primary) 0%, var(--inspiware-secondary) 100%); color: white; padding: 4rem 2rem; text-align: center; margin-bottom: 3rem; border-radius: 20px; }
-        .page-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .page-hero p { font-size: 1.3rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
-        section { background: white; padding: 3rem; margin-bottom: 2rem; border-radius: 20px; box-shadow: var(--card-shadow); }
-        section h2 { color: var(--inspiware-primary); font-size: 2rem; margin-bottom: 1.5rem; border-bottom: 3px solid var(--tex-blue); padding-bottom: 0.5rem; }
-        .grid { display: grid; gap: 2rem; margin: 2rem 0; }
-        .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        .grid-4 { grid-template-columns: repeat(4, 1fr); }
-        @media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } .company-header { flex-direction: column; gap: 1rem; } }
-        .card { background: var(--bg-light); border-radius: 15px; padding: 2rem; border-left: 4px solid var(--tex-blue); }
-        .stat-item { text-align: center; padding: 1.5rem; }
-        .stat-number { font-size: 3rem; font-weight: 700; color: var(--tex-blue); }
-        .stat-label { color: var(--text-light); font-size: 1rem; }
-        .team-card { text-align: center; padding: 2rem; background: white; border-radius: 15px; box-shadow: var(--card-shadow); }
-        .team-avatar { width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--tex-blue), var(--tex-cyan)); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; }
-        .team-card h4 { color: var(--inspiware-primary); margin-bottom: 0.3rem; }
-        .team-card .role { color: var(--tex-blue); font-weight: 500; margin-bottom: 0.5rem; }
-        .team-card p { color: var(--text-light); font-size: 0.9rem; }
-        .value-card { text-align: center; padding: 2rem; }
-        .value-card .icon { font-size: 3rem; margin-bottom: 1rem; }
-        .value-card h4 { color: var(--inspiware-primary); margin-bottom: 0.5rem; }
-        .timeline { position: relative; padding-left: 1.5rem; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--tex-blue); }
-        .timeline-item { position: relative; padding-bottom: 2rem; }
-        .timeline-item::before { content: ''; position: absolute; left: -2rem; top: 0.5rem; width: 12px; height: 12px; border-radius: 50%; background: var(--tex-blue); border: 3px solid white; box-shadow: 0 0 0 3px var(--tex-blue); }
-        .timeline-item h4 { color: var(--tex-blue); margin-bottom: 0.3rem; }
-        .footer { background: var(--inspiware-primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
-        .footer a { color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 1rem; }
-        .footer a:hover { color: white; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Inspiware | Enterprise platform company</title>
+  <meta name="description" content="Learn about Inspiware, the enterprise platform company behind tex and texerp.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-gsw.svg">
+  <link rel="alternate icon" href="assets/public/favicon.ico">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-    <header class="company-header">
-        <div class="company-logo">
-            <img src="images/logo-gsw.svg" alt="Inspiware Logo" style="width: 40px; height: 40px;">
-            <div>
-                <div class="company-name">Inspiware</div>
-                <div class="company-tagline">Enterprise Solutions</div>
-            </div>
-        </div>
-        <nav class="company-nav">
-            <a href="index.html">Home</a>
-            <a href="index.html">TeX</a>
-            <a href="about.html" class="active">About Us</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <div class="page-hero">
-            <h1>About Inspiware</h1>
-            <p>Pioneering enterprise integration solutions since 2018. We help organizations connect, automate, and transform their digital operations.</p>
-        </div>
-
-        <section>
-            <h2>Our Story</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Founded in 2018, Inspiware emerged from a vision to simplify enterprise integration. Our founders, veterans of the financial services technology sector, recognized that businesses were struggling with increasingly complex system landscapes and data silos.</p>
-            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Today, Inspiware is a established provider of enterprise integration solutions, with our flagship TeX platform powering mission-critical operations for financial institutions, healthcare providers.</p>
-            <div class="grid grid-4" style="margin-top: 2rem;">
-                <div class="stat-item"><div class="stat-number">8+</div><div class="stat-label">Years of Excellence</div></div>
-                <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Enterprise Deployments</div></div>
-                <div class="stat-item"><div class="stat-number">10+</div><div class="stat-label">Countries Served</div></div>
-                <div class="stat-item"><div class="stat-number">99%</div><div class="stat-label">Platform Uptime</div></div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Our Values</h2>
-            <div class="grid grid-4">
-                <div class="value-card"><div class="icon">🎯</div><h4>Innovation</h4><p>Pushing boundaries with AI-powered solutions</p></div>
-                <div class="value-card"><div class="icon">🤝</div><h4>Partnership</h4><p>Your success is our success</p></div>
-                <div class="value-card"><div class="icon">🔒</div><h4>Reliability</h4><p>Enterprise-grade security & uptime</p></div>
-                <div class="value-card"><div class="icon">💡</div><h4>Simplicity</h4><p>Making complex integrations simple</p></div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Our Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item"><h4>2018</h4><p>Inspiware founded in London with a mission to simplify enterprise integration</p></div>
-                <div class="timeline-item"><h4>2018</h4><p>First major deployment at an investment bank</p></div>
-                <div class="timeline-item"><h4>2020</h4><p>TeX platform launched, combining enterprise scheduler capabilities</p></div>
-                <div class="timeline-item"><h4>2025</h4><p>Introduced AI-powered compliance and regulatory automation features</p></div>
-                <div class="timeline-item"><h4>2026</h4><p>Launched revolutionary Vibe Coding and Agentic AI capabilities</p></div>
-            </div>
-        </section>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Inspiware home">
+        <img class="brand-mark" src="images/logo-gsw.svg" alt="Inspiware logo">
+        <span class="brand-label"><strong>Inspiware</strong><span>Platform portfolio</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Platform overview</a>
+        <a class="nav-link" href="tex.html">tex</a>
+        <a class="nav-link" href="texerp.html">texerp</a>
+        <a class="nav-link current" href="about.html" aria-current="page">Company</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-cta" href="contact.html">Talk to Inspiware</a>
+      </nav>
     </div>
+  </header>
 
-    <footer class="footer">
-        <p>© 2018-2026 Inspiware Ltd. All rights reserved.</p>
-        <p style="margin-top: 1rem;"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></p>
-    </footer>
+  <main>
+    <div class="container">
+      <section class="page-hero">
+        <div class="page-hero-grid">
+          <div>
+            <span class="eyebrow">Company</span>
+            <h1>Inspiware builds enterprise platforms with practical operating value.</h1>
+            <p>Inspiware is an enterprise software company focused on helping organizations modernize complex operations with greater control, clarity, and long-term practicality. Its approach combines platform thinking with hands-on delivery experience so transformation work remains grounded in real operating needs.</p>
+          </div>
+          <div class="summary-grid">
+            <div class="stat-card"><strong>Enterprise software</strong><span>Built for organizations running complex processes, systems, and operational requirements.</span></div>
+            <div class="stat-card"><strong>Delivery-led</strong><span>Grounded in practical implementation, not only high-level strategy or positioning.</span></div>
+            <div class="stat-card"><strong>Integration roots</strong><span>Strong foundations in connecting systems, data flows, and operational workflows.</span></div>
+            <div class="stat-card"><strong>Operational focus</strong><span>Focused on improving how work moves across business and technology environments.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">How Inspiware works</span>
+            <h2>A company view of mission, clients, and delivery approach</h2>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <article class="card"><div class="card-top"><span class="accent-marker">A</span><h3>Mission-led modernization</h3></div><p>Inspiware exists to help organizations improve important operational processes without losing control, continuity, or delivery confidence.</p></article>
+          <article class="card"><div class="card-top"><span class="accent-marker">B</span><h3>Built for serious operating environments</h3></div><p>The company is oriented toward organizations with complex systems, cross-functional workflows, and reliability expectations that cannot be treated lightly.</p></article>
+          <article class="card"><div class="card-top"><span class="accent-marker">C</span><h3>Practical over theoretical</h3></div><p>The focus stays on what can be implemented, adopted, and operated well in practice rather than on abstract transformation language.</p></article>
+          <article class="card"><div class="card-top"><span class="accent-marker">D</span><h3>Control stays visible</h3></div><p>Governance, traceability, and operational discipline remain part of the conversation from the start, not an afterthought added later.</p></article>
+          <article class="card"><div class="card-top"><span class="accent-marker">E</span><h3>Change in manageable steps</h3></div><p>Inspiware favors incremental progress so organizations can modernize with less disruption and clearer decision points along the way.</p></article>
+          <article class="card"><div class="card-top"><span class="accent-marker">F</span><h3>Partnership mindset</h3></div><p>The company aims to work as a practical partner, helping clients shape solutions that fit real business and operational contexts.</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Milestones</span>
+            <h2>Selected journey points</h2>
+          </div>
+        </div>
+        <div class="timeline-grid">
+          <article class="timeline-item"><h3>2018 · Company foundation</h3><p>Inspiware begins with a focus on enterprise integration and practical delivery for demanding environments.</p></article>
+          <article class="timeline-item"><h3>2020 · tex platform momentum</h3><p>The company’s flagship integration platform narrative takes shape around orchestration and enterprise operations.</p></article>
+          <article class="timeline-item"><h3>2025 · AI-native positioning</h3><p>tex messaging expands to include AI-assisted workflows, automation support, and modern operating patterns.</p></article>
+          <article class="timeline-item"><h3>2026 · Portfolio expansion</h3><p>Inspiware broadens its offering across integration, AI-enabled workflows, and modular operational applications with tex and texerp.</p></article>
+        </div>
+      </section>
+
+      <section class="cta-band">
+        <span class="eyebrow" style="background:rgba(255,255,255,0.14);color:white;">Connect</span>
+        <h2 style="margin:1rem 0 0; font-size:clamp(1.8rem,3vw,2.8rem);">Want to discuss your operational priorities?</h2>
+        <p>Inspiware can talk through your environment, modernization goals, and the kind of practical change approach that may fit your organization.</p>
+        <div class="cta-actions">
+          <a class="button-primary" href="contact.html">Contact Inspiware</a>
+          <a class="button-secondary" href="index.html">Back to overview</a>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-shell">
+          <div class="footer-grid">
+            <div>
+              <h4>Inspiware</h4>
+              <p>Enterprise platform company focused on integration, AI workflows, and operational systems modernization.</p>
+            </div>
+            <div>
+              <h4>Platforms</h4>
+              <a href="tex.html">tex</a>
+              <a href="texerp.html">texerp</a>
+              <a href="index.html">Platform overview</a>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <a href="about.html">About Inspiware</a>
+              <a href="contact.html">Contact</a>
+            </div>
+            <div>
+              <h4>Contact</h4>
+              <a href="mailto:sales@inspiware.co.uk">sales@inspiware.co.uk</a>
+              <a href="tel:+447876234600">+44 (0) 787 623 4600</a>
+            </div>
+          </div>
+          <div class="footer-bottom">© 2018-2026 Inspiware Ltd. All rights reserved.</div>
+        </div>
+      </footer>
+    </div>
+  </main>
 </body>
 </html>
-

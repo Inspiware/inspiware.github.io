@@ -1,198 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Inspiware - Enterprise Solutions</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="images/logo-gsw.svg">
-    <link rel="alternate icon" href="favicon.ico">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --inspiware-primary: #1a365d;
-            --inspiware-secondary: #2c5282;
-            --tex-blue: #0078d4;
-            --tex-cyan: #00bcf2;
-            --text-dark: #1a202c;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text-dark); background: var(--bg-light); }
-        .company-header { background: linear-gradient(135deg, var(--inspiware-primary) 0%, var(--inspiware-secondary) 100%); color: white; padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .company-logo { display: flex; align-items: center; gap: 0.8rem; }
-        .company-logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #4299e1, #63b3ed); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
-        .company-name { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
-        .company-tagline { font-size: 0.75rem; opacity: 0.8; letter-spacing: 2px; text-transform: uppercase; }
-        .company-nav { display: flex; gap: 2rem; align-items: center; }
-        .company-nav a { color: white; text-decoration: none; font-weight: 500; opacity: 0.9; transition: all 0.3s ease; padding: 0.5rem 1rem; border-radius: 6px; }
-        .company-nav a:hover { opacity: 1; background: rgba(255,255,255,0.15); }
-        .company-nav a.active { background: rgba(255,255,255,0.2); opacity: 1; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .page-hero { background: linear-gradient(135deg, var(--inspiware-primary) 0%, var(--inspiware-secondary) 100%); color: white; padding: 4rem 2rem; text-align: center; margin-bottom: 3rem; border-radius: 20px; }
-        .page-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .page-hero p { font-size: 1.3rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
-        .grid { display: grid; gap: 2rem; margin: 2rem 0; }
-        .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } .company-header { flex-direction: column; gap: 1rem; } }
-        section { background: white; padding: 3rem; margin-bottom: 2rem; border-radius: 20px; box-shadow: var(--card-shadow); }
-        section h2 { color: var(--inspiware-primary); font-size: 2rem; margin-bottom: 1.5rem; border-bottom: 3px solid var(--tex-blue); padding-bottom: 0.5rem; }
-        .contact-card { padding: 2rem; background: var(--bg-light); border-radius: 15px; border-left: 4px solid var(--tex-blue); margin-bottom: 1rem; }
-        .contact-card h4 { color: var(--inspiware-primary); display: flex; align-items: center; gap: 0.5rem; }
-        .contact-card p { color: var(--text-light); margin-bottom: 0.5rem; }
-        .contact-card:hover { transform: translateY(-5px); }
-        .contact-card .icon { font-size: 2rem; }
-        .contact-card a { color: var(--tex-blue); text-decoration: none; font-weight: 500; }
-        .contact-card a:hover { text-decoration: underline; }		
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--inspiware-primary); }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--tex-blue); }
-        .form-group textarea { min-height: 150px; resize: vertical; }
-        .btn { display: inline-block; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; border: none; cursor: pointer; font-size: 1rem; }
-        .btn-primary { background: linear-gradient(135deg, var(--tex-blue), var(--tex-cyan)); color: white; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,120,212,0.3); }
-        .footer { background: var(--inspiware-primary); color: white; padding: 2rem; text-align: center; margin-top: 3rem; }
-        .footer a { color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 1rem; }
-        .footer a:hover { color: white; }
-        .form-status { margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none; }
-        .form-status.success { background: #d1fae5; color: #065f46; border: 2px solid #10b981; display: block; }
-        .form-status.error { background: #fee2e2; color: #991b1b; border: 2px solid #ef4444; display: block; }
-        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Inspiware | Platform walkthroughs, demos, and enquiries</title>
+  <meta name="description" content="Contact Inspiware about tex, texerp, platform demos, pilots, or partnership discussions.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-gsw.svg">
+  <link rel="alternate icon" href="assets/public/favicon.ico">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-    <header class="company-header">
-        <div class="company-logo">
-            <img src="images/logo-gsw.svg" alt="Inspiware Logo" style="width: 40px; height: 40px;">
-            <div>
-                <div class="company-name">Inspiware</div>
-                <div class="company-tagline">Enterprise Solutions</div>
-            </div>
-        </div>
-        <nav class="company-nav">
-            <a href="index.html">Home</a>
-            <a href="index.html">TeX</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html" class="active">Contact</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <div class="page-hero">
-            <h1>Contact Us</h1>
-            <p>Get in touch with our team. We're here to help you transform your enterprise integration.</p>
-        </div>
-
-        <div class="grid grid-2">
-		     <section>		 
-				<div class="contact-card">
-					<div class="icon">📧</div>
-					<h4>Email Us</h4>
-					<p style="margin-top: 0.5rem;">General Inquiries: <a href="mailto:info@inspiware.co.uk">info@inspiware.co.uk</a></p>
-					<p style="margin-top: 0.5rem;">Sales: <a href="mailto:sales@inspiware.co.uk">sales@inspiware.co.uk</a></p>
-				</div>
-				<div class="contact-card">
-					<div class="icon">📞</div> 
-					<h4>Call Us</h4>
-					<p>UK: +44 (0) 787 623 4600</p>
-					<p style="margin-top: 0.5rem; font-size: 0.9rem;">Mon-Fri, 7am-7pm local time</p>
-				</div>
-				<div class="contact-card">
-					<div class="icon">💬</div>
-					<h4>Live Chat</h4>
-					<p>Chat with our team</p>
-					<a href="#" onclick="alert('Live chat would open here'); return false;">Start Chat</a>
-					<p style="margin-top: 0.5rem; font-size: 0.9rem;">Available 24/7 for support</p>
-				</div>
-			</section>
-            <section>
-                <h2>Send Us a Message</h2>
-                <form id="contactForm" action="https://formspree.io/f/xbdagrap" method="POST">
-                    <div class="form-group">
-                        <label>Full Name *</label>
-                        <input type="text" name="name" required placeholder="John Smith">
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address *</label>
-                        <input type="email" name="email" required placeholder="john@company.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Company</label>
-                        <input type="text" name="company" placeholder="Your Company Ltd">
-                    </div>
-                    <div class="form-group">
-                        <label>Inquiry Type</label>
-                        <select name="inquiry_type">
-                            <option>Product Demo Request</option>
-                            <option>Pricing Information</option>
-                            <option>Technical Support</option>
-                            <option>Partnership Inquiry</option>
-                            <option>General Question</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Message *</label>
-                        <textarea name="message" required placeholder="Tell us how we can help..."></textarea>
-                    </div>
-                    <input type="hidden" name="_subject" value="New Contact Form Submission from Inspiware Website">
-                    <input type="hidden" name="_cc" value="sales@inspiware.co.uk">
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-                <div id="formStatus" style="margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none;"></div>
-            </section>
-        </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Inspiware home">
+        <img class="brand-mark" src="images/logo-gsw.svg" alt="Inspiware logo">
+        <span class="brand-label"><strong>Inspiware</strong><span>Platform portfolio</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Platform overview</a>
+        <a class="nav-link" href="tex.html">tex</a>
+        <a class="nav-link" href="texerp.html">texerp</a>
+        <a class="nav-link" href="about.html">Company</a>
+        <a class="nav-link current" href="contact.html" aria-current="page">Contact</a>
+        <a class="nav-cta" href="https://calendly.com/sudheshrajan/30min" target="_blank" rel="noreferrer">Book a meeting</a>
+      </nav>
     </div>
+  </header>
 
-    <footer class="footer">
-        <p>© 2018-2026 Inspiware Ltd. All rights reserved.</p>
-        <p style="margin-top: 1rem;"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></p>
-    </footer>
+  <main>
+    <div class="container">
+      <section class="page-hero">
+        <div class="page-hero-grid">
+          <div>
+            <span class="eyebrow">Contact</span>
+            <h1>Start with the right platform conversation.</h1>
+            <p>Use this page for tex demos, texerp roadmap discussions, pilot enquiries, or broader portfolio positioning conversations with Inspiware.</p>
+          </div>
+          <div class="summary-grid">
+            <div class="stat-card"><strong>Sales</strong><span>Product walkthroughs, qualification, and commercial conversations.</span></div>
+            <div class="stat-card"><strong>Platform fit</strong><span>Help choosing between tex, texerp, or a combined portfolio story.</span></div>
+            <div class="stat-card"><strong>Pilots</strong><span>Early-stage conversations around proofs of value and phased delivery.</span></div>
+            <div class="stat-card"><strong>Partnerships</strong><span>Strategic or implementation-aligned engagement opportunities.</span></div>
+          </div>
+        </div>
+      </section>
 
-    <script>
-        // Handle form submission
-        const form = document.getElementById('contactForm');
-        const formStatus = document.getElementById('formStatus');
-        const submitButton = form.querySelector('button[type="submit"]');
+      <section class="section">
+        <div class="contact-layout">
+          <div class="detail-grid">
+            <article class="contact-card">
+              <div class="card-top"><span class="accent-marker">01</span><h3>Email sales</h3></div>
+              <p>For demos, buyer conversations, product fit, and commercial follow-up.</p>
+              <a class="inline-link" href="mailto:sales@inspiware.co.uk">sales@inspiware.co.uk</a>
+            </article>
+            <article class="contact-card">
+              <div class="card-top"><span class="accent-marker">02</span><h3>Call Inspiware</h3></div>
+              <p>Direct contact for urgent conversations or executive-level introductions.</p>
+              <a class="inline-link" href="tel:+447876234600">+44 (0) 787 623 4600</a>
+            </article>
+            <article class="contact-card">
+              <div class="card-top"><span class="accent-marker">03</span><h3>Schedule a meeting</h3></div>
+              <p>Book a live session to review tex, texerp, or the broader platform strategy.</p>
+              <a class="inline-link" href="https://calendly.com/sudheshrajan/30min" target="_blank" rel="noreferrer">Open calendar</a>
+            </article>
+            <article class="contact-card">
+              <div class="card-top"><span class="accent-marker">04</span><h3>Best when you include</h3></div>
+              <p>Your platform of interest, delivery timeline, current system landscape, and whether the conversation is exploratory or active procurement.</p>
+            </article>
+          </div>
 
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
+          <article class="card">
+            <div class="section-header" style="margin-bottom:1rem;">
+              <div>
+                <span class="eyebrow">Enquiry form</span>
+                <h2 style="font-size:1.9rem;">Send Inspiware a message</h2>
+              </div>
+            </div>
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xbdagrap" method="POST">
+              <div class="field-grid">
+                <div class="form-group">
+                  <label for="name">Full name *</label>
+                  <input id="name" type="text" name="name" required placeholder="Jane Smith">
+                </div>
+                <div class="form-group">
+                  <label for="email">Work email *</label>
+                  <input id="email" type="email" name="email" required placeholder="jane@company.com">
+                </div>
+              </div>
+              <div class="field-grid">
+                <div class="form-group">
+                  <label for="company">Company</label>
+                  <input id="company" type="text" name="company" placeholder="Your company">
+                </div>
+                <div class="form-group">
+                  <label for="product_interest">Product interest</label>
+                  <select id="product_interest" name="product_interest">
+                    <option value="tex">tex</option>
+                    <option value="texerp">texerp</option>
+                    <option value="both">Both platforms</option>
+                    <option value="unsure">Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field-grid">
+                <div class="form-group">
+                  <label for="inquiry_type">Inquiry type</label>
+                  <select id="inquiry_type" name="inquiry_type">
+                    <option>Platform walkthrough</option>
+                    <option>Demo request</option>
+                    <option>Pilot or proof of value</option>
+                    <option>Partnership enquiry</option>
+                    <option>General question</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="timeline">Timeline</label>
+                  <select id="timeline" name="timeline">
+                    <option>Exploring</option>
+                    <option>0-3 months</option>
+                    <option>3-6 months</option>
+                    <option>6+ months</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required placeholder="Tell us what you're evaluating, what systems are involved, and what you want to achieve."></textarea>
+              </div>
+              <input type="hidden" name="_subject" value="New Contact Form Submission from Inspiware Website">
+              <input type="hidden" name="_cc" value="sales@inspiware.co.uk">
+              <div class="inline-actions">
+                <button type="submit" class="button-primary">Send message</button>
+              </div>
+            </form>
+            <div id="formStatus" class="form-status" aria-live="polite"></div>
+          </article>
+        </div>
+      </section>
 
-            // Disable submit button and show loading state
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
-            formStatus.style.display = 'none';
-            formStatus.className = 'form-status';
+      <footer class="site-footer">
+        <div class="footer-shell">
+          <div class="footer-grid">
+            <div>
+              <h4>Inspiware</h4>
+              <p>Enterprise platform company focused on integration, AI workflows, and operational systems modernization.</p>
+            </div>
+            <div>
+              <h4>Platforms</h4>
+              <a href="tex.html">tex</a>
+              <a href="texerp.html">texerp</a>
+              <a href="index.html">Platform overview</a>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <a href="about.html">About Inspiware</a>
+              <a href="contact.html">Contact</a>
+            </div>
+            <div>
+              <h4>Contact</h4>
+              <a href="mailto:sales@inspiware.co.uk">sales@inspiware.co.uk</a>
+              <a href="tel:+447876234600">+44 (0) 787 623 4600</a>
+            </div>
+          </div>
+          <div class="footer-bottom">© 2018-2026 Inspiware Ltd. All rights reserved.</div>
+        </div>
+      </footer>
+    </div>
+  </main>
 
-            try {
-                const formData = new FormData(form);
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
+  <script>
+    const form = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    const submitButton = form.querySelector('button[type="submit"]');
 
-                if (response.ok) {
-                    formStatus.className = 'form-status success';
-                    formStatus.innerHTML = '✅ <strong>Thank you for your message!</strong><br>Our team will respond to you within 24 hours at the email address you provided.';
-                    form.reset();
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                formStatus.className = 'form-status error';
-                formStatus.innerHTML = '❌ <strong>Oops! Something went wrong.</strong><br>Please try again or email us directly at <a href="mailto:sales@inspiware.co.uk" style="color: #991b1b; text-decoration: underline;">sales@inspiware.co.uk</a>';
-            } finally {
-                // Re-enable submit button
-                submitButton.disabled = false;
-                submitButton.textContent = 'Send Message';
-            }
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      formStatus.className = 'form-status';
+      formStatus.textContent = '';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { Accept: 'application/json' }
         });
-    </script>
+
+        if (!response.ok) {
+          throw new Error('Form submission failed');
+        }
+
+        formStatus.className = 'form-status success';
+        formStatus.innerHTML = 'Thank you. Your message has been sent and the Inspiware team will respond using the email address you provided.';
+        form.reset();
+      } catch (error) {
+        formStatus.className = 'form-status error';
+        formStatus.innerHTML = 'Something went wrong. Please try again or email <a href="mailto:sales@inspiware.co.uk">sales@inspiware.co.uk</a> directly.';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send message';
+      }
+    });
+  </script>
 </body>
 </html>
-

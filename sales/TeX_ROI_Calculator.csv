@@ -1,0 +1,118 @@
+TeX Platform ROI Calculator for Energy Sector
+
+COMPANY INFORMATION
+Company Name,[Enter Company Name]
+Number of Customers (Millions),5
+Number of Integrations,200
+Annual Revenue (£M),500
+
+CURRENT STATE - ANNUAL COSTS
+Category,FTE Count,Cost per FTE (£K),Total Cost (£K),Notes
+Integration Development,10,200,2000,Developers building/maintaining integrations
+Integration Operations,4,100,400,Monitoring and incident management
+Regulatory Compliance,2,150,300,Manual reporting and audit preparation
+Infrastructure,N/A,N/A,500,Servers middleware licenses
+TOTAL CURRENT COSTS,,,3200,
+
+CURRENT STATE - PERFORMANCE METRICS
+Metric,Current Value,Unit,Notes
+Average Integration Development Time,180,Days,Time to build new integration
+Integration Incidents per Month,150,Count,Production issues requiring intervention
+Mean Time to Resolution (MTTR),4,Hours,Average time to fix incidents
+Regulatory Reporting Time,40,Hours/Month,Manual effort for compliance reports
+System Availability,99.5,%,Uptime percentage
+
+WITH TeX PLATFORM - ANNUAL COSTS
+Category,FTE Count,Cost per FTE (£K),Total Cost (£K),Notes
+Integration Development,2,200,400,Reduced due to Vibe Coding (90% faster)
+Integration Operations,1,100,100,Reduced due to Agentic AI (70% fewer incidents)
+Regulatory Compliance,0.5,150,75,Automated reporting (95% reduction)
+TeX Platform Subscription,N/A,N/A,200,Annual subscription (estimated)
+Infrastructure,N/A,N/A,150,Reduced infrastructure needs
+TOTAL TeX COSTS,,,925,
+
+WITH TeX PLATFORM - PERFORMANCE METRICS
+Metric,TeX Value,Unit,Improvement %,Notes
+Average Integration Development Time,18,Days,90%,Vibe Coding acceleration
+Integration Incidents per Month,45,Count,70%,Agentic AI self-healing
+Mean Time to Resolution (MTTR),0.6,Hours,85%,Automated diagnosis and fix
+Regulatory Reporting Time,2,Hours/Month,95%,Automated report generation
+System Availability,99.9,%,0.4%,Improved reliability
+
+ROI SUMMARY
+Metric,Value,Unit
+Total Annual Savings,2275,£K
+Savings Percentage,71,%
+Payback Period,5,Months
+3-Year Net Benefit,6625,£K
+5-Year Net Benefit,11175,£K
+
+ADDITIONAL BENEFITS (NOT QUANTIFIED)
+Benefit Category,Description,Estimated Impact
+Speed to Market,Deploy new renewable assets 10x faster,High
+Business Agility,Launch new tariff products in days not months,High
+Risk Reduction,Complete audit trails fewer compliance violations,Medium
+Employee Satisfaction,Developers focus on innovation not maintenance,Medium
+Sustainability,Optimize renewable integration reduce carbon,Medium
+Competitive Advantage,Faster response to market changes,High
+
+ASSUMPTIONS
+Assumption,Value,Notes
+Developer Fully Loaded Cost,£200K,Includes salary benefits overhead
+Operations Staff Cost,£100K,Includes salary benefits overhead
+Compliance Staff Cost,£150K,Includes salary benefits overhead
+TeX Subscription Cost,£200K,Annual subscription (volume discounts available)
+Infrastructure Reduction,70%,Cloud-native architecture reduces infrastructure
+Vibe Coding Productivity Gain,90%,Based on pilot customer results
+Agentic AI Incident Reduction,70%,Based on pilot customer results
+Regulatory Automation,95%,Based on pilot customer results
+
+CUSTOMIZATION INSTRUCTIONS
+1. Update COMPANY INFORMATION section with your actual data
+2. Adjust FTE counts and costs in CURRENT STATE section
+3. Modify performance metrics to match your baseline
+4. Review TeX subscription cost (contact sales for accurate pricing)
+5. Adjust improvement percentages based on your specific use cases
+
+SENSITIVITY ANALYSIS
+Scenario,Integration Dev Time Reduction,Incident Reduction,Annual Savings (£K),Payback (Months)
+Conservative,70%,50%,1600,6
+Base Case,90%,70%,2275,5
+Optimistic,95%,80%,2700,4
+
+INTEGRATION PORTFOLIO BREAKDOWN
+Integration Type,Count,Avg Dev Time (Days),Annual Maintenance Cost (£K),Priority for TeX
+Smart Meter Systems,25,120,300,High
+Energy Trading Platforms,15,180,250,High
+Renewable Asset Integration,20,150,200,High
+Customer Billing/CRM,30,90,180,Medium
+SCADA/Grid Management,40,200,400,High
+Regulatory Reporting,10,60,120,High
+Legacy System Interfaces,60,240,550,Medium
+
+PHASED IMPLEMENTATION PLAN
+Phase,Duration,Integrations,Focus Area,Expected Savings (£K)
+Pilot,30 days,1-2,Proof of concept,0
+Phase 1,90 days,10-15,High-priority integrations,500
+Phase 2,180 days,30-40,Medium-priority integrations,1000
+Phase 3,365 days,All remaining,Full deployment,2275
+
+RISK FACTORS
+Risk,Probability,Impact,Mitigation
+Adoption resistance,Medium,Medium,Training change management executive sponsorship
+Integration complexity higher than expected,Low,Medium,Phased approach start with simpler integrations
+AI accuracy concerns,Low,Low,Human review workflows for critical processes
+Vendor dependency,Medium,Medium,Full code access hybrid deployment options
+
+CONTACT FOR DETAILED ANALYSIS
+Inspiware Sales Team
+Email: sales@inspiware.co.uk
+Phone: +44 (0) 742 414 4207
+Schedule Demo: https://calendly.com/sudheshrajan/30min
+
+NOTES
+This calculator provides estimated ROI based on typical energy sector deployments
+Actual results will vary based on your specific integration landscape and use cases
+Contact Inspiware for a customized ROI analysis based on your environment
+All costs in GBP (£) thousands unless otherwise noted
+

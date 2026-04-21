@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tex | Enterprise data integration and AI workflow platform</title>
+  <meta name="description" content="tex is Inspiware's enterprise data integration and AI workflow platform for orchestrated pipelines, compliance-aware processing, and modern automation delivery.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-gsw.svg">
+  <link rel="alternate icon" href="assets/public/favicon.ico">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Inspiware home">
+        <img class="brand-mark" src="images/logo-gsw.svg" alt="Inspiware logo">
+        <span class="brand-label"><strong>Inspiware</strong><span>Platform portfolio</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">Platform overview</a>
+        <a class="nav-link current" href="tex.html" aria-current="page">tex</a>
+        <a class="nav-link" href="texerp.html">texerp</a>
+        <a class="nav-link" href="about.html">Company</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-cta" href="demo.html" target="_blank" rel="noreferrer">View live demos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="page-hero tex-hero">
+        <div class="tex-hero-head">
+          <span class="eyebrow">Flagship integration platform</span>
+          <h1>Ship enterprise integrations and AI workflows faster.</h1>
+          <p>
+            tex gives teams a modern surface for connectors, orchestration, AI-assisted workflow design, and governed delivery. It is built for organizations that want speed without losing control, observability, or audit confidence.
+          </p>
+          <div class="hero-actions">
+            <a class="button-primary" href="demo.html" target="_blank" rel="noreferrer">Launch TeX demos</a>
+            <a class="button-secondary" href="https://calendly.com/sudheshrajan/30min" target="_blank" rel="noreferrer">Schedule a demo</a>
+          </div>
+          <div class="tex-hero-tags">
+            <span class="pill">Event pipelines</span>
+            <span class="pill">AI workflow build</span>
+            <span class="pill">Connector orchestration</span>
+            <span class="pill">Governed delivery</span>
+          </div>
+        </div>
+
+        <div class="tex-flow-stage" aria-hidden="true">
+          <div class="tex-flow-shell">
+            <div class="tex-flow-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="tex-flow-title">tex / Bloomberg trade booking workflow</span>
+              <span class="tex-flow-badge">Workflow draft</span>
+            </div>
+            <div class="tex-flow-workspace">
+              <aside class="tex-flow-rail">
+                <span class="tex-flow-rail-item active">Canvas</span>
+                <span class="tex-flow-rail-item">Nodes</span>
+                <span class="tex-flow-rail-item">Logic</span>
+                <span class="tex-flow-rail-item">Outputs</span>
+              </aside>
+
+              <div class="tex-flow-canvas">
+                <svg class="tex-flow-links" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <path d="M 16 40 C 18 40, 20 40, 22 40"></path>
+                  <path d="M 34 40 C 36 40, 38 40, 40 40"></path>
+                  <path d="M 52 40 C 54 40, 56 40, 58 40"></path>
+                  <path d="M 70 40 C 72 40, 74 40, 76 40"></path>
+                  <path class="accent" d="M 84 42 C 84 48, 84 54, 84 60"></path>
+                  <path d="M 76 66 C 74 66, 72 66, 70 66"></path>
+                  <path d="M 58 66 C 56 66, 54 66, 52 66"></path>
+                  <path d="M 40 66 C 38 66, 36 66, 34 66"></path>
+                </svg>
+
+                <article class="tex-flow-note tex-note-primary">
+                  <strong>Trade capture note</strong>
+                  <span>If a Bloomberg trade is newly booked, extract the economics and required attributes for the bank's internal P&amp;L feed.</span>
+                </article>
+
+                <article class="tex-flow-note tex-note-secondary">
+                  <strong>Routing note</strong>
+                  <span>If reference data or validations are incomplete, route the trade to guided exception handling before publish.</span>
+                </article>
+
+                <article class="tex-node tex-node-trigger">
+                  <div class="tex-node-head"><span class="tex-node-type">Source</span><span class="tex-node-port">01</span></div>
+                  <strong>bbg_trade_booked</strong>
+                  <span>Listen for newly booked Bloomberg trades.</span>
+                </article>
+
+                <article class="tex-node tex-node-map">
+                  <div class="tex-node-head"><span class="tex-node-type">Extract</span><span class="tex-node-port">02</span></div>
+                  <strong>extract_trade_fields</strong>
+                  <span>Parse book, quantity, price, product, and currency fields.</span>
+                </article>
+
+                <article class="tex-node tex-node-reference">
+                  <div class="tex-node-head"><span class="tex-node-type">Assign</span><span class="tex-node-port">03</span></div>
+                  <strong>assign_reference</strong>
+                  <span>Map legal entity, desk, counterparty, and book data.</span>
+                </article>
+
+                <article class="tex-node tex-node-policy">
+                  <div class="tex-node-head"><span class="tex-node-type">Aggregate</span><span class="tex-node-port">04</span></div>
+                  <strong>aggregate_context</strong>
+                  <span>Assemble trade context for validation and publish.</span>
+                </article>
+
+                <article class="tex-node tex-node-gate">
+                  <div class="tex-node-head"><span class="tex-node-type">If / Else</span><span class="tex-node-port">05</span></div>
+                  <strong>if_pnl_ready</strong>
+                  <span>Required mappings and booking controls available?</span>
+                </article>
+
+                <article class="tex-node tex-node-template">
+                  <div class="tex-node-head"><span class="tex-node-type">Template</span><span class="tex-node-port">06</span></div>
+                  <strong>build_pnl_payload</strong>
+                  <span>Format the bank's internal P&amp;L feed message.</span>
+                </article>
+
+                <article class="tex-node tex-node-delivery">
+                  <div class="tex-node-head"><span class="tex-node-type">Publish</span><span class="tex-node-port">07</span></div>
+                  <strong>publish_pnl_feed</strong>
+                  <span>Release the approved trade into the internal P&amp;L feed.</span>
+                </article>
+
+                <article class="tex-node tex-node-ai">
+                  <div class="tex-node-head"><span class="tex-node-type">AI assist</span><span class="tex-node-port">08</span></div>
+                  <strong>resolve_breaks_ai</strong>
+                  <span>Draft remediation notes for mapping or data breaks.</span>
+                </article>
+
+                <article class="tex-node tex-node-break">
+                  <div class="tex-node-head"><span class="tex-node-type">Exception</span><span class="tex-node-port">09</span></div>
+                  <strong>route_break_queue</strong>
+                  <span>Create an exception work item with lineage and replay context.</span>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tex-signal-row">
+          <div class="tex-signal-card"><strong>Build faster</strong><span>Use prompts, templates, and reusable flow patterns to reduce delivery friction.</span></div>
+          <div class="tex-signal-card"><strong>Operate with confidence</strong><span>Track runs, exceptions, and policy-aware execution in one platform story.</span></div>
+          <div class="tex-signal-card"><strong>Integrate broadly</strong><span>Connect events, APIs, files, data stores, and business systems without flattening architecture.</span></div>
+          <div class="tex-signal-card"><strong>Govern outputs</strong><span>Maintain lineage, audit evidence, and controlled downstream publishing.</span></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">What tex is for</span>
+            <h2>Built for integration-heavy, control-sensitive environments</h2>
+          </div>
+        </div>
+        <div class="feature-grid feature-grid-no-marker">
+          <article class="card">
+            <div class="card-top"><h3>Workflow orchestration</h3></div>
+            <p>Coordinate data movement, enrichment, transformation, routing, and downstream actions with a clear operational model.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>AI-assisted build experience</h3></div>
+            <p>Accelerate delivery with natural-language prompts, reusable workflow patterns, and guided composition for integration teams.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>Compliance-aware processing</h3></div>
+            <p>Support audit trails, operational evidence, and repeatable governance patterns for regulated industries and internal controls.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>Connector-based extensibility</h3></div>
+            <p>Connect enterprise applications, data services, messaging layers, and reporting destinations without flattening the architecture story.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>Operational observability</h3></div>
+            <p>Track health, flow status, throughput, and exceptions with a product narrative that resonates beyond technical teams.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>Enterprise readiness</h3></div>
+            <p>tex is positioned as a serious platform for long-lived delivery programs, not just isolated workflow experiments.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Product surface</span>
+            <h2>Core platform capabilities</h2>
+          </div>
+          <p class="section-intro">A unified platform for critical data flows — from natural-language integration build and AI-assisted operations to governed delivery, observability, and enterprise scheduling.</p>
+        </div>
+        <div class="tex-surface-showcase">
+          <div class="tex-surface-nav" role="tablist" aria-label="tex capability previews">
+            <button class="tex-surface-tab active" type="button" id="tex-surface-tab-vibe" role="tab" aria-selected="true" aria-controls="tex-surface-panel-vibe" data-surface-target="tex-surface-panel-vibe" tabindex="0">
+              <span class="tex-surface-tab-copy">
+                <span class="tex-surface-tab-title">Vibe Coding</span>
+                <span class="tex-surface-tab-text">Build reliable integrations from SaaS apps, APIs, and files by describing the workflow in plain English.</span>
+              </span>
+              <span class="tex-surface-tab-toggle" aria-hidden="true"></span>
+            </button>
+            <button class="tex-surface-tab" type="button" id="tex-surface-tab-agents" role="tab" aria-selected="false" aria-controls="tex-surface-panel-agents" data-surface-target="tex-surface-panel-agents" tabindex="-1">
+              <span class="tex-surface-tab-copy">
+                <span class="tex-surface-tab-title">Agentic AI</span>
+                <span class="tex-surface-tab-text">Monitor, optimize, and self-heal live integrations with predictive agents and guided remediation.</span>
+              </span>
+              <span class="tex-surface-tab-toggle" aria-hidden="true"></span>
+            </button>
+            <button class="tex-surface-tab" type="button" id="tex-surface-tab-compliance" role="tab" aria-selected="false" aria-controls="tex-surface-panel-compliance" data-surface-target="tex-surface-panel-compliance" tabindex="-1">
+              <span class="tex-surface-tab-copy">
+                <span class="tex-surface-tab-title">Compliance &amp; Audit</span>
+                <span class="tex-surface-tab-text">Keep data trusted with lineage, immutable audit trails, and regulatory automation built for controlled environments.</span>
+              </span>
+              <span class="tex-surface-tab-toggle" aria-hidden="true"></span>
+            </button>
+            <button class="tex-surface-tab" type="button" id="tex-surface-tab-dashboard" role="tab" aria-selected="false" aria-controls="tex-surface-panel-dashboard" data-surface-target="tex-surface-panel-dashboard" tabindex="-1">
+              <span class="tex-surface-tab-copy">
+                <span class="tex-surface-tab-title">Management Dashboard</span>
+                <span class="tex-surface-tab-text">Give technical and business teams one control plane for visibility, alerts, recovery, and self-service operations.</span>
+              </span>
+              <span class="tex-surface-tab-toggle" aria-hidden="true"></span>
+            </button>
+            <button class="tex-surface-tab" type="button" id="tex-surface-tab-scheduler" role="tab" aria-selected="false" aria-controls="tex-surface-panel-scheduler" data-surface-target="tex-surface-panel-scheduler" tabindex="-1">
+              <span class="tex-surface-tab-copy">
+                <span class="tex-surface-tab-title">Enterprise Scheduler</span>
+                <span class="tex-surface-tab-text">Coordinate long-running jobs, dependency logic, and blackout windows with AI-assisted scheduling at scale.</span>
+              </span>
+              <span class="tex-surface-tab-toggle" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="tex-surface-stage">
+            <article class="tex-surface-panel active" id="tex-surface-panel-vibe" role="tabpanel" aria-labelledby="tex-surface-tab-vibe">
+              <div class="tex-surface-panel-head">
+                <span class="status-pill">AI-assisted build</span>
+                <span class="tex-surface-panel-index">01</span>
+              </div>
+              <div class="tex-surface-window">
+                <div class="tex-surface-window-bar">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                  <span class="tex-surface-window-label">tex / vibe-coding studio</span>
+                </div>
+                <div class="tex-surface-window-body">
+                  <div class="tex-surface-prompt-card">
+                    <span class="tex-surface-overline">Prompt</span>
+                    <p>Create an hourly Salesforce to Oracle customer sync with duplicate detection, audit logging, and failure alerts.</p>
+                  </div>
+                  <div class="tex-surface-flow-grid">
+                    <div class="tex-surface-flow-card is-primary"><strong>Salesforce REST</strong><span>Hourly trigger</span></div>
+                    <div class="tex-surface-flow-card"><strong>Duplicate filter</strong><span>Customer ID + modified time</span></div>
+                    <div class="tex-surface-flow-card is-accent"><strong>Oracle publish</strong><span>Upsert + audit log</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tex-surface-panel-copy-block">
+                <h3>Vibe Coding</h3>
+                <p>Describe the workflow, generate a production-ready flow, and refine the result conversationally before deploying into a governed enterprise environment.</p>
+              </div>
+              <div class="tex-surface-chip-row"><span>Pattern recognition</span><span>Auto-configuration</span><span>Error handling</span></div>
+            </article>
+
+            <article class="tex-surface-panel" id="tex-surface-panel-agents" role="tabpanel" aria-labelledby="tex-surface-tab-agents" hidden>
+              <div class="tex-surface-panel-head">
+                <span class="status-pill">Autonomous operations</span>
+                <span class="tex-surface-panel-index">02</span>
+              </div>
+              <div class="tex-surface-window">
+                <div class="tex-surface-window-bar">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                  <span class="tex-surface-window-label">tex / agent operations center</span>
+                </div>
+                <div class="tex-surface-window-body tex-surface-window-body-agents">
+                  <div class="tex-surface-agent-grid">
+                    <div class="tex-surface-agent-card is-primary"><strong>Monitoring Agent</strong><span>Predictive analytics and SLA risk alerts</span></div>
+                    <div class="tex-surface-agent-card is-accent"><strong>Self-Healing Agent</strong><span>Auto-recovery and runbook execution</span></div>
+                    <div class="tex-surface-agent-card"><strong>Optimization Agent</strong><span>Performance tuning and cost reduction</span></div>
+                  </div>
+                  <div class="tex-surface-signal-row">
+                    <div class="tex-surface-signal-card"><strong>3 mins earlier</strong><span>Risk surfaced before SLA breach</span></div>
+                    <div class="tex-surface-signal-card"><strong>92%</strong><span>Recurring incidents resolved automatically</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tex-surface-panel-copy-block">
+                <h3>Agentic AI</h3>
+                <p>Bring integrated observability and AI-powered debugging together so teams can spot issues sooner, automate safe recovery, and keep approval control where it matters.</p>
+              </div>
+              <div class="tex-surface-chip-row"><span>Predictive analytics</span><span>Auto-recovery</span><span>Runbook automation</span></div>
+            </article>
+
+            <article class="tex-surface-panel" id="tex-surface-panel-compliance" role="tabpanel" aria-labelledby="tex-surface-tab-compliance" hidden>
+              <div class="tex-surface-panel-head">
+                <span class="status-pill">Governed delivery</span>
+                <span class="tex-surface-panel-index">03</span>
+              </div>
+              <div class="tex-surface-window">
+                <div class="tex-surface-window-bar">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                  <span class="tex-surface-window-label">tex / compliance command view</span>
+                </div>
+                <div class="tex-surface-window-body tex-surface-window-body-compliance">
+                  <div class="tex-surface-score-card"><strong>98%</strong><span>Real-time compliance posture</span></div>
+                  <div class="tex-surface-audit-grid">
+                    <div class="tex-surface-audit-item"><strong>Immutable logging</strong><span>Tamper-proof record of all transactions</span></div>
+                    <div class="tex-surface-audit-item"><strong>Impact analysis</strong><span>Assess affected feeds before a regulation change lands</span></div>
+                    <div class="tex-surface-audit-item"><strong>Submission ready</strong><span>Pre-built report templates and validation checks</span></div>
+                  </div>
+                  <div class="tex-surface-frameworks"><span>Basel III/IV</span><span>MiFID II</span><span>GDPR</span><span>SOX</span></div>
+                </div>
+              </div>
+              <div class="tex-surface-panel-copy-block">
+                <h3>Compliance, Audit &amp; Regulatory Automation</h3>
+                <p>Track data from source to destination with immutable evidence, faster impact analysis, and submission-ready reporting for regulated change programs.</p>
+              </div>
+              <div class="tex-surface-chip-row"><span>Audit trail</span><span>Field mapping AI</span><span>Automated reports</span></div>
+            </article>
+
+            <article class="tex-surface-panel" id="tex-surface-panel-dashboard" role="tabpanel" aria-labelledby="tex-surface-tab-dashboard" hidden>
+              <div class="tex-surface-panel-head">
+                <span class="status-pill">Unified control center</span>
+                <span class="tex-surface-panel-index">04</span>
+              </div>
+              <div class="tex-surface-window">
+                <div class="tex-surface-window-bar">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                  <span class="tex-surface-window-label">tex / unified management dashboard</span>
+                </div>
+                <div class="tex-surface-window-body tex-surface-window-body-dashboard">
+                  <div class="tex-surface-command-card">
+                    <span class="tex-surface-overline">AI Copilot</span>
+                    <p>Show me all failed transactions from yesterday and explain the root cause.</p>
+                  </div>
+                  <div class="tex-surface-tool-grid">
+                    <div class="tex-surface-tool-card"><strong>Error Vault</strong><span>AI-enhanced recovery</span></div>
+                    <div class="tex-surface-tool-card"><strong>Replay Engine</strong><span>Event recording and time-travel debugging</span></div>
+                    <div class="tex-surface-tool-card"><strong>Message Interceptor</strong><span>Real-time inspection and profiling</span></div>
+                    <div class="tex-surface-tool-card"><strong>Configuration Service</strong><span>Centralized management and version control</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tex-surface-panel-copy-block">
+                <h3>Management Dashboard</h3>
+                <p>Give technical and business users a single control plane for templates, monitoring, replay, AI-assisted triage, and guided day-to-day operations.</p>
+              </div>
+              <div class="tex-surface-chip-row"><span>Single pane of glass</span><span>Self-service catalog</span><span>AI copilot</span></div>
+            </article>
+
+            <article class="tex-surface-panel" id="tex-surface-panel-scheduler" role="tabpanel" aria-labelledby="tex-surface-tab-scheduler" hidden>
+              <div class="tex-surface-panel-head">
+                <span class="status-pill">Orchestration at scale</span>
+                <span class="tex-surface-panel-index">05</span>
+              </div>
+              <div class="tex-surface-window">
+                <div class="tex-surface-window-bar">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                  <span class="tex-surface-window-label">tex / enterprise scheduler</span>
+                </div>
+                <div class="tex-surface-window-body tex-surface-window-body-scheduler">
+                  <div class="tex-surface-schedule-card">
+                    <span class="tex-surface-overline">Natural language request</span>
+                    <p>Generate the monthly compliance report on the last business day of each month and email it to finance.</p>
+                  </div>
+                  <div class="tex-surface-job-list">
+                    <div class="tex-surface-job"><strong>Data readiness checks</strong><span>08:30 · queued</span></div>
+                    <div class="tex-surface-job"><strong>Compliance pack build</strong><span>09:00 · waiting on approvals</span></div>
+                    <div class="tex-surface-job"><strong>Submission handoff</strong><span>09:20 · auto-retry enabled</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tex-surface-panel-copy-block">
+                <h3>Enterprise Scheduler</h3>
+                <p>Design complex dependency plans, describe schedules in natural language, and keep critical jobs reliable with predictive warnings and smarter sequencing.</p>
+              </div>
+              <div class="tex-surface-chip-row"><span>Natural language scheduling</span><span>Predictive alerts</span><span>Smart backoff</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Operating model</span>
+            <h2>How tex lands with enterprise buyers and architects</h2>
+          </div>
+        </div>
+        <div class="two-column">
+          <article class="card">
+            <div class="card-top"><span class="accent-marker">A</span><h3>Buyer-facing value</h3></div>
+            <ul class="list">
+              <li>Reduce delivery friction across data movement and process orchestration programs.</li>
+              <li>Unify integration capability with AI acceleration rather than treating them as separate tools.</li>
+              <li>Create a stronger governance narrative for regulated or audit-sensitive environments.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="card-top"><span class="accent-marker">B</span><h3>Architect-facing value</h3></div>
+            <ul class="list">
+              <li>Model reusable integration patterns with explicit control points and observability.</li>
+              <li>Support connector-led expansion while keeping operating concerns visible and explainable.</li>
+              <li>Offer a platform framing that scales beyond one-off interfaces or tactical automations.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section tex-advantage-section">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Competitive advantage</span>
+            <h2>Why tex stands apart from legacy ESB and generic iPaaS platforms</h2>
+          </div>
+          <p class="section-intro">tex combines AI-assisted build, agentic operations, regulatory automation, and governed self-service in a way older integration stacks and lighter cloud tooling typically do not.</p>
+        </div>
+        <div class="tex-advantage-strip">
+          <article class="tex-advantage-item">
+            <span class="tex-advantage-icon">🎨</span>
+            <strong>Vibe Coding</strong>
+            <span>Natural-language integration build that cuts delivery from weeks to minutes.</span>
+          </article>
+          <article class="tex-advantage-item">
+            <span class="tex-advantage-icon">🤖</span>
+            <strong>Agentic AI</strong>
+            <span>Monitoring, self-healing, and optimization agents built into the platform story.</span>
+          </article>
+          <article class="tex-advantage-item">
+            <span class="tex-advantage-icon">⚖️</span>
+            <strong>Regulatory AI</strong>
+            <span>Auto-adapts feeds and reporting workflows when regulatory requirements change.</span>
+          </article>
+          <article class="tex-advantage-item">
+            <span class="tex-advantage-icon">👥</span>
+            <strong>Governed self-service</strong>
+            <span>Business users can participate without giving up IT controls, approvals, or auditability.</span>
+          </article>
+        </div>
+        <div class="two-column tex-competitive-grid">
+          <article class="card tex-competitive-card">
+            <div class="card-top"><span class="accent-marker">ESB</span><h3>vs. traditional ESB</h3></div>
+            <p class="tex-competitive-label">MuleSoft, IBM IIB, Oracle SOA, TIBCO</p>
+            <div class="tex-compare-table" role="table" aria-label="tex compared with traditional ESB platforms">
+              <div class="tex-compare-row tex-compare-head" role="row"><span>Feature</span><span>tex</span><span>Traditional ESB</span></div>
+              <div class="tex-compare-row" role="row"><span>AI / natural language</span><strong>Vibe Coding + Agentic AI</strong><span>None or basic assistance</span></div>
+              <div class="tex-compare-row" role="row"><span>Self-service</span><strong>Full self-service with governance</strong><span>Developer-only delivery model</span></div>
+              <div class="tex-compare-row" role="row"><span>Regulatory automation</span><strong>AI-powered auto-adaptation</strong><span>Manual updates and rework</span></div>
+              <div class="tex-compare-row" role="row"><span>Development speed</span><strong>Minutes, not weeks</strong><span>Complex XML-heavy configuration</span></div>
+              <div class="tex-compare-row" role="row"><span>Total cost</span><strong>Lower delivery and change overhead</strong><span>Higher licensing and consulting load</span></div>
+            </div>
+          </article>
+          <article class="card tex-competitive-card">
+            <div class="card-top"><span class="accent-marker">IP</span><h3>vs. iPaaS</h3></div>
+            <p class="tex-competitive-label">Boomi, Workato, SnapLogic, Informatica Cloud</p>
+            <div class="tex-compare-table" role="table" aria-label="tex compared with iPaaS platforms">
+              <div class="tex-compare-row tex-compare-head" role="row"><span>Feature</span><span>tex</span><span>iPaaS</span></div>
+              <div class="tex-compare-row" role="row"><span>AI capabilities</span><strong>Vibe Coding + Agentic AI + Regulatory AI</strong><span>More limited AI surface</span></div>
+              <div class="tex-compare-row" role="row"><span>Compliance posture</span><strong>Purpose-built audit and regulatory depth</strong><span>More generic compliance framing</span></div>
+              <div class="tex-compare-row" role="row"><span>Data residency</span><strong>On-premise or private cloud options</strong><span>Often vendor-cloud-led</span></div>
+              <div class="tex-compare-row" role="row"><span>Customization</span><strong>Full code access plus AI generation</strong><span>Bounded by platform limits</span></div>
+              <div class="tex-compare-row" role="row"><span>Cost model</span><strong>Predictable platform economics</strong><span>Usage-based cost spikes</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta-band">
+        <span class="eyebrow" style="background:rgba(255,255,255,0.14);color:white;">Call to action</span>
+        <h2 style="margin:1rem 0 0; font-size:clamp(1.8rem,3vw,2.8rem);">Explore tex through demos or a guided platform walkthrough</h2>
+        <p>tex already has the richest material in the portfolio. Use the live demos for immediate product evidence, or schedule a walkthrough for a more detailed enterprise conversation.</p>
+        <div class="cta-actions">
+          <a class="button-primary" href="demo.html" target="_blank" rel="noreferrer">Open demos</a>
+          <a class="button-secondary" href="contact.html">Talk to sales</a>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-shell">
+          <div class="footer-grid">
+            <div>
+              <h4>Inspiware</h4>
+              <p>Enterprise platform company focused on integration, AI workflows, and operational systems modernization.</p>
+            </div>
+            <div>
+              <h4>Platforms</h4>
+              <a href="tex.html">tex</a>
+              <a href="texerp.html">texerp</a>
+              <a href="index.html">Platform overview</a>
+            </div>
+            <div>
+              <h4>Company</h4>
+              <a href="about.html">About Inspiware</a>
+              <a href="contact.html">Contact</a>
+            </div>
+            <div>
+              <h4>Contact</h4>
+              <a href="mailto:sales@inspiware.co.uk">sales@inspiware.co.uk</a>
+              <a href="tel:+447876234600">+44 (0) 787 623 4600</a>
+            </div>
+          </div>
+          <div class="footer-bottom">© 2018-2026 Inspiware Ltd. All rights reserved.</div>
+        </div>
+      </footer>
+    </div>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.tex-surface-showcase').forEach(function (showcase) {
+        const tabs = Array.from(showcase.querySelectorAll('.tex-surface-tab'));
+        const panels = Array.from(showcase.querySelectorAll('.tex-surface-panel'));
+
+        function activateTab(nextTab) {
+          const targetId = nextTab.getAttribute('data-surface-target');
+
+          tabs.forEach(function (tab) {
+            const isActive = tab === nextTab;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', String(isActive));
+            tab.tabIndex = isActive ? 0 : -1;
+          });
+
+          panels.forEach(function (panel) {
+            const isActive = panel.id === targetId;
+            panel.classList.toggle('active', isActive);
+            panel.hidden = !isActive;
+          });
+        }
+
+        tabs.forEach(function (tab, index) {
+          tab.addEventListener('click', function () {
+            activateTab(tab);
+          });
+
+          tab.addEventListener('keydown', function (event) {
+            let nextIndex = null;
+
+            if (event.key === 'ArrowDown' || event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+            if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+            if (event.key === 'Home') nextIndex = 0;
+            if (event.key === 'End') nextIndex = tabs.length - 1;
+
+            if (nextIndex !== null) {
+              event.preventDefault();
+              tabs[nextIndex].focus();
+              activateTab(tabs[nextIndex]);
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

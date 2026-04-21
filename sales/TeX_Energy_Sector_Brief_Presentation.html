@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeX Platform for Energy & Utilities - Presentation Brief</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        
+        body {
+            font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ffffff;
+        }
+        
+        h1 {
+            color: #0078d4;
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #00bcf2;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #0078d4;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        
+        h3 {
+            color: #0078d4;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #333;
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin: 10px 0;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        
+        th {
+            background-color: #0078d4;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .highlight-box {
+            background-color: #e6f3ff;
+            border-left: 4px solid #0078d4;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .example-box {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .roi-box {
+            background-color: #fff3e6;
+            border: 2px solid #f97316;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .roi-box h3 {
+            color: #f97316;
+            margin-top: 0;
+        }
+        
+        .contact-box {
+            background-color: #0078d4;
+            color: white;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .contact-box a {
+            color: #00bcf2;
+            text-decoration: none;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .company-info {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 30px 0;
+        }
+        
+        .checkmark {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .cross {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background-color: #005a9e;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button no-print" onclick="window.print()">Print to PDF</button>
+    
+    <h1>TeX Platform for Energy & Utilities</h1>
+    <div class="subtitle">AI-Powered Enterprise Integration for the Energy Transition</div>
+    
+    <div class="company-info">
+        <strong>Inspiware Limited</strong><br>
+        www.inspiware.co.uk | sales@inspiware.co.uk | +44 (0) 787 623 4600
+    </div>
+    
+    <hr>
+    
+    <h2>Executive Summary</h2>
+    <p>The energy sector is undergoing its most significant transformation in a century. Renewable integration, smart grid deployment, real-time trading, and evolving regulations demand unprecedented levels of system connectivity and data orchestration. Traditional integration approaches can't keep pace.</p>
+    
+    <p><strong>TeX Platform</strong> is a next-generation, AI-powered enterprise integration platform purpose-built for the complexity and scale of modern energy operations. With revolutionary capabilities like natural language integration development (Vibe Coding) and autonomous AI agents for self-healing operations, TeX enables energy companies to integrate systems <strong>90% faster</strong> while reducing operational incidents by <strong>70%</strong>.</p>
+    
+    <div class="page-break"></div>
+    
+    <h2>The Energy Sector Challenge</h2>
+    
+    <h3>Integration Complexity is Exploding</h3>
+    <ul>
+        <li><strong>Smart Grids</strong>: 10M+ IoT devices (smart meters, sensors, SCADA systems)</li>
+        <li><strong>Renewable Assets</strong>: Intermittent generation requiring real-time balancing</li>
+        <li><strong>Energy Trading</strong>: Sub-second market connectivity across multiple exchanges</li>
+        <li><strong>Customer Systems</strong>: Billing, CRM, portals requiring real-time synchronization</li>
+        <li><strong>Regulatory Reporting</strong>: REMIT, GDPR, Network Codes, Renewable Energy Directive with constantly changing requirements</li>
+        <li><strong>Legacy Systems</strong>: Decades-old infrastructure that must coexist with modern platforms</li>
+    </ul>
+    
+    <h3>Traditional Integration Fails</h3>
+    <ul>
+        <li>⏱️ <strong>Too Slow</strong>: 6-12 months to integrate new renewable assets</li>
+        <li>💰 <strong>Too Expensive</strong>: £2M+ annual integration development costs</li>
+        <li>🔧 <strong>Too Fragile</strong>: 100+ monthly incidents requiring manual intervention</li>
+        <li>📋 <strong>Compliance Risk</strong>: Manual regulatory reporting prone to errors and delays</li>
+        <li>👥 <strong>Skills Gap</strong>: Shortage of integration developers, knowledge silos</li>
+    </ul>
+    
+    <div class="page-break"></div>
+    
+    <h2>TeX Platform: AI-Powered Integration for Energy</h2>
+    
+    <h3>🎨 Vibe Coding - Natural Language Integration</h3>
+    <p><strong>Build integrations by describing what you want in plain English.</strong></p>
+    
+    <div class="example-box">
+        <strong>Example:</strong><br>
+        "Connect our wind farm SCADA data to the energy trading platform, apply real-time pricing algorithms based on market conditions, and publish bids to the EPEX wholesale market. Include error handling for network failures and audit logging for regulatory compliance."
+    </div>
+    
+    <p><strong>TeX AI generates production-ready integration code in minutes</strong>, including:</p>
+    <ul>
+        <li>Data connectors (SCADA, trading platforms, market feeds)</li>
+        <li>Business logic (pricing algorithms, validation rules)</li>
+        <li>Error handling and retry mechanisms</li>
+        <li>Audit logging and compliance tracking</li>
+        <li>Monitoring and alerting</li>
+    </ul>
+    
+    <div class="highlight-box">
+        <strong>Impact:</strong> Integration development time reduced from <strong>6 months to 3 weeks</strong> (90% reduction)
+    </div>
+    
+    <div class="page-break"></div>
+    
+    <h3>🤖 Agentic AI - Self-Healing Operations</h3>
+    <p><strong>Autonomous AI agents that monitor, diagnose, and fix integration issues automatically.</strong></p>
+    
+    <h4>Three AI Agents:</h4>
+    <ol>
+        <li><strong>Monitoring Agent</strong>: Continuously analyzes data flows, detects anomalies, predicts failures</li>
+        <li><strong>Healing Agent</strong>: Automatically diagnoses issues and implements fixes (connection resets, data reprocessing, failover)</li>
+        <li><strong>Optimization Agent</strong>: Analyzes performance, suggests improvements, implements optimizations</li>
+    </ol>
+    
+    <div class="example-box">
+        <strong>Example Scenario:</strong><br>
+        • 2:00 AM: Smart meter data feed from vendor fails<br>
+        • 2:01 AM: Monitoring Agent detects anomaly, alerts Healing Agent<br>
+        • 2:02 AM: Healing Agent diagnoses network timeout, implements retry with exponential backoff<br>
+        • 2:03 AM: Connection restored, data backlog processed<br>
+        • 8:00 AM: Operations team receives summary report (no 2 AM wake-up call)
+    </div>
+    
+    <div class="highlight-box">
+        <strong>Impact:</strong> Operational incidents reduced by <strong>70%</strong>, mean time to resolution (MTTR) reduced by <strong>85%</strong>
+    </div>
+    
+    <div class="page-break"></div>
+    
+    <h3>⚡ Real-Time Data Orchestration</h3>
+    <p><strong>Handle millions of events per second with sub-second latency.</strong></p>
+    
+    <h4>Energy Sector Requirements:</h4>
+    <ul>
+        <li><strong>Smart Meters</strong>: 10M+ meter readings every 15 minutes (11,000+ events/second)</li>
+        <li><strong>Market Data</strong>: Real-time price feeds from multiple exchanges (100,000+ ticks/second)</li>
+        <li><strong>Grid Sensors</strong>: SCADA data from substations, transformers, renewable assets (50,000+ events/second)</li>
+        <li><strong>Trading Operations</strong>: Sub-second order execution and risk calculations</li>
+    </ul>
+    
+    <h4>TeX Architecture:</h4>
+    <ul>
+        <li>Event-driven, publish-subscribe messaging (Kafka, RabbitMQ, Azure Event Hub)</li>
+        <li>Distributed processing with horizontal scaling</li>
+        <li>In-memory caching for ultra-low latency</li>
+        <li>Complex event processing (CEP) for pattern detection</li>
+    </ul>
+    
+    <div class="highlight-box">
+        <strong>Impact:</strong> Real-time decision-making, optimized grid operations, faster market response
+    </div>
+    
+    <div class="page-break"></div>
+    
+    <h3>⚖️ Regulatory Compliance Built-In</h3>
+    <p><strong>Auto-adapt to regulation changes with complete audit trails.</strong></p>
+    
+    <h4>Energy Regulations Supported:</h4>
+    <ul>
+        <li><strong>REMIT</strong> - Wholesale energy market trading</li>
+        <li><strong>GDPR</strong> - Smart meter data privacy and customer information</li>
+        <li><strong>Network Codes</strong> - Grid connection, balancing, capacity allocation</li>
+        <li><strong>Renewable Energy Directive (RED III)</strong> - Renewable energy targets and sustainability reporting</li>
+        <li><strong>NIS2 Directive</strong> - Cybersecurity for critical energy infrastructure</li>
+        <li><strong>Smart Meter Regulations</strong> - Data privacy, security, and consumer protection</li>
+    </ul>
+    
+    <h4>Capabilities:</h4>
+    <ul>
+        <li>Complete audit trail for REMIT compliance</li>
+        <li>Automated REMIT transaction reporting to ACER</li>
+        <li>GDPR-compliant smart meter data handling with consent management</li>
+        <li>NIS2 cybersecurity incident detection and reporting</li>
+        <li>Configurable retention (REMIT: 5 years) with legal hold support</li>
+    </ul>
+    
+    <div class="highlight-box">
+        <strong>Impact:</strong> Regulatory reporting time reduced from <strong>40 hours/month to 2 hours/month</strong> (95% reduction)
+    </div>
+    
+    <div class="page-break"></div>
+    
+    <h2>Energy Sector Use Cases</h2>
+    
+    <h3>1. Smart Grid & IoT Integration</h3>
+    <p><strong>Challenge:</strong> Integrate 10M+ smart meters, weather stations, grid sensors with diverse protocols</p>
+    <p><strong>Results:</strong></p>
+    <ul>
+        <li class="checkmark">✓ 10M+ devices integrated in 6 weeks (vs. 18 months traditional)</li>
+        <li class="checkmark">✓ 99.9% data accuracy with AI anomaly detection</li>
+        <li class="checkmark">✓ Real-time demand forecasting for grid optimization</li>
+    </ul>
+    
+    <h3>2. Energy Trading & Market Operations</h3>
+    <p><strong>Challenge:</strong> Connect to multiple wholesale markets with sub-second latency for automated trading</p>
+    <p><strong>Results:</strong></p>
+    <ul>
+        <li class="checkmark">✓ Sub-100ms market response time</li>
+        <li class="checkmark">✓ 100% automated REMIT transaction reporting</li>
+        <li class="checkmark">✓ 60% reduction in trading operational costs</li>
+    </ul>
+    
+    <h3>3. Renewable Energy Integration</h3>
+    <p><strong>Challenge:</strong> Balance intermittent solar/wind generation with grid demand in real-time</p>
+    <p><strong>Results:</strong></p>
+    <ul>
+        <li class="checkmark">✓ 25% improvement in renewable utilization</li>
+        <li class="checkmark">✓ 40% reduction in curtailment events</li>
+        <li class="checkmark">✓ Optimized battery storage dispatch</li>
+    </ul>
+    
+    <h3>4. Customer Billing & CRM</h3>
+    <p><strong>Challenge:</strong> Synchronize smart meter data, tariff engines, billing systems in real-time</p>
+    <p><strong>Results:</strong></p>
+    <ul>
+        <li class="checkmark">✓ 99.5% billing accuracy (vs. 94% manual)</li>
+        <li class="checkmark">✓ 80% reduction in billing disputes</li>
+        <li class="checkmark">✓ Real-time usage visibility for customers</li>
+    </ul>
+    
+    <h3>5. Asset Management & Predictive Maintenance</h3>
+    <p><strong>Challenge:</strong> Connect SCADA, EAM systems, and field service platforms for predictive maintenance</p>
+    <p><strong>Results:</strong></p>
+    <ul>
+        <li class="checkmark">✓ 35% reduction in unplanned downtime</li>
+        <li class="checkmark">✓ 20% reduction in maintenance costs</li>
+        <li class="checkmark">✓ 15% extension of asset lifespan</li>
+    </ul>
+    
+    <div class="page-break"></div>
+    
+    <h2>ROI Analysis</h2>
+    
+    <div class="roi-box">
+        <h3>Typical Mid-Sized Energy Company</h3>
+        <p style="font-size: 14px;">(5M customers, 200 integrations)</p>
+        
+        <table style="margin: 20px auto; max-width: 600px; background: white;">
+            <tr>
+                <th>Metric</th>
+                <th>Current State</th>
+                <th>With TeX</th>
+            </tr>
+            <tr>
+                <td>Integration Development</td>
+                <td>£2M/year</td>
+                <td>£400K/year</td>
+            </tr>
+            <tr>
+                <td>Operations Support</td>
+                <td>£800K/year</td>
+                <td>£240K/year</td>
+            </tr>
+            <tr>
+                <td>Regulatory Compliance</td>
+                <td>£400K/year</td>
+                <td>£80K/year</td>
+            </tr>
+            <tr>
+                <td>TeX Subscription</td>
+                <td>-</td>
+                <td>£200K/year</td>
+            </tr>
+            <tr style="background-color: #0078d4; color: white; font-weight: bold;">
+                <td>TOTAL</td>
+                <td>£3.2M/year</td>
+                <td>£920K/year</td>
+            </tr>
+        </table>
+        
+        <h3 style="color: #28a745; font-size: 24px; margin: 20px 0;">Annual Savings: £2.28M (71% reduction)</h3>
+        <p style="font-size: 18px;"><strong>Payback Period: 5-6 months</strong></p>
+        <p style="font-size: 16px;">3-Year Net Benefit: £6.625M | 5-Year Net Benefit: £11.175M</p>
+    </div>
+    
+    <div class="page-break"></div>
+    
+    <h2>Why TeX Wins vs. Competitors</h2>
+    
+    <table>
+        <tr>
+            <th>Capability</th>
+            <th>TeX Platform</th>
+            <th>Traditional ESB</th>
+            <th>iPaaS Solutions</th>
+        </tr>
+        <tr>
+            <td>AI/Natural Language</td>
+            <td class="checkmark">✓ Vibe Coding + Agentic AI</td>
+            <td class="cross">✗ None</td>
+            <td class="warning">⚠ Limited</td>
+        </tr>
+        <tr>
+            <td>Self-Healing</td>
+            <td class="checkmark">✓ Autonomous agents</td>
+            <td class="cross">✗ Manual</td>
+            <td class="warning">⚠ Basic monitoring</td>
+        </tr>
+        <tr>
+            <td>IoT/SCADA Support</td>
+            <td class="checkmark">✓ Native protocols</td>
+            <td class="warning">⚠ Limited</td>
+            <td class="cross">✗ Requires custom dev</td>
+        </tr>
+        <tr>
+            <td>Real-Time Processing</td>
+            <td class="checkmark">✓ Millions/second</td>
+            <td class="warning">⚠ Moderate</td>
+            <td class="warning">⚠ Moderate</td>
+        </tr>
+        <tr>
+            <td>Regulatory Automation</td>
+            <td class="checkmark">✓ AI-powered</td>
+            <td class="cross">✗ Manual</td>
+            <td class="warning">⚠ Generic templates</td>
+        </tr>
+        <tr>
+            <td>Data Residency</td>
+            <td class="checkmark">✓ On-prem/private cloud</td>
+            <td class="checkmark">✓ On-prem</td>
+            <td class="cross">✗ Vendor cloud only</td>
+        </tr>
+        <tr>
+            <td>Cost Model</td>
+            <td class="checkmark">✓ Predictable subscription</td>
+            <td class="warning">⚠ High upfront + maintenance</td>
+            <td class="warning">⚠ Usage-based (spikes)</td>
+        </tr>
+    </table>
+    
+    <div class="page-break"></div>
+    
+    <h2>Next Steps</h2>
+    
+    <h3>1. Live Demonstration (20 minutes)</h3>
+    <p>See Vibe Coding in action: Build a smart meter → billing integration using natural language</p>
+    
+    <h3>2. Proof of Concept (30 days)</h3>
+    <p>Select one critical integration, deploy TeX, measure results</p>
+    
+    <div class="highlight-box">
+        <strong>Deliverables:</strong>
+        <ul>
+            <li>Working integration (e.g., renewable asset → trading platform)</li>
+            <li>Performance benchmarks (throughput, latency, reliability)</li>
+            <li>ROI analysis based on actual results</li>
+            <li>Migration plan for full deployment</li>
+        </ul>
+        <p style="text-align: center; font-size: 18px; margin-top: 15px;">
+            <strong>Investment: £15,000 (fixed price)</strong>
+        </p>
+    </div>
+    
+    <h3>3. Pilot Deployment (90 days)</h3>
+    <p>Deploy TeX for a business unit or use case</p>
+    <ul>
+        <li>10-20 integrations</li>
+        <li>Full AI capabilities (Vibe Coding, Agentic AI)</li>
+        <li>Training for your team</li>
+        <li>Production support</li>
+    </ul>
+    
+    <hr>
+    
+    <div class="contact-box">
+        <h2 style="color: white; margin-top: 0;">Contact Us</h2>
+        <p style="font-size: 16px;">
+            <strong>Inspiware Limited</strong><br><br>
+            📧 Email: <a href="mailto:sales@inspiware.co.uk">sales@inspiware.co.uk</a><br>
+            📞 Phone: +44 (0) 787 623 4600<br>
+            🌐 Website: <a href="http://www.inspiware.co.uk">www.inspiware.co.uk</a>
+        </p>
+        <p style="margin-top: 20px;">
+            <strong>Headquarters:</strong> United Kingdom<br>
+            <strong>Serving:</strong> Energy & Utilities, Financial Services, Retail, Healthcare
+        </p>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px; color: #666; font-style: italic;">
+        TeX Platform - Transforming Enterprise Integration with AI
+    </div>
+    
+</body>
+</html>
+
